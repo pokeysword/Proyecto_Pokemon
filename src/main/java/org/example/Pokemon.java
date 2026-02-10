@@ -4,17 +4,58 @@ package org.example;
 import java.util.List;
 
 public class Pokemon {
-    public String nombre;
-    public List<Tipo> tipos;
-    public Habilidad habilidad;
+    private String nombre;
+    private int nivel;
+    private List<Tipo> tipos;
+    private Habilidad habilidad;
 
-    public int ps;
-    public int atack;
-    public int defense;
-    public int sAtack;
-    public int sDefense;
-    public int speed;
+    private int ps;
+    private int atack;
+    private int defense;
+    private int sAtack;
+    private int sDefense;
+    private int speed;
 
-    public Estado estado;
-    public List<Movimiento> movimientos;
+    private Estado estado;
+    private List<Movimiento> movimientos;
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public int getNivel() {
+        return nivel;
+    }
+
+    public List<Tipo> getTipos() {
+        return tipos;
+    }
+
+    public Habilidad getHabilidad() {
+        return habilidad;
+    }
+
+    public int getPs() {
+        return ps;
+    }
+
+    public int getAtack() {
+        return atack;
+    }
+
+    public int getDefense() {
+        return defense;
+    }
+
+    public int getsAtack() {
+        return sAtack;
+    }
+
+    public int getsDefense() {
+        return sDefense;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
 }

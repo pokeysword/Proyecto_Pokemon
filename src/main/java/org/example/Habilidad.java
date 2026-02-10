@@ -9,6 +9,6 @@ public abstract class Habilidad {
         this.prioridad = prioridad;
     }
 
-    public abstract void efecto(Pokemon objetivo,Pokemon efectivo);
+    public abstract void efecto(Pokemon objetivo);
 }
 
