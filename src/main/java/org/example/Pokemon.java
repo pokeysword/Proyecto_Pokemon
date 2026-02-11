@@ -17,6 +17,7 @@ public class Pokemon {
     private int spDefense;
     private int speed;
 
+    private int ModPs;
     private int ModAtack;
     private int ModDefense;
     private int ModSpAtack;
@@ -64,6 +65,10 @@ public class Pokemon {
         return ps <= 0;
     }
 
+    public int getPS() {
+        return ps;
+    }
+
     public int getAtack() {
         return atack;
     }
@@ -83,6 +88,10 @@ public class Pokemon {
     public int getSpeed() {
         return speed;
     }
+
+    public Estado getEstado(){return estado;}
+
+    public void setEstado(Estado estado){this.estado=estado;}
 
     public void setFlinch(Boolean flinch) {
         this.flinch = flinch;
@@ -113,7 +122,12 @@ public class Pokemon {
             return 2.0 / (2.0 - multiplicador);
         }
     }
-
+    public int getModPs(){
+        return ModPs;
+    }
+    public void setModPs(int num){
+        this.ModPs=num;
+    }
     public void modificarSpAtk(int num) {
         ModSpAtack = LimitarMod(ModSpAtack + num);
         mostrarCambio("Ataque Especial", num);
