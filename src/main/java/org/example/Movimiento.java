@@ -7,15 +7,18 @@ public abstract class Movimiento {
     protected Categoria categoria;
     protected int potencia;
     protected int precision;
+    protected int pp;
 
-    public Movimiento(String nombre, int prioridad, Tipo tipo,Categoria categoria, int potencia,int precision){
-        this.nombre=nombre;
-        this.prioridad=prioridad;
-        this.tipo=tipo;
-        this.categoria=categoria;
-        this.potencia=potencia;
-        this.precision=precision;
+    public Movimiento(String nombre, int prioridad, Tipo tipo, Categoria categoria, int potencia, int precision, int pp) {
+        this.nombre = nombre;
+        this.prioridad = prioridad;
+        this.tipo = tipo;
+        this.categoria = categoria;
+        this.potencia = potencia;
+        this.precision = precision;
+        this.pp = pp;
     }
+
     public abstract void efecto(Pokemon atacante, Pokemon defensor);
 
 }

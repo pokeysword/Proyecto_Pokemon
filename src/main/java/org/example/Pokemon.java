@@ -1,6 +1,7 @@
 package org.example;
 
 
+import java.lang.classfile.constantpool.PoolEntry;
 import java.util.List;
 
 public class Pokemon {
@@ -12,19 +13,43 @@ public class Pokemon {
     private int ps;
     private int atack;
     private int defense;
-    private int sAtack;
-    private int sDefense;
+    private int spAtack;
+    private int spDefense;
     private int speed;
+
+    private int ModAtack;
+    private int ModDefense;
+    private int ModSpAtack;
+    private int ModSpDefense;
+    private int ModSpeed;
 
     private Estado estado;
     private List<Movimiento> movimientos;
+    private boolean flinch;
+
+    public Pokemon(String nombre, int nivel, List<Tipo> tipos, Habilidad habilidad, int ps, int atack, int defense, int sAtack, int sDefense, int speed, List<Movimiento> movimientos) {
+        this.nombre = nombre;
+        this.nivel = nivel;
+        this.tipos = tipos;
+        this.habilidad = habilidad;
+        this.ps = ps;
+        this.atack = atack;
+        this.defense = defense;
+        this.spAtack = spAtack;
+        this.spDefense = spDefense;
+        this.speed = speed;
+        this.estado = Estado.NORMAL;
+        this.movimientos = movimientos;
+        this.flinch = false;
+        ModAtack = 0;
+        ModDefense = 0;
+        ModSpAtack = 0;
+        ModSpDefense = 0;
+        ModSpeed = 0;
+    }
 
     public String getNombre() {
         return nombre;
-    }
-
-    public int getNivel() {
-        return nivel;
     }
 
     public List<Tipo> getTipos() {
@@ -35,8 +60,8 @@ public class Pokemon {
         return habilidad;
     }
 
-    public int getPs() {
-        return ps;
+    public boolean estaDebilitado() {
+        return ps <= 0;
     }
 
     public int getAtack() {
@@ -47,15 +72,72 @@ public class Pokemon {
         return defense;
     }
 
-    public int getsAtack() {
-        return sAtack;
+    public int getSpAtack() {
+        return spAtack;
     }
 
-    public int getsDefense() {
-        return sDefense;
+    public int getSpDefense() {
+        return spDefense;
     }
 
     public int getSpeed() {
         return speed;
     }
+
+    public void setFlinch(Boolean flinch) {
+        this.flinch = flinch;
+    }
+
+    private void mostrarCambio(String stat, int num) {
+
+        if (num > 1) {
+            System.out.println(nombre + " aumentó mucho su " + stat + "!");
+        } else if (num == 1) {
+            System.out.println(nombre + " aumentó su " + stat + ".");
+        } else if (num == -1) {
+            System.out.println(nombre + " bajó su " + stat + ".");
+        } else if (num < -1) {
+            System.out.println(nombre + " bajó mucho su " + stat + "!");
+        }
+    }
+
+    private int LimitarMod(int modificador) {
+        return Math.max(-6, Math.min(6, modificador));
+    }
+
+    private double getMultiplicador(int multiplicador) {
+
+        if (multiplicador >= 0) {
+            return (2.0 + multiplicador) / 2.0;
+        } else {
+            return 2.0 / (2.0 - multiplicador);
+        }
+    }
+
+    public void modificarSpAtk(int num) {
+        ModSpAtack = LimitarMod(ModSpAtack + num);
+        mostrarCambio("Ataque Especial", num);
+    }
+
+    public void modificarAtk(int num) {
+        ModAtack = LimitarMod(ModAtack + num);
+        mostrarCambio("Ataque", num);
+    }
+
+    public void modificarDef(int num) {
+        ModDefense = LimitarMod(ModDefense + num);
+        mostrarCambio("Defensa", num);
+    }
+
+    public void modificarSpDef(int num) {
+        ModSpDefense = LimitarMod(ModSpDefense + num);
+        mostrarCambio("Defensa Especial", num);
+    }
+
+    public void modificarSpe(int num) {
+        ModSpeed = LimitarMod(ModSpeed + num);
+        mostrarCambio("Velocidad", num);
+    }
+
+
 }
