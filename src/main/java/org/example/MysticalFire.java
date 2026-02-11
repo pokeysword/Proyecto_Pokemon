@@ -1,7 +1,5 @@
 package org.example;
 
-import java.util.Random;
-
 public class MysticalFire extends Movimiento {
     public MysticalFire() {
         super("Mystical Fire", 0, Tipo.FUEGO, Categoria.ESPECIAL, 75, 100, 10);
