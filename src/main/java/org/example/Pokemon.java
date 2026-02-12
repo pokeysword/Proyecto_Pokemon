@@ -1,7 +1,9 @@
 package org.example;
 
 
-import java.lang.classfile.constantpool.PoolEntry;
+import org.example.habilidades.Habilidad;
+import org.example.movimientos.Movimiento;
+
 import java.util.List;
 
 public class Pokemon {
@@ -48,7 +50,17 @@ public class Pokemon {
         ModSpDefense = 0;
         ModSpeed = 0;
     }
-
+    public void resetMods(){
+        ModAtack = 0;
+        ModDefense = 0;
+        ModSpAtack = 0;
+        ModSpDefense = 0;
+        ModSpeed = 0;
+    }
+    public void cambio() {
+        resetMods();
+        System.out.println(nombre + " entra al combate.");
+    }
     public String getNombre() {
         return nombre;
     }

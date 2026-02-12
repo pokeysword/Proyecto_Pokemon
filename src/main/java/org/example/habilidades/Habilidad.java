@@ -1,4 +1,6 @@
-package org.example;
+package org.example.habilidades;
+
+import org.example.Pokemon;
 
 public abstract class Habilidad {
     protected String nombre;

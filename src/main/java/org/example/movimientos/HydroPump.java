@@ -1,4 +1,8 @@
-package org.example;
+package org.example.movimientos;
+
+import org.example.Categoria;
+import org.example.Pokemon;
+import org.example.Tipo;
 
 public class HydroPump extends Movimiento {
     public HydroPump() {

@@ -1,12 +1,15 @@
-package org.example;
+package org.example.movimientos;
+
+import org.example.Categoria;
+import org.example.Pokemon;
+import org.example.Tipo;
 
 import java.util.Random;
 
-public class RockSlide extends Movimiento {
+public class AirSlash extends Movimiento {
 
-    public RockSlide() {
-        super("Rock Slide", 0, Tipo.ROCA, Categoria.FISICO, 75, 90, 10);
-
+    public AirSlash() {
+        super("Air Slash", 0, Tipo.VOLADOR, Categoria.ESPECIAL, 75, 95, 15);
     }
 
     @Override
