@@ -14,7 +14,6 @@ public class Snarl extends Movimiento {
     public void efecto(Pokemon atacante, Pokemon defensor) {
         if (!defensor.estaDebilitado()) {
             defensor.modificarSpAtk(-1);
-
         }
     }
 }

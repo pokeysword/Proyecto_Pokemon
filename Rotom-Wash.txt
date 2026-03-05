@@ -1,0 +1,159 @@
+Rotom-Wash
+Tipo: Eléctrico / Agua
+Habilidad: Levitate
+PS: 157
+Atk: 85
+Def: 128
+Atq. Esp: 125
+Def. Esp: 128
+Vel: 106
+
+Movimientos:
+Hydro Pump
+Volt Switch
+Will-O-Wisp
+Protect
+
+2. Garchomp
+Tipo: Dragón / Tierra
+Habilidad: Rough Skin
+PS: 183
+Atq: 182
+Def: 115
+Atq. Esp: 95
+Def. Esp: 105
+Vel: 154
+
+Movimientos:
+Earthquake
+Dragon Claw
+Rock Slide
+Protect
+
+3. Togekiss
+Tipo: Hada / Volador
+Habilidad: Serene Grace
+PS: 191
+Atq: 90
+Def: 115
+Atq. Esp: 140
+Def. Esp: 135
+Vel: 113
+
+Movimientos:
+Air Slash
+Dazzling Gleam
+Follow Me
+Roost
+
+4. Metagross
+Tipo: Acero / Psíquico
+Habilidad: Clear Body
+PS: 187
+Atq: 178
+Def: 150
+Atq. Esp: 105
+Def. Esp: 110
+Vel: 110
+
+Movimientos:
+Meteor Mash
+Zen Headbutt
+Earthquake
+Protect
+
+5. Milotic
+Tipo: Agua
+Habilidad: Competitive
+PS: 202
+Atq: 90
+Def: 125
+Atq. Esp: 135
+Def. Esp: 145
+Vel: 101
+
+Movimientos:
+Scald
+Ice Beam
+Recover
+Protect
+
+6. Arcanine
+Tipo: Fuego
+Habilidad: Intimidate
+PS: 187
+Atq: 155
+Def: 120
+Atq. Esp: 115
+Def. Esp: 120
+Vel: 135
+
+Movimientos:
+Flare Blitz
+Extreme Speed
+Snarl
+Will-O-Wisp
+
+7. Amoonguss
+Tipo: Planta / Veneno
+Habilidad: Regenerator
+PS: 221
+Atq: 95
+Def: 125
+Atq. Esp: 105
+Def. Esp: 130
+Vel: 45
+
+Movimientos:
+Spore
+Energy Ball
+Rage Powder
+Protect
+
+8. Dragapult
+Tipo: Dragón / Fantasma
+Habilidad: Clear Body
+PS: 163
+Atq: 172
+Def: 105
+Atq. Esp: 135
+Def. Esp: 105
+Vel: 194
+
+Movimientos:
+Dragon Pulse
+Shadow Ball
+U-turn
+Protect
+
+9. Excadrill
+Tipo: Tierra / Acero
+Habilidad: Mold Breaker
+PS: 185
+Atq: 185
+Def: 115
+Atq. Esp: 85
+Def. Esp: 105
+Vel: 154
+
+Movimientos:
+Iron Head
+Earthquake
+Sword Dance
+Protect
+
+10. Sylveon
+Tipo: Hada
+Habilidad: Pixilate
+PS: 202
+Atq: 85
+Def: 115
+Atq. Esp: 178
+Def. Esp: 135
+Vel: 81
+
+Movimientos:
+Hyper Voice
+Mystical Fire
+Calm Mind
+Protect
