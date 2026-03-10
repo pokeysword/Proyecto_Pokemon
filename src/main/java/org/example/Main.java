@@ -1,5 +1,7 @@
 package org.example;
 
+import java.util.Scanner;
+
 public class Main {
     static void main() {
     //Rotom
@@ -115,7 +117,68 @@ public class Main {
     Pokemon Sylveon = new Pokemon("Sylveon",50,tiposSylveon,MoldBreaker,185,185,115,85,105,154,movimientosSylveon);
        
     List<Pokemon> Equipo = new ArrayList<>();
-    
+    Boolean salir = false;
+    int cont = 0;
+    do {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("1. Elegir pokemon\n2. Ver equipo\n3. Salir");
+            int option = scanner.nextInt();
+            scanner.nextLine();
+            switch (option) {
+                case 1:
+                    if (cont=>4){
+                        System.out.println("Elige un pokemon: 1.RotomWash\n2.Garchomp\n3.Togekiss\n4.Metagross\n5.Milotic\n6.Arcanine\n7.Amoonguss\n8.Dragapult\n9.Excadrill\n10.Sylveon");
+                        numero = scanner.nextInt()
+                        scanner.nextLine();
+                        switch (numero){
+                            case 1:
+                                Equipo.add(RotomWash);
+                                break;
+                            case 2:
+                                Equipo.add(RotomWash);
+                                break;
+                            case 3:
+                                Equipo.add(RotomWash);
+                                break;
+                            case 4:
+                                Equipo.add(RotomWash);
+                                break;
+                            case 5:
+                                Equipo.add(RotomWash);
+                                break;
+                            case 6:
+                                Equipo.add(RotomWash);
+                                break;
+                            case 7:
+                                Equipo.add(RotomWash);
+                                break;
+                            case 8:
+                                Equipo.add(RotomWash);
+                                break;
+                            case 9:
+                                Equipo.add(RotomWash);
+                                break;
+                            case 10:
+                                Equipo.add(RotomWash);
+                                break;
+                            default:
+                                System.out.println("No eligistes ningún pokemon");
+                                break;
+                        cont+=1;
+                        break;
+                    }else{
+                        System.out.println("Equipo completo");
+                    }
+                case 2:
+                    Equipo.toString();
+                    break;
+                case 3:
+                    salir = true;
+                    break;
+                default:
+                    System.out.println("Opción non válida");
+            }
+        } while (!salir);
         }
     }
 
