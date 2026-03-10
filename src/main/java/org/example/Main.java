@@ -114,7 +114,7 @@ public class Main {
     movimientosSylveon.add(Protect);
     Pokemon Sylveon = new Pokemon("Sylveon",50,tiposSylveon,MoldBreaker,185,185,115,85,105,154,movimientosSylveon);
        
-
+    List<Pokemon> Equipo = new ArrayList<>();
     
         }
     }
