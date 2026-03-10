@@ -59,7 +59,7 @@ public class Pokemon {
     }
     public void cambio() {
         resetMods();
-        System.out.println(nombre + " entra al combate.");
+        System.out.println(nombre + " sale del campo.");
     }
     public String getNombre() {
         return nombre;
