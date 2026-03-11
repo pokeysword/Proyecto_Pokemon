@@ -129,6 +129,7 @@ public class Main {
     Boolean salir = false;
     int cont = 0;
     do {
+
             int numero;
             Scanner scanner = new Scanner(System.in);
             System.out.println("1. Elegir pokemon\n2. Ver equipo\n3. Salir");
@@ -136,8 +137,9 @@ public class Main {
             scanner.nextLine();
             switch (option) {
                 case 1:
-                    if (cont>=4){
-                        System.out.println("Elige un pokemon: 1.RotomWash\n2.Garchomp\n3.Togekiss\n4.Metagross\n5.Milotic\n6.Arcanine\n7.Amoonguss\n8.Dragapult\n9.Excadrill\n10.Sylveon");
+
+                    if (cont<4){
+                        System.out.println("Elige un pokemon:\n1.RotomWash\n2.Garchomp\n3.Togekiss\n4.Metagross\n5.Milotic\n6.Arcanine\n7.Amoonguss\n8.Dragapult\n9.Excadrill\n10.Sylveon");
                         numero = scanner.nextInt();
                         scanner.nextLine();
                         switch (numero){
@@ -145,42 +147,43 @@ public class Main {
                                 Equipo.add(RotomWash);
                                 break;
                             case 2:
-                                Equipo.add(RotomWash);
+                                Equipo.add(Garchomp);
                                 break;
                             case 3:
-                                Equipo.add(RotomWash);
+                                Equipo.add(Togekiss);
                                 break;
                             case 4:
-                                Equipo.add(RotomWash);
+                                Equipo.add(Metagross);
                                 break;
                             case 5:
-                                Equipo.add(RotomWash);
+                                Equipo.add(Milotic);
                                 break;
                             case 6:
-                                Equipo.add(RotomWash);
+                                Equipo.add(Arcanine);
                                 break;
                             case 7:
-                                Equipo.add(RotomWash);
+                                Equipo.add(Amoonguss);
                                 break;
                             case 8:
-                                Equipo.add(RotomWash);
+                                Equipo.add(Dragapult);
                                 break;
                             case 9:
-                                Equipo.add(RotomWash);
+                                Equipo.add(Excadrill);
                                 break;
                             case 10:
-                                Equipo.add(RotomWash);
+                                Equipo.add(Sylveon);
                                 break;
                             default:
                                 System.out.println("No eligistes ningún pokemon");
                                 break;
-                        cont+=1;
-                        break;
-                    }}else{
+
+                    }cont+=1;
+                    }else{
                         System.out.println("Equipo completo");
-                    }
+                    }break;
                 case 2:
-                    Equipo.toString();
+                    for (Pokemon p : Equipo)
+                    System.out.println(p.getNombre());
                     break;
                 case 3:
                     salir = true;
@@ -191,5 +194,6 @@ public class Main {
         } while (!salir);
         }
     }
+
 
 
