@@ -15,6 +15,4 @@ public class RoughSkin extends Habilidad {
         System.out.println(rival.getNombre() + " se hizo daño al golpear");
     }}
 
-    @Override
-    public void efecto(Pokemon objetivo) {}
 }

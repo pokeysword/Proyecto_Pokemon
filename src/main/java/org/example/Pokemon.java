@@ -4,12 +4,12 @@ package org.example;
 import org.example.habilidades.Habilidad;
 import org.example.movimientos.Movimiento;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class Pokemon {
     private String nombre;
     private int nivel;
-    private List<Tipo> tipos;
+    private ArrayList<Tipo> tipos;
     private Habilidad habilidad;
 
     private int ps;
@@ -19,6 +19,7 @@ public class Pokemon {
     private int spDefense;
     private int speed;
 
+    private boolean bajarStats;
     private int ModPs;
     private int ModAtack;
     private int ModDefense;
@@ -27,10 +28,10 @@ public class Pokemon {
     private int ModSpeed;
 
     private Estado estado;
-    private List<Movimiento> movimientos;
+    private ArrayList<Movimiento> movimientos;
     private boolean flinch;
 
-    public Pokemon(String nombre, int nivel, List<Tipo> tipos, Habilidad habilidad, int ps, int atack, int defense, int sAtack, int sDefense, int speed, List<Movimiento> movimientos) {
+    public Pokemon(String nombre, int nivel, ArrayList<Tipo> tipos, Habilidad habilidad, int ps, int atack, int defense, int sAtack, int sDefense, int speed, ArrayList<Movimiento> movimientos) {
         this.nombre = nombre;
         this.nivel = nivel;
         this.tipos = tipos;
@@ -44,6 +45,7 @@ public class Pokemon {
         this.estado = Estado.NORMAL;
         this.movimientos = movimientos;
         this.flinch = false;
+        bajarStats=true;
         ModAtack = 0;
         ModDefense = 0;
         ModSpAtack = 0;
@@ -65,7 +67,7 @@ public class Pokemon {
         return nombre;
     }
 
-    public List<Tipo> getTipos() {
+    public ArrayList<Tipo> getTipos() {
         return tipos;
     }
 
@@ -165,5 +167,7 @@ public class Pokemon {
         mostrarCambio("Velocidad", num);
     }
 
-
+    public void setBajarStats(boolean bajarStats) {
+        this.bajarStats = bajarStats;
+    }
 }

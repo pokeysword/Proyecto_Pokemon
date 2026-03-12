@@ -6,7 +6,7 @@ import org.example.Tipo;
 
 public class ExtremeSpeed extends Movimiento {
     public ExtremeSpeed() {
-        super("Extreme Speed", 2, Tipo.NORMAL, Categoria.FISICO, 80, 100, 5);}
+        super("Extreme Speed", 2, Tipo.NORMAL, Categoria.FISICO, 80, 100, 5,1);}
     @Override
     public void efecto(Pokemon atacante, Pokemon defensor) {
     }

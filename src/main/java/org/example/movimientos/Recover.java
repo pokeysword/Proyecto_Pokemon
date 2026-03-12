@@ -6,7 +6,7 @@ import org.example.Tipo;
 
 public class Recover extends Movimiento {
     public Recover() {
-        super("Recover", 0, Tipo.NORMAL, Categoria.ESTADO, 0, 100, 10);
+        super("Recover", 0, Tipo.NORMAL, Categoria.ESTADO, 0, 100, 10,1);
 
     }
     @Override

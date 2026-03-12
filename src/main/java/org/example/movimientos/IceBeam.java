@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class IceBeam extends Movimiento {
     public IceBeam() {
-        super("Ice Beam", 0, Tipo.HIELO, Categoria.ESPECIAL, 90, 100, 10);
+        super("Ice Beam", 0, Tipo.HIELO, Categoria.ESPECIAL, 90, 100, 10,1);
     }
     @Override
     public void efecto(Pokemon atacante, Pokemon defensor) {

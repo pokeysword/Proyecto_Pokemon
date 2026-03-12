@@ -9,7 +9,7 @@ import java.util.Random;
 public class RockSlide extends Movimiento {
 
     public RockSlide() {
-        super("Rock Slide", 0, Tipo.ROCA, Categoria.FISICO, 75, 90, 10);
+        super("Rock Slide", 0, Tipo.ROCA, Categoria.FISICO, 75, 90, 10,1);
 
     }
 

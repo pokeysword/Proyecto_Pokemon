@@ -6,7 +6,7 @@ import org.example.Tipo;
 
     public class VoltSwitch extends Movimiento {
         public VoltSwitch() {
-            super("U-turn", 0, Tipo.BICHO, Categoria.FISICO, 70, 100, 20);
+            super("U-turn", 0, Tipo.BICHO, Categoria.FISICO, 70, 100, 20,1);
         }
         @Override
         public void efecto(Pokemon atacante, Pokemon defensor) {

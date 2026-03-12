@@ -9,7 +9,7 @@ import java.util.Random;
 public class AirSlash extends Movimiento {
 
     public AirSlash() {
-        super("Air Slash", 0, Tipo.VOLADOR, Categoria.ESPECIAL, 75, 95, 15);
+        super("Air Slash", 0, Tipo.VOLADOR, Categoria.ESPECIAL, 75, 95, 15,1);
     }
 
     @Override

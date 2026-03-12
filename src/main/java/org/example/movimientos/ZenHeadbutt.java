@@ -9,7 +9,7 @@ import java.util.Random;
 
 public class ZenHeadbutt extends Movimiento {
     public ZenHeadbutt() {
-        super("Zen Headbutt", 0, Tipo.PSÍQUICO, Categoria.FISICO, 80, 90, 15);
+        super("Zen Headbutt", 0, Tipo.PSÍQUICO, Categoria.FISICO, 80, 90, 15,1);
     }
     @Override
     public void efecto(Pokemon atacante, Pokemon defensor) {

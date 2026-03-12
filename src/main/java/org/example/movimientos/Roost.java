@@ -6,7 +6,7 @@ import org.example.Tipo;
 
 public class Roost extends Movimiento {
     public Roost() {
-        super("Roost", 0, Tipo.VOLADOR, Categoria.ESTADO, 0, 100, 10);
+        super("Roost", 0, Tipo.VOLADOR, Categoria.ESTADO, 0, 100, 10,1);
 
     }
     @Override

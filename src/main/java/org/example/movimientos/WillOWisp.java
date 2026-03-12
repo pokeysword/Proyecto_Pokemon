@@ -9,7 +9,7 @@ import org.example.Tipo;
 
 public class WillOWisp extends Movimiento {
     public WillOWisp() {
-        super("Will-O-Wisp", 0, Tipo.FUEGO, Categoria.ESTADO, 0, 85, 15);
+        super("Will-O-Wisp", 0, Tipo.FUEGO, Categoria.ESTADO, 0, 85, 15,1);
     }
     @Override
     public void efecto(Pokemon atacante, Pokemon defensor) {

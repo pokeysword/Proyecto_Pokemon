@@ -6,7 +6,7 @@ import org.example.Tipo;
 
 public class MysticalFire extends Movimiento {
     public MysticalFire() {
-        super("Mystical Fire", 0, Tipo.FUEGO, Categoria.ESPECIAL, 75, 100, 10);
+        super("Mystical Fire", 0, Tipo.FUEGO, Categoria.ESPECIAL, 75, 100, 10,1);
 
     }
     @Override

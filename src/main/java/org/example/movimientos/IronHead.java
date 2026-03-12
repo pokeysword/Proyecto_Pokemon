@@ -9,7 +9,7 @@ import java.util.Random;
 public class IronHead extends Movimiento {
 
     public IronHead() {
-        super("Iron Head", 0, Tipo.ACERO, Categoria.FISICO, 80, 100, 15);
+        super("Iron Head", 0, Tipo.ACERO, Categoria.FISICO, 80, 100, 15,1);
     }
 
     @Override

@@ -4,7 +4,7 @@ import org.example.Pokemon;
 
 public class Intimidacion extends Habilidad {
     public Intimidacion() {
-        super("Intimidate", 0);
+        super("Intimidate");
     }
 
     @Override
@@ -14,6 +14,4 @@ public class Intimidacion extends Habilidad {
                 + "! ¡Su Ataque bajó!");
     }
 
-    @Override
-    public void efecto(Pokemon objetivo) {}
 }

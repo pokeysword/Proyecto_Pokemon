@@ -12,8 +12,9 @@ public abstract class Movimiento {
     protected int potencia;
     protected int precision;
     protected int pp;
+    protected int multcrit;
 
-    public Movimiento(String nombre, int prioridad, Tipo tipo, Categoria categoria, int potencia, int precision, int pp) {
+    public Movimiento(String nombre, int prioridad, Tipo tipo, Categoria categoria, int potencia, int precision, int pp, int multcrit) {
         this.nombre = nombre;
         this.prioridad = prioridad;
         this.tipo = tipo;
@@ -21,11 +22,20 @@ public abstract class Movimiento {
         this.potencia = potencia;
         this.precision = precision;
         this.pp = pp;
+        this.multcrit=multcrit;
     }
 
     public abstract void efecto(Pokemon atacante, Pokemon defensor);
 
     public Categoria getCategoria() {
         return categoria;
+    }
+
+    public Tipo getTipo() {
+        return tipo;
+    }
+
+    public int getMultcrit() {
+        return multcrit;
     }
 }

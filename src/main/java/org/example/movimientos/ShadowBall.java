@@ -8,7 +8,7 @@ import java.util.Random;
 
 public class ShadowBall extends Movimiento {
     public ShadowBall() {
-        super("Shadow Ball", 0, Tipo.FANTASMA, Categoria.ESPECIAL, 80, 100, 15);
+        super("Shadow Ball", 0, Tipo.FANTASMA, Categoria.ESPECIAL, 80, 100, 15,1);
     }
     @Override
     public void efecto(Pokemon atacante, Pokemon defensor) {

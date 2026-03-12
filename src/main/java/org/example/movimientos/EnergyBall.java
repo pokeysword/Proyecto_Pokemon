@@ -8,7 +8,7 @@ import java.util.Random;
 
 public class EnergyBall extends Movimiento {
     public EnergyBall() {
-        super("Energy Ball", 0, Tipo.PLANTA, Categoria.ESPECIAL, 90, 100, 10);
+        super("Energy Ball", 0, Tipo.PLANTA, Categoria.ESPECIAL, 90, 100, 10,1);
         }
     @Override
     public void efecto(Pokemon atacante, Pokemon defensor) {

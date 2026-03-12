@@ -6,7 +6,7 @@ import org.example.Tipo;
 
 public class DazzlingGleam extends Movimiento {
     public DazzlingGleam() {
-        super("Dazzling Gleam", 0, Tipo.HADA, Categoria.ESPECIAL, 80, 100, 10);
+        super("Dazzling Gleam", 0, Tipo.HADA, Categoria.ESPECIAL, 80, 100, 10,1);
     }
 
     @Override

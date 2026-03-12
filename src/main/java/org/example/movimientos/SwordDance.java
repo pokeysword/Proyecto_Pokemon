@@ -7,7 +7,7 @@ import org.example.Tipo;
 
 public class SwordDance extends Movimiento {
     public SwordDance() {
-        super("Sword Dance", 0, Tipo.NORMAL, Categoria.ESTADO, 0, 100, 20);
+        super("Sword Dance", 0, Tipo.NORMAL, Categoria.ESTADO, 0, 100, 20,1);
     }
 
     @Override

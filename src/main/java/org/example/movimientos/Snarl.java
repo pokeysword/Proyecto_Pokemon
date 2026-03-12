@@ -7,7 +7,7 @@ import org.example.Tipo;
 
 public class Snarl extends Movimiento {
     public Snarl() {
-        super("Snarl", 0, Tipo.SINIESTRO, Categoria.ESPECIAL, 55, 95, 15);
+        super("Snarl", 0, Tipo.SINIESTRO, Categoria.ESPECIAL, 55, 95, 15,1);
     }
 
     @Override

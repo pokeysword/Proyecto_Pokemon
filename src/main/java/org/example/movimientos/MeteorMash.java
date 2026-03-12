@@ -8,7 +8,7 @@ import java.util.Random;
 
 public class MeteorMash extends Movimiento {
     public MeteorMash() {
-        super("Meteor Mash", 0, Tipo.ACERO, Categoria.FISICO, 90, 90, 10);
+        super("Meteor Mash", 0, Tipo.ACERO, Categoria.FISICO, 90, 90, 10,1);
 
     }
     @Override
