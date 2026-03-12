@@ -25,4 +25,7 @@ public abstract class Movimiento {
 
     public abstract void efecto(Pokemon atacante, Pokemon defensor);
 
+    public Categoria getCategoria() {
+        return categoria;
+    }
 }
