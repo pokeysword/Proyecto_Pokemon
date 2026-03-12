@@ -1,8 +1,14 @@
 package org.example;
 
-import java.util.List;
+import java.util.ArrayList;
+
 
 public class Persona {
     private String nombre;
-    private List<Pokemon> listaPokemon;
+    private ArrayList<Pokemon> listaPokemon;
+
+    public Persona(String nombre) {
+        this.nombre = nombre;
+        ArrayList<Pokemon> Equipo = new ArrayList<>();
+    }
 }
