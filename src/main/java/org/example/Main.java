@@ -22,6 +22,7 @@ public class Main {
     static Pokemon Excadrill;
     static Pokemon Sylveon;
 
+    // Supuesto inicial funcional
     static void main(String[] args) {
         // Inicializar todos los Pokémon
         inicializarPokemon();
