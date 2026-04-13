@@ -253,7 +253,7 @@ public class BattleView {
         logBatalla.appendText("\n⚡ " + jugador.getNombre() + " usa " + movimientoJugador.getNombre() + "!\n");
 
         // Calcular daño del jugador real
-        int daño = DamageCalculator.calcularDaño(miPokemon, pokemonRival, movimientoJugador);
+        int daño = DamageCalculator.calculateDamage(miPokemon, pokemonRival, movimientoJugador);
         pokemonRival.sufrirDaño(daño);
         logBatalla.appendText("   💥 " + pokemonRival.getNombre() + " recibe " + daño + " de daño!\n");
 
@@ -277,7 +277,7 @@ public class BattleView {
                 logBatalla.appendText("\n⚡ " + rival.getNombre() + " usa " + movimientoRival.getNombre() + "!\n");
 
                 // Calcular daño del rival real
-                int dañoRival = DamageCalculator.calcularDaño(pokemonRival, miPokemon, movimientoRival);
+                int dañoRival = DamageCalculator.calculateDamage(pokemonRival, miPokemon, movimientoRival);
                 miPokemon.sufrirDaño(dañoRival);
                 logBatalla.appendText("   💥 " + miPokemon.getNombre() + " recibe " + dañoRival + " de daño!\n");
 
@@ -324,3 +324,4 @@ public class BattleView {
         }));
         timeline.play();
     }
+}

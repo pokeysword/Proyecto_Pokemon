@@ -113,11 +113,6 @@ public class GameWindow extends Application {
 
         Button crearEquipoBtn = new Button("Crear Equipo Automático");
         crearEquipoBtn.setStyle("-fx-font-size: 14; -fx-padding: 10 20; -fx-background-color: #27ae60; -fx-text-fill: white;");
-        crearEquipoBtn.setOnAction(e -> {
-            jugador.crearEquipoAutomatico();
-            continuarBtn.setDisable(false);
-            mostrarEquipoSeleccionado();
-        });
 
         Button continuarBtn = new Button("Continuar a Batalla");
         continuarBtn.setStyle("-fx-font-size: 14; -fx-padding: 10 20; -fx-background-color: #3498db; -fx-text-fill: white;");
@@ -125,7 +120,7 @@ public class GameWindow extends Application {
         continuarBtn.setOnAction(e -> mostrarBatalla());
 
         crearEquipoBtn.setOnAction(e -> {
-            jugador.crearEquipo();
+            jugador.crearEquipoAutomatico();
             continuarBtn.setDisable(false);
             mostrarEquipoSeleccionado();
         });
