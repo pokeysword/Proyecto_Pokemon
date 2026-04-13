@@ -1,5 +1,5 @@
 package org.example.movimientos;
-
+import org.example.DamageCalculator;
 import org.example.Categoria;
 import org.example.Pokemon;
 import org.example.Tipo;
