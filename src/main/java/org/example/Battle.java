@@ -76,24 +76,26 @@ public class Battle {
                 atacar(pokemonActual1, pokemonActual2, movimiento1);
             }
         }
+        
+        // Mostrar estado actualizado después de los ataques
+        mostrarEstadoBattle();
     }
 
     private void atacar(Pokemon atacante, Pokemon defensor, Movimiento movimiento) {
-        System.out.println("\n" + atacante.getNombre() + " usa " + movimiento.getNombre() + "!");
-
+        // Mostrar el movimiento usado
+        if (movimiento.getCategoria() == Categoria.ESTADO) {
+            System.out.println("\n" + atacante.getNombre() + " usa " + movimiento.getNombre() + "!");
+        }
+        
         // Verificar si el defensor está protegido
         if (defensor.isProtegido() && movimiento.getCategoria() != Categoria.ESTADO) {
             System.out.println(defensor.getNombre() + " está protegido y evitó el ataque!");
             return;
         }
 
-        int daño = DamageCalculator.calculateDamage(atacante, defensor, movimiento);
-
-        if (daño > 0) {
-            DamageCalculator.applyDamage(defensor, daño, atacante, movimiento);
-        }
-
+        // El efecto del movimiento se encarga del daño
         movimiento.efecto(atacante, defensor);
+        
         int psActuales = Math.max(0, defensor.getModPs());
         System.out.println(defensor.getNombre() + " ahora tiene " + psActuales + " PS");
     }
