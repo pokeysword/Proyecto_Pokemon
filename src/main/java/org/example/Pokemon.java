@@ -199,4 +199,8 @@ public class Pokemon {
     public void sufrirDaño(int daño) {
         this.ModPs = Math.max(0, this.ModPs - daño);
     }
+
+    public ArrayList<Movimiento> getMovimientos() {
+        return movimientos;
+    }
 }
