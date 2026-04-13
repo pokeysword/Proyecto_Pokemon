@@ -100,7 +100,8 @@ public class Pokemon {
     }
 
     public int getSpeed() {
-        return speed;
+        double velocityMultiplier = DamageCalculator.getVelocityMultiplier(this);
+        return (int) (speed * velocityMultiplier);
     }
 
     public Estado getEstado(){return estado;}
