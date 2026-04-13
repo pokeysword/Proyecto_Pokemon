@@ -66,7 +66,7 @@ public class Main {
         movimientosRotom.add(new VoltSwitch());
         movimientosRotom.add(new WillOWisp());
         movimientosRotom.add(new Protect());
-        RotomWash = new Pokemon("Rotom-Wash", 50, tiposRotom, new Levitate(), 157, 85, 128, 125, 128, 106, movimientosRotom);
+        RotomWash = new Pokemon("RotomWash", 50, tiposRotom, new Levitate(), 157, 85, 128, 125, 128, 106, movimientosRotom);
 
         // Garchomp
         ArrayList<Tipo> tiposGarchomp = new ArrayList<>();

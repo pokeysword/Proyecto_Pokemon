@@ -18,6 +18,26 @@ public class Battle {
     }
 
     public void iniciarBattle() {
+        // Validar que ambos jugadores tengan Pokémon
+        if (jugador1.getListaPokemon().isEmpty() || jugador2.getListaPokemon().isEmpty()) {
+            System.out.println("\n╔════════════════════════════════════════╗");
+            System.out.println("║        ¡BATALLA NO VÁLIDA!             ║");
+            System.out.println("╚════════════════════════════════════════╝\n");
+            
+            if (jugador1.getListaPokemon().isEmpty()) {
+                System.out.println("¡" + jugador1.getNombre() + ", qué genio! Decidiste entrar a una batalla sin Pokémon.");
+                System.out.println("Tu estrategia de luchar con aire fresco es verdaderamente revolucionaria.");
+                System.out.println("No sé si admire tu valentía o tu capacidad para la toma de decisiones...\n");
+            }
+            if (jugador2.getListaPokemon().isEmpty()) {
+                System.out.println("¡" + jugador2.getNombre() + ", qué genio! Decidiste entrar a una batalla sin Pokémon.");
+                System.out.println("Tu estrategia de luchar con aire fresco es verdaderamente revolucionaria.");
+                System.out.println("No sé si admire tu valentía o tu capacidad para la toma de decisiones...\n");
+            }
+            this.battleFinished = true;
+            return;
+        }
+        
         System.out.println("\n╔════════════════════════════════════════╗");
         System.out.println("║        ¡COMIENZA LA BATALLA!           ║");
         System.out.println("║ " + jugador1.getNombre() + " vs " + jugador2.getNombre());
