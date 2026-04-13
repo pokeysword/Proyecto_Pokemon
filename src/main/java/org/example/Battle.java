@@ -4,71 +4,7 @@ import org.example.movimientos.Movimiento;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Battle {
-    private Persona jugador1;
-    private Persona jugador2;
-    private Pokemon pokemonActual1;
-    private Pokemon pokemonActual2;
-    private int indicePokemon1;
-    private int indicePokemon2;
-    private boolean battleFinished;
-
-    public Battle(Persona jugador1, Persona jugador2) {
-        this.jugador1 = jugador1;
-        this.jugador2 = jugador2;
-        this.indicePokemon1 = 0;
-        this.indicePokemon2 = 0;
-        this.battleFinished = false;
-    }
-
-    public void iniciarBattle() {
-        System.out.println("\n╔════════════════════════════════════════╗");
-        System.out.println("║        ¡COMIENZA LA BATALLA!           ║");
-        System.out.println("║ " + jugador1.getNombre() + " vs " + jugador2.getNombre());
-        System.out.println("╚════════════════════════════════════════╝\n");
-
-        
-        pokemonActual1 = jugador1.getListaPokemon().get(0);
-        pokemonActual2 = jugador2.getListaPokemon().get(0);
-
-        System.out.println(jugador1.getNombre() + " envía a " + pokemonActual1.getNombre() + "!");
-        System.out.println(jugador2.getNombre() + " envía a " + pokemonActual2.getNombre() + "!\n");
-
-        
-        int turno = 1;
-        while (!battleFinished) {
-            System.out.println("\n═══════════════════════════════════════");
-            System.out.println("TURNO " + turno);
-            System.out.println("═══════════════════════════════════════");
-
-            ejecutarTurno();
-            turno++;
-
-            // Verificar si algún jugador perdió todos sus pokémons
-            if (todosDebilitados(jugador1)) {
-                System.out.println("\n¡Todos los pokémons de " + jugador1.getNombre() + " han sido derrotados!");
-                terminarBattle(jugador2);
-                break;
-            }
-            if (todosDebilitados(jugador2)) {
-                System.out.println("\n¡Todos los pokémons de " + jugador2.getNombre() + " han sido derrotados!");
-                terminarBattle(jugador1);
-                break;
-            }
-        }
-    }
-
-    private boolean todosDebilitados(Persona persona) {
-        for (Pokemon p : persona.getListaPokemon()) {
-            if (!p.estaDebilitado()) {
-                return false;
-            }
-        }
-        return true;
-    }
-    }
-
-    private void ejecutarTurno() {
+private void ejecutarTurno() {
         Scanner scanner = new Scanner(System.in);
 
         // Resetear protección del turno anterior
