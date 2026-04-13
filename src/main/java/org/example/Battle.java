@@ -9,11 +9,15 @@ public class Battle {
     private Persona jugador2;
     private Pokemon pokemonActual1;
     private Pokemon pokemonActual2;
+    private int indicePokemon1;
+    private int indicePokemon2;
     private boolean battleFinished;
 
     public Battle(Persona jugador1, Persona jugador2) {
         this.jugador1 = jugador1;
         this.jugador2 = jugador2;
+        this.indicePokemon1 = 0;
+        this.indicePokemon2 = 0;
         this.battleFinished = false;
     }
 
@@ -32,7 +36,7 @@ public class Battle {
 
         
         int turno = 1;
-        while (!battleFinished && !pokemonActual1.estaDebilitado() && !pokemonActual2.estaDebilitado()) {
+        while (!battleFinished) {
             System.out.println("\n═══════════════════════════════════════");
             System.out.println("TURNO " + turno);
             System.out.println("═══════════════════════════════════════");
@@ -40,12 +44,28 @@ public class Battle {
             ejecutarTurno();
             turno++;
 
-            
-            if (pokemonActual1.estaDebilitado() || pokemonActual2.estaDebilitado()) {
-                terminarBattle();
+            // Verificar si algún jugador perdió todos sus pokémons
+            if (todosDebilitados(jugador1)) {
+                System.out.println("\n¡Todos los pokémons de " + jugador1.getNombre() + " han sido derrotados!");
+                terminarBattle(jugador2);
+                break;
+            }
+            if (todosDebilitados(jugador2)) {
+                System.out.println("\n¡Todos los pokémons de " + jugador2.getNombre() + " han sido derrotados!");
+                terminarBattle(jugador1);
                 break;
             }
         }
+    }
+
+    private boolean todosDebilitados(Persona persona) {
+        for (Pokemon p : persona.getListaPokemon()) {
+            if (!p.estaDebilitado()) {
+                return false;
+            }
+        }
+        return true;
+    }
     }
 
     private void ejecutarTurno() {
@@ -69,11 +89,36 @@ public class Battle {
             atacar(pokemonActual1, pokemonActual2, movimiento1);
             if (!pokemonActual2.estaDebilitado()) {
                 atacar(pokemonActual2, pokemonActual1, movimiento2);
+            } else {
+                cambiarPokemon(jugador2);
             }
         } else {
             atacar(pokemonActual2, pokemonActual1, movimiento2);
             if (!pokemonActual1.estaDebilitado()) {
                 atacar(pokemonActual1, pokemonActual2, movimiento1);
+            } else {
+                cambiarPokemon(jugador1);
+            }
+        }
+    }
+
+    private void cambiarPokemon(Persona persona) {
+        ArrayList<Pokemon> equipo = persona.getListaPokemon();
+        int indiceActual = (persona == jugador1) ? indicePokemon1 : indicePokemon2;
+        
+        // Buscar el siguiente pokémon no debilitado
+        for (int i = indiceActual + 1; i < equipo.size(); i++) {
+            if (!equipo.get(i).estaDebilitado()) {
+                System.out.println("\n" + persona.getNombre() + " envía a " + equipo.get(i).getNombre() + "!");
+                
+                if (persona == jugador1) {
+                    pokemonActual1 = equipo.get(i);
+                    indicePokemon1 = i;
+                } else {
+                    pokemonActual2 = equipo.get(i);
+                    indicePokemon2 = i;
+                }
+                return;
             }
         }
     }
@@ -126,17 +171,11 @@ public class Battle {
         System.out.println("└─────────────────────────────────────────┘");
     }
 
-    private void terminarBattle() {
+    private void terminarBattle(Persona ganador) {
         battleFinished = true;
         
         System.out.println("\n╔════════════════════════════════════════╗");
-        if (pokemonActual1.estaDebilitado()) {
-            System.out.println("║        ¡" + pokemonActual1.getNombre() + " ha sido derrotado!        ║");
-            System.out.println("║ ¡" + jugador2.getNombre() + " ha ganado la batalla!");
-        } else {
-            System.out.println("║        ¡" + pokemonActual2.getNombre() + " ha sido derrotado!        ║");
-            System.out.println("║ ¡" + jugador1.getNombre() + " ha ganado la batalla!");
-        }
+        System.out.println("║   ¡" + ganador.getNombre() + " ha ganado la batalla!    ║");
         System.out.println("╚════════════════════════════════════════╝\n");
     }
 
