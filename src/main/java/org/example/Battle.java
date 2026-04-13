@@ -94,7 +94,8 @@ public class Battle {
         }
 
         movimiento.efecto(atacante, defensor);
-        System.out.println(defensor.getNombre() + " ahora tiene " + defensor.getModPs() + " PS");
+        int psActuales = Math.max(0, defensor.getModPs());
+        System.out.println(defensor.getNombre() + " ahora tiene " + psActuales + " PS");
     }
 
     private Movimiento seleccionarMovimiento(Scanner scanner, Pokemon pokemon, String nombreJugador) {
@@ -118,9 +119,14 @@ public class Battle {
     }
 
     private void mostrarEstadoBattle() {
+        String nombre1 = pokemonActual1.getNombre();
+        String nombre2 = pokemonActual2.getNombre() + " (rival)";
+        int ps1 = Math.max(0, pokemonActual1.getModPs());
+        int ps2 = Math.max(0, pokemonActual2.getModPs());
+        
         System.out.println("\n┌─────────────────────────────────────────┐");
-        System.out.println("│ " + String.format("%-18s | %-18s", pokemonActual1.getNombre(), pokemonActual2.getNombre()));
-        System.out.println("│ " + String.format("PS: %-14d | PS: %-14d", pokemonActual1.getModPs(), pokemonActual2.getModPs()));
+        System.out.println("│ " + String.format("%-18s | %-18s", nombre1, nombre2));
+        System.out.println("│ " + String.format("PS: %-14d | PS: %-14d", ps1, ps2));
         System.out.println("│ " + String.format("Nivel: %-10d | Nivel: %-10d", pokemonActual1.getNivel(), pokemonActual2.getNivel()));
         System.out.println("│ Estado: " + String.format("%-9s | Estado: %-8s", pokemonActual1.getEstado(), pokemonActual2.getEstado()));
         System.out.println("└─────────────────────────────────────────┘");
