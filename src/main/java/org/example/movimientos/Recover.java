@@ -11,6 +11,11 @@ public class Recover extends Movimiento {
     }
     @Override
     public void efecto(Pokemon atacante, Pokemon defensor) {
-        atacante.setModPs(atacante.getModPs()+(atacante.getPS()/2));
+        int psActuales = atacante.getModPs();
+        int psMaximo = atacante.getPS();
+        int psRecuperado = psMaximo / 2;
+        int psNuevo = Math.min(psActuales + psRecuperado, psMaximo);
+        atacante.setModPs(psNuevo);
+        System.out.println(atacante.getNombre() + " recuperó " + (psNuevo - psActuales) + " PS!");
     }
 }

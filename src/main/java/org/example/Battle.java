@@ -26,13 +26,14 @@ public class Battle {
             
             if (jugador1.getListaPokemon().isEmpty()) {
                 System.out.println("¡" + jugador1.getNombre() + ", qué genio! Decidiste entrar a una batalla sin Pokémon.");
-                System.out.println("Tu estrategia de luchar con aire fresco es verdaderamente revolucionaria.");
-                System.out.println("No sé si admire tu valentía o tu capacidad para la toma de decisiones...\n");
+                System.out.println("Tu inteligencia es como un vacío: no aporta nada y aun así ocupa espacio.");
+                System.out.println("Es sorprendente que sigas intentando opinar...\n");
+
             }
             if (jugador2.getListaPokemon().isEmpty()) {
                 System.out.println("¡" + jugador2.getNombre() + ", qué genio! Decidiste entrar a una batalla sin Pokémon.");
-                System.out.println("Tu estrategia de luchar con aire fresco es verdaderamente revolucionaria.");
-                System.out.println("No sé si admire tu valentía o tu capacidad para la toma de decisiones...\n");
+                System.out.println("Tu inteligencia es como un vacío: no aporta nada y aun así ocupa espacio.");
+                System.out.println("Es sorprendente que sigas intentando opinar...\n");
             }
             this.battleFinished = true;
             return;
