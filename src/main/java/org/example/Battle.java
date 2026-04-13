@@ -209,10 +209,10 @@ public class Battle {
         
         System.out.println("\n╔════════════════════════════════════════╗");
         if (pokemonActual1.estaDebilitado()) {
-            System.out.println("║        ¡" + pokemonActual1.getNombre() + " ha sido derrotado!        ║");
+            System.out.println("║        ¡" + pokemonActual1.getNombre() + " ha sido derrotado!        ");
             System.out.println("║ ¡" + jugador2.getNombre() + " ha ganado la batalla!");
         } else {
-            System.out.println("║        ¡" + pokemonActual2.getNombre() + " ha sido derrotado!        ║");
+            System.out.println("║        ¡" + pokemonActual2.getNombre() + " ha sido derrotado!        ");
             System.out.println("║ ¡" + jugador1.getNombre() + " ha ganado la batalla!");
         }
         System.out.println("╚════════════════════════════════════════╝\n");
