@@ -41,7 +41,7 @@ Para poder compilar y ejecutar este proyecto en tu entorno local, necesitarás t
 3. **Ejecuta la aplicación:**
    *(Dependiendo de la clase principal, el comando puede variar)*
    ```bash
-   mvn exec:java -Dexec.mainClass="org.example.main"
+   mvn exec:java -Dexec.mainClass="org.example.Main"
    ```
    *(Nota: Sustituye `TuClasePrincipal` por el nombre real de tu clase con el método `main`)*
 
