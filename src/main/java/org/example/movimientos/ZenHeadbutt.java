@@ -13,6 +13,9 @@ public class ZenHeadbutt extends Movimiento {
     }
     @Override
     public void efecto(Pokemon atacante, Pokemon defensor) {
+        int daño = DamageCalculator.calculateDamage(atacante, defensor, this);
+        DamageCalculator.applyDamage(defensor, daño, atacante, this);
+        
         if (!defensor.estaDebilitado()) {
             if (new Random().nextInt(100) < 20) {
                 defensor.setFlinch(true);

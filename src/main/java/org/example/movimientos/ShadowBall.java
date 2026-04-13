@@ -1,6 +1,7 @@
 package org.example.movimientos;
 
 import org.example.Categoria;
+import org.example.DamageCalculator;
 import org.example.Pokemon;
 import org.example.Tipo;
 
@@ -12,6 +13,9 @@ public class ShadowBall extends Movimiento {
     }
     @Override
     public void efecto(Pokemon atacante, Pokemon defensor) {
+        int daño = DamageCalculator.calculateDamage(atacante, defensor, this);
+        DamageCalculator.applyDamage(defensor, daño, atacante, this);
+        
         if (!defensor.estaDebilitado()) {
             if (new Random().nextInt(100) < 20) {
                 defensor.modificarSpDef(-1);
