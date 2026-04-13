@@ -170,4 +170,32 @@ public class Pokemon {
     public void setBajarStats(boolean bajarStats) {
         this.bajarStats = bajarStats;
     }
+
+    public int getNivel() {
+        return nivel;
+    }
+
+    public int getModAtack() {
+        return ModAtack;
+    }
+
+    public int getModDefense() {
+        return ModDefense;
+    }
+
+    public int getModSpAtack() {
+        return ModSpAtack;
+    }
+
+    public int getModSpDefense() {
+        return ModSpDefense;
+    }
+
+    public int getModSpeed() {
+        return ModSpeed;
+    }
+
+    public void sufrirDaño(int daño) {
+        this.ModPs = Math.max(0, this.ModPs - daño);
+    }
 }

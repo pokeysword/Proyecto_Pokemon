@@ -38,4 +38,24 @@ public abstract class Movimiento {
     public int getMultcrit() {
         return multcrit;
     }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public int getPotencia() {
+        return potencia;
+    }
+
+    public int getPrecision() {
+        return precision;
+    }
+
+    public int getPp() {
+        return pp;
+    }
+
+    public int getPrioridad() {
+        return prioridad;
+    }
 }
