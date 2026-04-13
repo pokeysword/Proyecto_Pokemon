@@ -23,14 +23,12 @@ public class Battle {
         System.out.println("║ " + jugador1.getNombre() + " vs " + jugador2.getNombre());
         System.out.println("╚════════════════════════════════════════╝\n");
 
-        
         pokemonActual1 = jugador1.getListaPokemon().get(0);
         pokemonActual2 = jugador2.getListaPokemon().get(0);
 
         System.out.println(jugador1.getNombre() + " envía a " + pokemonActual1.getNombre() + "!");
         System.out.println(jugador2.getNombre() + " envía a " + pokemonActual2.getNombre() + "!\n");
 
-        
         int turno = 1;
         while (!battleFinished) {
             // Verificar si hay pokémons vivos
@@ -46,14 +44,13 @@ public class Battle {
             ejecutarTurno();
             turno++;
 
-            
-            // Verificar si algún pokémon está debilitado
+            // Manejar cambio de pokémon del jugador 1
             if (pokemonActual1.estaDebilitado()) {
                 System.out.println("\n¡" + pokemonActual1.getNombre() + " ha sido derrotado!");
                 if (hayPokemonVivo(jugador1)) {
                     pokemonActual1 = cambiarPokemon(jugador1, new Scanner(System.in));
                     if (pokemonActual1 == null) {
-                        battleFinished = true;
+                        terminarBattle();
                         break;
                     }
                     System.out.println(jugador1.getNombre() + " envía a " + pokemonActual1.getNombre() + "!");
@@ -63,12 +60,13 @@ public class Battle {
                 }
             }
 
+            // Manejar cambio de pokémon del jugador 2
             if (pokemonActual2.estaDebilitado()) {
                 System.out.println("\n¡" + pokemonActual2.getNombre() + " ha sido derrotado!");
                 if (hayPokemonVivo(jugador2)) {
                     pokemonActual2 = cambiarPokemon(jugador2, new Scanner(System.in));
                     if (pokemonActual2 == null) {
-                        battleFinished = true;
+                        terminarBattle();
                         break;
                     }
                     System.out.println(jugador2.getNombre() + " envía a " + pokemonActual2.getNombre() + "!");
@@ -134,6 +132,11 @@ public class Battle {
         
         // Mostrar estado actualizado después de los ataques
         mostrarEstadoBattle();
+        
+        // Verificar si la batalla debe terminar inmediatamente
+        if (pokemonActual1.estaDebilitado() && pokemonActual2.estaDebilitado()) {
+            terminarBattle();
+        }
     }
 
     private void atacar(Pokemon atacante, Pokemon defensor, Movimiento movimiento) {
