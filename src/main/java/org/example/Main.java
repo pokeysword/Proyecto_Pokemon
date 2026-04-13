@@ -10,7 +10,6 @@ import org.example.movimientos.*;
 
 public class Main {
 
-    // Hacer estáticos los pokémon para que sean accesibles desde Persona
     static Pokemon RotomWash;
     static Pokemon Garchomp;
     static Pokemon Togekiss;
@@ -22,7 +21,6 @@ public class Main {
     static Pokemon Excadrill;
     static Pokemon Sylveon;
 
-    // Supuesto inicial funcional
     static void main(String[] args) {
         // Inicializar todos los Pokémon
         inicializarPokemon();
