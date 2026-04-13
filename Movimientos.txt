@@ -54,7 +54,9 @@ Zen Headbutt
 ("Scald", 0, Tipo.AGUA, Categoria.ESPECIAL, 80, 100, 15);
 ("Shadow Ball", 0, Tipo.FANTASMA, Categoria.ESPECIAL, 80, 100, 15);
 ("Snarl", 0, Tipo.SINIESTRO, Categoria.ESPECIAL, 55, 95, 15);
+
 ("Spore", 0, Tipo.PLANTA, Categoria.ESTADO, 0, 100, 15);
+
 ("Sword Dance", 0, Tipo.NORMAL, Categoria.ESTADO, 0, 100, 20);
 ("U-turn", 0, Tipo.BICHO, Categoria.FISICO, 70, 100, 20);
 ("Volt Switch", 0, Tipo.ELÉCTRICo, Categoria.ESPECIAL, 70, 100, 20);
