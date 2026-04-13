@@ -12,14 +12,12 @@ public class DamageCalculator {
 
    
     public static int calculateDamage(Pokemon atacante, Pokemon defensor, Movimiento movimiento) {
-        // Verificar si el atacante está dormido - No puede atacar
         if (atacante.getEstado() == Estado.DORMIDO) {
             System.out.println(atacante.getNombre() + " está dormido y no puede atacar!");
             despertarPokemon(atacante);
             return 0;
         }
         
-        // Verificar si el atacante está congelado - 20% de chance de descongelarse y no atacar
         if (atacante.getEstado() == Estado.CONGELADO) {
             if (random.nextInt(100) < 20) {
                 System.out.println(atacante.getNombre() + " se descongeló!");
@@ -30,7 +28,6 @@ public class DamageCalculator {
             }
         }
         
-        // Verificar si el atacante está paralizado - 25% de chance de no poder atacar
         if (atacante.getEstado() == Estado.PARALIZADO) {
             if (random.nextInt(100) < 25) {
                 System.out.println(atacante.getNombre() + " está paralizado y no puede moverse!");
@@ -70,7 +67,6 @@ public class DamageCalculator {
         
         daño = daño * multiplicadorCritico * efectividad;
         
-        // Aplicar reducción de daño si está quemado (solo para movimientos físicos)
         if (atacante.getEstado() == Estado.QUEMADO && movimiento.getCategoria() == Categoria.FISICO) {
             daño = daño * 0.5;
             System.out.println(atacante.getNombre() + " está quemado y su daño se reduce a la mitad!");
@@ -132,13 +128,10 @@ public class DamageCalculator {
             defensor.getHabilidad().efectoAlRecibirDaño(atacante, daño, movimiento);
         }
         
-        // Aplicar daño por envenenamiento después de recibir daño
         aplicarDañoPorEstado(defensor);
     }
     
-    /**
-     * Aplica daño pasivo según el estado del pokémon
-     */
+
     public static void aplicarDañoPorEstado(Pokemon pokemon) {
         if (pokemon.getEstado() == Estado.ENVENENADO) {
             int daño = Math.max(1, pokemon.getPS() / 8);
@@ -151,9 +144,7 @@ public class DamageCalculator {
         }
     }
     
-    /**
-     * Despierta un pokémon dormido con 1-3 turnos de duración
-     */
+
     public static void despertarPokemon(Pokemon pokemon) {
         // 33% de chance de despertar cada turno (1-3 turnos)
         if (random.nextInt(100) < 33) {
@@ -162,9 +153,7 @@ public class DamageCalculator {
         }
     }
     
-    /**
-     * Obtiene el multiplicador de velocidad según el estado
-     */
+
     public static double getVelocityMultiplier(Pokemon pokemon) {
         Estado estado = pokemon.getEstado();
         

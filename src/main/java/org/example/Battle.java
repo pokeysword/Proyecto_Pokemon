@@ -25,8 +25,7 @@ public class Battle {
 
         pokemonActual1 = jugador1.getListaPokemon().get(0);
         pokemonActual2 = jugador2.getListaPokemon().get(0);
-        
-        // Preparar pokémons para la batalla
+       
         pokemonActual1.prepararParaBatalla();
         pokemonActual2.prepararParaBatalla();
 
@@ -36,7 +35,7 @@ public class Battle {
         Scanner scanner = new Scanner(System.in);
         int turno = 1;
         while (!battleFinished) {
-            // Verificar si hay pokémons vivos
+            
             if (!hayPokemonVivo(jugador1) || !hayPokemonVivo(jugador2)) {
                 terminarBattle();
                 break;
@@ -49,7 +48,7 @@ public class Battle {
             ejecutarTurno();
             turno++;
 
-            // Manejar cambio de pokémon del jugador 1
+            
             if (pokemonActual1.estaDebilitado()) {
                 System.out.println("\n¡" + pokemonActual1.getNombre() + " ha sido derrotado!");
                 if (hayPokemonVivo(jugador1)) {
@@ -66,7 +65,7 @@ public class Battle {
                 }
             }
 
-            // Manejar cambio de pokémon del jugador 2
+            
             if (pokemonActual2.estaDebilitado()) {
                 System.out.println("\n¡" + pokemonActual2.getNombre() + " ha sido derrotado!");
                 if (hayPokemonVivo(jugador2)) {
@@ -90,7 +89,7 @@ public class Battle {
     private void ejecutarTurno() {
         Scanner scanner = new Scanner(System.in);
 
-        // Resetear protección del turno anterior
+        
         pokemonActual1.resetProtection();
         pokemonActual2.resetProtection();
 
@@ -98,7 +97,7 @@ public class Battle {
 
         System.out.println("\n--- TURNO DE " + jugador1.getNombre() + " ---");
         Movimiento movimiento1 = null;
-        // Verificar si el pokémon está paralizado por flinch
+      
         if (pokemonActual1.flinchActive()) {
             System.out.println(pokemonActual1.getNombre() + " no puede atacar debido a que retrocedió!");
             pokemonActual1.clearFlinch();
@@ -109,7 +108,7 @@ public class Battle {
 
         System.out.println("\n--- TURNO DE " + jugador2.getNombre() + " ---");
         Movimiento movimiento2 = null;
-        // Verificar si el pokémon está paralizado por flinch
+      
         if (pokemonActual2.flinchActive()) {
             System.out.println(pokemonActual2.getNombre() + " no puede atacar debido a que retrocedió!");
             pokemonActual2.clearFlinch();
@@ -118,7 +117,6 @@ public class Battle {
             movimiento2 = seleccionarMovimiento(scanner, pokemonActual2, jugador2.getNombre());
         }
 
-        // Solo ejecutar ataques si ambos tienen movimientos válidos
         if (movimiento1 != null && movimiento2 != null) {
             boolean jugador1Ataca1 = (pokemonActual1.getSpeed() + movimiento1.getPrioridad() * 100) >= (pokemonActual2.getSpeed() + movimiento2.getPrioridad() * 100);
 
@@ -139,31 +137,25 @@ public class Battle {
             atacar(pokemonActual2, pokemonActual1, movimiento2);
         }
         
-        // Mostrar estado actualizado después de los ataques
         mostrarEstadoBattle();
         
-        // Verificar si la batalla debe terminar inmediatamente
         if (pokemonActual1.estaDebilitado() && pokemonActual2.estaDebilitado()) {
             terminarBattle();
         }
     }
 
     private void atacar(Pokemon atacante, Pokemon defensor, Movimiento movimiento) {
-        // Mostrar el movimiento usado
         if (movimiento.getCategoria() == Categoria.ESTADO) {
             System.out.println("\n" + atacante.getNombre() + " usa " + movimiento.getNombre() + "!");
         }
         
-        // Verificar si el defensor está protegido
         if (defensor.isProtegido() && movimiento.getCategoria() != Categoria.ESTADO) {
             System.out.println(defensor.getNombre() + " está protegido y evitó el ataque!");
             return;
         }
 
-        // El efecto del movimiento se encarga del daño
         movimiento.efecto(atacante, defensor);
         
-        // Solo mostrar PS si es un movimiento que hace daño (no de estado)
         if (movimiento.getCategoria() != Categoria.ESTADO) {
             int psActuales = Math.max(0, defensor.getModPs());
             System.out.println(defensor.getNombre() + " ahora tiene " + psActuales + " PS");
@@ -222,9 +214,7 @@ public class Battle {
         return battleFinished;
     }
 
-    /**
-     * Verifica si una persona tiene al menos un pokémon vivo
-     */
+   
     private boolean hayPokemonVivo(Persona persona) {
         for (Pokemon p : persona.getListaPokemon()) {
             if (!p.estaDebilitado()) {
@@ -234,14 +224,11 @@ public class Battle {
         return false;
     }
 
-    /**
-     * Permite cambiar de pokémon en batalla
-     */
+
     private Pokemon cambiarPokemon(Persona persona, Scanner scanner) {
         ArrayList<Pokemon> pokemones = persona.getListaPokemon();
         ArrayList<Pokemon> pokemonesVivos = new ArrayList<>();
 
-        // Buscar pokémons vivos
         for (Pokemon p : pokemones) {
             if (!p.estaDebilitado()) {
                 pokemonesVivos.add(p);

@@ -47,7 +47,7 @@ public class Pokemon {
         this.movimientos = movimientos;
         this.flinch = false;
         this.protegido = false;
-        this.ModPs = ps;  // Inicializar ModPs con los PS actuales
+        this.ModPs = ps;  
         bajarStats=true;
         ModAtack = 0;
         ModDefense = 0;
@@ -68,10 +68,10 @@ public class Pokemon {
     }
 
     public void prepararParaBatalla() {
-        ModPs = ps;  // Reiniciar PS al máximo
-        resetMods();  // Resetear modificadores de stats
-        flinch = false;  // Limpiar flinch
-        protegido = false;  // Limpiar protección
+        ModPs = ps;  
+        resetMods();  
+        flinch = false;  
+        protegido = false;  
     }
     public String getNombre() {
         return nombre;
@@ -232,5 +232,62 @@ public class Pokemon {
 
     public void clearFlinch() {
         this.flinch = false;
+    }
+
+    public int getLevel() {
+        return nivel;
+    }
+
+
+    public Tipo getTipo() {
+        if (tipos != null && !tipos.isEmpty()) {
+            return tipos.get(0);
+        }
+        return null;
+    }
+
+    public Estadisticas getEstadisticas() {
+        return new Estadisticas(this);
+    }
+
+
+    public class Estadisticas {
+        private Pokemon pokemon;
+
+        public Estadisticas(Pokemon pokemon) {
+            this.pokemon = pokemon;
+        }
+
+        public double getHP() {
+            return pokemon.ps;
+        }
+
+        public double getHPMax() {
+            return pokemon.ps;
+        }
+
+        public double getHPActual() {
+            return pokemon.ModPs;
+        }
+
+        public double getAtaque() {
+            return pokemon.atack;
+        }
+
+        public double getDefensa() {
+            return pokemon.defense;
+        }
+
+        public double getAtaqueEspecial() {
+            return pokemon.spAtack;
+        }
+
+        public double getDefensaEspecial() {
+            return pokemon.spDefense;
+        }
+
+        public double getVelocidad() {
+            return pokemon.speed;
+        }
     }
 }

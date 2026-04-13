@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 import org.example.habilidades.*;
 import org.example.movimientos.*;
+import org.example.view.GameWindow;
 
 public class Main {
 
@@ -22,33 +23,19 @@ public class Main {
     static Pokemon Excadrill;
     static Pokemon Sylveon;
 
-    // Supuesto inicial funcional
-    static void main(String[] args) {
-        // Inicializar todos los Pokémon
+    static {
         inicializarPokemon();
+    }
 
-        // Crear la vista
-        GameView gameView = new GameView();
-        gameView.showWelcome();
-
-        // Crear el jugador
-        Persona jugador = new Persona();
-        gameView.seleccionarnombre(jugador);
-        gameView.iniciarSeleccionEquipo(jugador);
-
-        // Crear rival automáticamente
-        Persona rival = crearRival();
-        
-        // Iniciar batalla
-        Battle batalla = new Battle(jugador, rival);
-        batalla.iniciarBattle();
+    public static void main(String[] args) {
+        // Lanzar la aplicación JavaFX
+        GameWindow.main(args);
     }
     
-    static Persona crearRival() {
+    public static Persona crearRival() {
         Persona rival = new Persona();
         rival.setNombre("Rival");
         
-        // Agregar pokémons aleatorios al rival
         rival.getListaPokemon().add(Garchomp);
         rival.getListaPokemon().add(Milotic);
         rival.getListaPokemon().add(Metagross);

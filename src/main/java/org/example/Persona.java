@@ -6,10 +6,12 @@ import java.util.Scanner;
 public class Persona {
     private String nombre;
     private ArrayList<Pokemon> listaPokemon;
+    private int pokemonActualIndex;
 
     public Persona() {
         this.nombre = "Entrenador";
         this.listaPokemon = new ArrayList<>();
+        this.pokemonActualIndex = 0;
     }
 
 
@@ -52,6 +54,16 @@ public class Persona {
         } while (!salir);
 
         return listaPokemon;
+    }
+
+    /**
+     * Crea un equipo automático para la GUI
+     */
+    public void crearEquipoAutomatico() {
+        int[] pokemonIndices = {1, 2, 3, 4};
+        for (int indice : pokemonIndices) {
+            agregarPokemon(indice);
+        }
     }
 
     private void agregarPokemon(int numero) {
@@ -106,5 +118,24 @@ public class Persona {
 
     public String getNombre() {
         return nombre;
+    }
+
+    public Pokemon getPokemonActual() {
+        if (listaPokemon.isEmpty()) {
+            return null;
+        }
+        return listaPokemon.get(pokemonActualIndex);
+    }
+
+
+
+    public void setPokemonActual(int index) {
+        if (index >= 0 && index < listaPokemon.size()) {
+            this.pokemonActualIndex = index;
+        }
+    }
+
+    public int getPokemonActualIndex() {
+        return pokemonActualIndex;
     }
 }
