@@ -31,7 +31,7 @@ public class DamageCalculator {
         int statsAtacante;
         int statsDefensor;
 
-        if (movimiento.getCategoria() == Categoria.FÍSICO) {
+        if (movimiento.getCategoria() == Categoria.FISICO) {
             statsAtacante = aplicarModificador(atacante.getAtack(), atacante.getModAtack());
             statsDefensor = aplicarModificador(defensor.getDefense(), defensor.getModDefense());
         } else { 
