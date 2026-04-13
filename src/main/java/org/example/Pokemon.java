@@ -40,8 +40,8 @@ public class Pokemon {
         this.ps = ps;
         this.atack = atack;
         this.defense = defense;
-        this.spAtack = spAtack;
-        this.spDefense = spDefense;
+        this.spAtack = sAtack;
+        this.spDefense = sDefense;
         this.speed = speed;
         this.estado = Estado.NORMAL;
         this.movimientos = movimientos;
