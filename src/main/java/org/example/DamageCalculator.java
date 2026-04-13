@@ -65,7 +65,7 @@ public class DamageCalculator {
             statsDefensor = aplicarModificador(defensor.getSpDefense(), defensor.getModSpDefense());
         }
        
-        double daño = ((2.0 * atacante.getNivel() / 5.0 + 2.0) * movimiento.getPotencia() * statsAtacante / statsDefensor / 50.0 + 2.0);
+        double daño = ((2.0 * atacante.getNivel() / 5.0 + 2.0) * movimiento.getPotencia() * (double) statsAtacante / statsDefensor / 50.0 + 2.0);
 
         
         daño = daño * multiplicadorCritico * efectividad;
