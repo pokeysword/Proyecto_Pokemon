@@ -105,6 +105,17 @@ public class Pokemon {
         protegido = false;  // Limpiar protección
         needsSwitch = false;  // Limpiar bandera de cambio
     }
+    
+    /**
+     * Prepara el Pokémon cuando vuelve a entrar sin restaurar su vida
+     */
+    public void volverAEntrar() {
+        resetMods();  // Resetear solo los modificadores de stats
+        flinch = false;  // Limpiar flinch
+        protegido = false;  // Limpiar protección
+        needsSwitch = false;  // Limpiar bandera de cambio
+        // NO restauramos ModPs - mantiene el daño recibido
+    }
     public String getNombre() {
         return nombre;
     }

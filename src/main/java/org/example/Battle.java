@@ -83,7 +83,7 @@ public class Battle {
                         terminarBattle();
                         break;
                     }
-                    pokemonActual1.prepararParaBatalla();
+                    pokemonActual1.volverAEntrar();
                     pokemonActual1.getHabilidad().efectoAlEntrar(pokemonActual1, pokemonActual2);
                     System.out.println(jugador1.getNombre() + " envía a " + pokemonActual1.getNombre() + "!");
                 } else {
@@ -102,7 +102,7 @@ public class Battle {
                         terminarBattle();
                         break;
                     }
-                    pokemonActual2.prepararParaBatalla();
+                    pokemonActual2.volverAEntrar();
                     pokemonActual2.getHabilidad().efectoAlEntrar(pokemonActual2, pokemonActual1);
                     System.out.println(jugador2.getNombre() + " envía a " + pokemonActual2.getNombre() + "!");
                 } else {
@@ -137,7 +137,7 @@ public class Battle {
                 Pokemon nuevoPokemon = cambiarPokemon(jugador1, pokemonActual1, scanner);
                 if (nuevoPokemon != null && !nuevoPokemon.equals(pokemonActual1)) {
                     pokemonActual1 = nuevoPokemon;
-                    pokemonActual1.prepararParaBatalla();
+                    pokemonActual1.volverAEntrar();
                     pokemonActual1.getHabilidad().efectoAlEntrar(pokemonActual1, pokemonActual2);
                     System.out.println(jugador1.getNombre() + " envía a " + pokemonActual1.getNombre() + "!");
                     jugador1CambiaPokemon = true;
@@ -159,7 +159,7 @@ public class Battle {
                 Pokemon nuevoPokemon = cambiarPokemon(jugador2, pokemonActual2, scanner);
                 if (nuevoPokemon != null && !nuevoPokemon.equals(pokemonActual2)) {
                     pokemonActual2 = nuevoPokemon;
-                    pokemonActual2.prepararParaBatalla();
+                    pokemonActual2.volverAEntrar();
                     pokemonActual2.getHabilidad().efectoAlEntrar(pokemonActual2, pokemonActual1);
                     System.out.println(jugador2.getNombre() + " envía a " + pokemonActual2.getNombre() + "!");
                     jugador2CambiaPokemon = true;
@@ -244,7 +244,7 @@ public class Battle {
                 Pokemon nuevoPokemon = cambiarPokemon(jugador1, anterior, scanner);
                 if (nuevoPokemon != null) {
                     pokemonActual1 = nuevoPokemon;
-                    pokemonActual1.prepararParaBatalla();
+                    pokemonActual1.volverAEntrar();
                     pokemonActual1.getHabilidad().efectoAlEntrar(pokemonActual1, pokemonActual2);
                     System.out.println(jugador1.getNombre() + " envía a " + pokemonActual1.getNombre() + "!");
                 }
@@ -258,7 +258,7 @@ public class Battle {
                 Pokemon nuevoPokemon = cambiarPokemon(jugador2, anterior, scanner);
                 if (nuevoPokemon != null) {
                     pokemonActual2 = nuevoPokemon;
-                    pokemonActual2.prepararParaBatalla();
+                    pokemonActual2.volverAEntrar();
                     pokemonActual2.getHabilidad().efectoAlEntrar(pokemonActual2, pokemonActual1);
                     System.out.println(jugador2.getNombre() + " envía a " + pokemonActual2.getNombre() + "!");
                 }
