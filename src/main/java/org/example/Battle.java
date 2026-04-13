@@ -26,14 +26,14 @@ public class Battle {
             
             if (jugador1.getListaPokemon().isEmpty()) {
                 System.out.println("¡" + jugador1.getNombre() + ", qué genio! Decidiste entrar a una batalla sin Pokémon.");
-                System.out.println("Tu inteligencia es como un vacío: no aporta nada y aun así ocupa espacio.");
-                System.out.println("Es sorprendente que sigas intentando opinar...\n");
+                System.out.println("Tu inteligencia es como una variable null: no contiene nada útil y aun así consume memoria.");
+                System.out.println("Pero ahí estás, ejecutando código mental que ni siquiera compila...\n");
 
             }
             if (jugador2.getListaPokemon().isEmpty()) {
                 System.out.println("¡" + jugador2.getNombre() + ", qué genio! Decidiste entrar a una batalla sin Pokémon.");
-                System.out.println("Tu inteligencia es como un vacío: no aporta nada y aun así ocupa espacio.");
-                System.out.println("Es sorprendente que sigas intentando opinar...\n");
+                System.out.println("Tu inteligencia es como una variable null: no contiene nada útil y aun así consume memoria.");   
+             System.out.println("Pero ahí estás, ejecutando código mental que ni siquiera compila...\n");
             }
             this.battleFinished = true;
             return;
