@@ -51,6 +51,10 @@ public class Battle {
     private void ejecutarTurno() {
         Scanner scanner = new Scanner(System.in);
 
+        // Resetear protección del turno anterior
+        pokemonActual1.resetProtection();
+        pokemonActual2.resetProtection();
+
         mostrarEstadoBattle();
 
         System.out.println("\n--- TURNO DE " + jugador1.getNombre() + " ---");
@@ -76,6 +80,12 @@ public class Battle {
 
     private void atacar(Pokemon atacante, Pokemon defensor, Movimiento movimiento) {
         System.out.println("\n" + atacante.getNombre() + " usa " + movimiento.getNombre() + "!");
+
+        // Verificar si el defensor está protegido
+        if (defensor.isProtegido() && movimiento.getCategoria() != Categoria.ESTADO) {
+            System.out.println(defensor.getNombre() + " está protegido y evitó el ataque!");
+            return;
+        }
 
         int daño = DamageCalculator.calculateDamage(atacante, defensor, movimiento);
 

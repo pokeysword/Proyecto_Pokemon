@@ -10,5 +10,7 @@ public class Protect extends Movimiento {
     }
     @Override
     public void efecto(Pokemon atacante, Pokemon defensor) {
+        atacante.setProtected(true);
+        System.out.println(atacante.getNombre() + " se protegió del siguiente ataque!");
     }
 }

@@ -30,6 +30,7 @@ public class Pokemon {
     private Estado estado;
     private ArrayList<Movimiento> movimientos;
     private boolean flinch;
+    private boolean protegido;
 
     public Pokemon(String nombre, int nivel, ArrayList<Tipo> tipos, Habilidad habilidad, int ps, int atack, int defense, int sAtack, int sDefense, int speed, ArrayList<Movimiento> movimientos) {
         this.nombre = nombre;
@@ -45,6 +46,8 @@ public class Pokemon {
         this.estado = Estado.NORMAL;
         this.movimientos = movimientos;
         this.flinch = false;
+        this.protegido = false;
+        this.ModPs = ps;  // Inicializar ModPs con los PS actuales
         bajarStats=true;
         ModAtack = 0;
         ModDefense = 0;
@@ -198,6 +201,18 @@ public class Pokemon {
 
     public void sufrirDaño(int daño) {
         this.ModPs = Math.max(0, this.ModPs - daño);
+    }
+
+    public boolean isProtegido() {
+        return protegido;
+    }
+
+    public void setProtected(boolean protegido) {
+        this.protegido = protegido;
+    }
+
+    public void resetProtection() {
+        this.protegido = false;
     }
 
     public ArrayList<Movimiento> getMovimientos() {
