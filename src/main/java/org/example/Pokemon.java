@@ -218,4 +218,12 @@ public class Pokemon {
     public ArrayList<Movimiento> getMovimientos() {
         return movimientos;
     }
+
+    public boolean flinchActive() {
+        return flinch;
+    }
+
+    public void clearFlinch() {
+        this.flinch = false;
+    }
 }
