@@ -30,6 +30,7 @@ public class Pokemon {
     private Estado estado;
     private ArrayList<Movimiento> movimientos;
     private boolean flinch;
+    private boolean protegido;
 
     public Pokemon(String nombre, int nivel, ArrayList<Tipo> tipos, Habilidad habilidad, int ps, int atack, int defense, int sAtack, int sDefense, int speed, ArrayList<Movimiento> movimientos) {
         this.nombre = nombre;
@@ -39,12 +40,14 @@ public class Pokemon {
         this.ps = ps;
         this.atack = atack;
         this.defense = defense;
-        this.spAtack = spAtack;
-        this.spDefense = spDefense;
+        this.spAtack = sAtack;
+        this.spDefense = sDefense;
         this.speed = speed;
         this.estado = Estado.NORMAL;
         this.movimientos = movimientos;
         this.flinch = false;
+        this.protegido = false;
+        this.ModPs = ps;  // Inicializar ModPs con los PS actuales
         bajarStats=true;
         ModAtack = 0;
         ModDefense = 0;
@@ -63,6 +66,13 @@ public class Pokemon {
         resetMods();
         System.out.println(nombre + " sale del campo.");
     }
+
+    public void prepararParaBatalla() {
+        ModPs = ps;  // Reiniciar PS al máximo
+        resetMods();  // Resetear modificadores de stats
+        flinch = false;  // Limpiar flinch
+        protegido = false;  // Limpiar protección
+    }
     public String getNombre() {
         return nombre;
     }
@@ -76,7 +86,7 @@ public class Pokemon {
     }
 
     public boolean estaDebilitado() {
-        return ps <= 0;
+        return ModPs <= 0;
     }
 
     public int getPS() {
@@ -100,7 +110,8 @@ public class Pokemon {
     }
 
     public int getSpeed() {
-        return speed;
+        double velocityMultiplier = DamageCalculator.getVelocityMultiplier(this);
+        return (int) (speed * velocityMultiplier);
     }
 
     public Estado getEstado(){return estado;}
@@ -169,5 +180,57 @@ public class Pokemon {
 
     public void setBajarStats(boolean bajarStats) {
         this.bajarStats = bajarStats;
+    }
+
+    public int getNivel() {
+        return nivel;
+    }
+
+    public int getModAtack() {
+        return ModAtack;
+    }
+
+    public int getModDefense() {
+        return ModDefense;
+    }
+
+    public int getModSpAtack() {
+        return ModSpAtack;
+    }
+
+    public int getModSpDefense() {
+        return ModSpDefense;
+    }
+
+    public int getModSpeed() {
+        return ModSpeed;
+    }
+
+    public void sufrirDaño(int daño) {
+        this.ModPs = Math.max(0, this.ModPs - daño);
+    }
+
+    public boolean isProtegido() {
+        return protegido;
+    }
+
+    public void setProtected(boolean protegido) {
+        this.protegido = protegido;
+    }
+
+    public void resetProtection() {
+        this.protegido = false;
+    }
+
+    public ArrayList<Movimiento> getMovimientos() {
+        return movimientos;
+    }
+
+    public boolean flinchActive() {
+        return flinch;
+    }
+
+    public void clearFlinch() {
+        this.flinch = false;
     }
 }

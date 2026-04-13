@@ -10,6 +10,9 @@ public class IceBeam extends Movimiento {
     }
     @Override
     public void efecto(Pokemon atacante, Pokemon defensor) {
+        int daño = DamageCalculator.calculateDamage(atacante, defensor, this);
+        DamageCalculator.applyDamage(defensor, daño, atacante, this);
+        
         if (!defensor.estaDebilitado()) {
             if(defensor.getEstado()== Estado.NORMAL){
                 if (new Random().nextInt(100) < 10) {

@@ -31,14 +31,31 @@ public class Main {
         GameView gameView = new GameView();
         gameView.showWelcome();
 
-        // Crear la persona y iniciar la selección de equipo
+        // Crear el jugador
         Persona jugador = new Persona();
         gameView.seleccionarnombre(jugador);
         gameView.iniciarSeleccionEquipo(jugador);
 
-//        Para futuro rival
-//        Persona jugador = new Persona("Rival");
-//        gameView.iniciarSeleccionEquipo(jugador);
+        // Crear rival automáticamente
+        Persona rival = crearRival();
+        
+        // Iniciar batalla
+        Battle batalla = new Battle(jugador, rival);
+        batalla.iniciarBattle();
+    }
+    
+    static Persona crearRival() {
+        Persona rival = new Persona();
+        rival.setNombre("Rival");
+        
+        // Agregar pokémons aleatorios al rival
+        rival.getListaPokemon().add(Garchomp);
+        rival.getListaPokemon().add(Milotic);
+        rival.getListaPokemon().add(Metagross);
+        rival.getListaPokemon().add(Togekiss);
+        
+        System.out.println("\n¡Rival ha formado su equipo!");
+        return rival;
     }
 
     static void inicializarPokemon() {

@@ -9,6 +9,9 @@ public class FlareBlitz extends Movimiento {
         super("Flare Blitz", 0, Tipo.FUEGO, Categoria.FISICO, 100, 100, 15,1);}
     @Override
     public void efecto(Pokemon atacante, Pokemon defensor) {
+        int daño = DamageCalculator.calculateDamage(atacante, defensor, this);
+        DamageCalculator.applyDamage(defensor, daño, atacante, this);
+        
         if (!defensor.estaDebilitado()) {
             if(defensor.getEstado()== Estado.NORMAL){
                 if (new Random().nextInt(100) < 10) {

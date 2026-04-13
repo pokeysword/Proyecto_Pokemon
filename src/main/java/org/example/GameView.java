@@ -26,6 +26,7 @@ public class GameView {
         System.out.println("\n--- Selección de Equipo ---");
         persona.crearEquipo();
         mostrarEquipo(persona);
+        System.out.println("¡Equipo confirmado! Preparándose para la batalla...");
     }
     public void seleccionarnombre(Persona persona) {
         System.out.print("¿Cuál es tu nombre, entrenador?\n ");

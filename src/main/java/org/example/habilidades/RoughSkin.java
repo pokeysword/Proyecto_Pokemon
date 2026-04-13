@@ -11,8 +11,10 @@ public class RoughSkin extends Habilidad {
     @Override
     public void efectoAlRecibirDaño(Pokemon rival, int daño, Movimiento move) {
         if (move.getCategoria().equals(Categoria.FISICO)){
-        rival.setModPs((daño)/(rival.getModPs())-(daño/16));
-        System.out.println(rival.getNombre() + " se hizo daño al golpear");
-    }}
+            int dañoRetorno = Math.max(1, daño / 8);
+            rival.sufrirDaño(dañoRetorno);
+            System.out.println(rival.getNombre() + " recibió " + dañoRetorno + " de daño por RoughSkin!");
+        }
+    }
 
 }

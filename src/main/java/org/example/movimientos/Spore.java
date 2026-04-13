@@ -5,16 +5,15 @@ import org.example.Estado;
 import org.example.Pokemon;
 import org.example.Tipo;
 
-import java.util.Random;
-
 public class Spore extends Movimiento {
     public Spore() {
-        super("Snarl", 0, Tipo.SINIESTRO, Categoria.ESPECIAL, 55, 95, 15,1);
+        super("Spore", 0, Tipo.PLANTA, Categoria.ESTADO, 0, 100, 15,1);
     }
     @Override
     public void efecto(Pokemon atacante, Pokemon defensor) {
         if (!defensor.estaDebilitado()) {
-            defensor.setEstado(Estado.DORMIDO);
+                defensor.setEstado(Estado.DORMIDO);
+                }
+
         }
-    }
 }
