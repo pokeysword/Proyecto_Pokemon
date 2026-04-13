@@ -173,9 +173,7 @@ public class TypeEffectiveness {
         return EFFECTIVENESS_MAP.getOrDefault(key, 1.0);
     }
 
-    /**
-    tipo atacante hay que cambiaro por el tipo del pokemon
-     */
+    
     public static double getTotalEffectiveness(Tipo tipoAtacante, java.util.ArrayList<Tipo> tiposDefensor) {
         double efectividadTotal = 1.0;
         for (Tipo tipoDefensa : tiposDefensor) {
