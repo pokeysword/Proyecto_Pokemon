@@ -31,6 +31,7 @@ public class Pokemon {
     private ArrayList<Movimiento> movimientos;
     private boolean flinch;
     private boolean protegido;
+    private boolean needsSwitch;
 
     public Pokemon(String nombre, int nivel, ArrayList<Tipo> tipos, Habilidad habilidad, int ps, int atack, int defense, int sAtack, int sDefense, int speed, ArrayList<Movimiento> movimientos) {
         this.nombre = nombre;
@@ -55,6 +56,27 @@ public class Pokemon {
         ModSpDefense = 0;
         ModSpeed = 0;
     }
+    
+    /**
+     * Crea una copia independiente del Pokémon para evitar compartir vida entre equipos
+     */
+    public Pokemon crearCopia() {
+        Pokemon copia = new Pokemon(
+            this.nombre,
+            this.nivel,
+            new ArrayList<>(this.tipos),
+            this.habilidad,
+            this.ps,
+            this.atack,
+            this.defense,
+            this.spAtack,
+            this.spDefense,
+            this.speed,
+            new ArrayList<>(this.movimientos)
+        );
+        return copia;
+    }
+    
     public void resetMods(){
         ModAtack = 0;
         ModDefense = 0;
@@ -64,7 +86,16 @@ public class Pokemon {
     }
     public void cambio() {
         resetMods();
+        needsSwitch = true;
         System.out.println(nombre + " sale del campo.");
+    }
+    
+    public boolean needsSwitch() {
+        return needsSwitch;
+    }
+    
+    public void resetSwitch() {
+        needsSwitch = false;
     }
 
     public void prepararParaBatalla() {
@@ -72,6 +103,7 @@ public class Pokemon {
         resetMods();  // Resetear modificadores de stats
         flinch = false;  // Limpiar flinch
         protegido = false;  // Limpiar protección
+        needsSwitch = false;  // Limpiar bandera de cambio
     }
     public String getNombre() {
         return nombre;

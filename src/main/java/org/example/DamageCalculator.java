@@ -42,6 +42,12 @@ public class DamageCalculator {
             return 0;
         }
 
+        // Verificar si la habilidad del DEFENSOR lo hace inmune
+        if (defensor.getHabilidad().esInmune(defensor, movimiento)) {
+            System.out.println(defensor.getNombre() + " es inmune a " + movimiento.getNombre() + " gracias a su habilidad " + defensor.getHabilidad().getNombre() + "!");
+            return 0;
+        }
+
         Tipo tipoAtaque = atacante.getHabilidad().antesDeCalcularDaño(defensor, movimiento);
 
         double efectividad = TypeEffectiveness.getTotalEffectiveness(tipoAtaque, defensor.getTipos());

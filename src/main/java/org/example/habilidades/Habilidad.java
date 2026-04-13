@@ -11,6 +11,11 @@ public abstract class Habilidad {
         this.nombre = nombre;
 
     }
+    
+    public String getNombre() {
+        return nombre;
+    }
+    
     public void efecto(Pokemon portador){}
     public void PuedenBajarStats(Pokemon portador){}
     public void efectoalCambiar(Pokemon portador){}

@@ -31,7 +31,7 @@ public class TypeEffectiveness {
         EFFECTIVENESS_MAP.put("AGUA_vs_PLANTA", 0.5);
         EFFECTIVENESS_MAP.put("AGUA_vs_TIERRA", 2.0);
         EFFECTIVENESS_MAP.put("AGUA_vs_ROCA", 2.0);
-        EFFECTIVENESS_MAP.put("AGUA_vs_ACERO", 2.0);
+        EFFECTIVENESS_MAP.put("AGUA_vs_ACERO", 1.0);
 
         // PLANTA
         EFFECTIVENESS_MAP.put("PLANTA_vs_FUEGO", 0.5);
@@ -48,7 +48,6 @@ public class TypeEffectiveness {
         EFFECTIVENESS_MAP.put("ELÉCTRICO_vs_ELÉCTRICO", 0.5);
         EFFECTIVENESS_MAP.put("ELÉCTRICO_vs_TIERRA", 0.0);
         EFFECTIVENESS_MAP.put("ELÉCTRICO_vs_VOLADOR", 2.0);
-        EFFECTIVENESS_MAP.put("ELÉCTRICO_vs_AGUA", 2.0);
 
         // HIELO
         EFFECTIVENESS_MAP.put("HIELO_vs_FUEGO", 0.5);
@@ -95,7 +94,7 @@ public class TypeEffectiveness {
         EFFECTIVENESS_MAP.put("VOLADOR_vs_PLANTA", 2.0);
         EFFECTIVENESS_MAP.put("VOLADOR_vs_LUCHA", 2.0);
         EFFECTIVENESS_MAP.put("VOLADOR_vs_BICHO", 2.0);
-        EFFECTIVENESS_MAP.put("VOLADOR_vs_TIERRA", 0.0);
+        EFFECTIVENESS_MAP.put("VOLADOR_vs_TIERRA", 1.0);
         EFFECTIVENESS_MAP.put("VOLADOR_vs_ELÉCTRICO", 0.5);
         EFFECTIVENESS_MAP.put("VOLADOR_vs_ROCA", 0.5);
         EFFECTIVENESS_MAP.put("VOLADOR_vs_ACERO", 0.5);
@@ -132,6 +131,7 @@ public class TypeEffectiveness {
         EFFECTIVENESS_MAP.put("FANTASMA_vs_PSÍQUICO", 2.0);
         EFFECTIVENESS_MAP.put("FANTASMA_vs_FANTASMA", 2.0);
         EFFECTIVENESS_MAP.put("FANTASMA_vs_NORMAL", 0.0);
+        EFFECTIVENESS_MAP.put("FANTASMA_vs_LUCHA", 0.0);
         EFFECTIVENESS_MAP.put("FANTASMA_vs_SINIESTRO", 0.5);
 
         // DRAGÓN
@@ -155,9 +155,9 @@ public class TypeEffectiveness {
         EFFECTIVENESS_MAP.put("ACERO_vs_AGUA", 0.5);
         EFFECTIVENESS_MAP.put("ACERO_vs_PLANTA", 0.5);
         EFFECTIVENESS_MAP.put("ACERO_vs_ELÉCTRICO", 0.5);
-        EFFECTIVENESS_MAP.put("ACERO_vs_HIELO", 0.5);
         EFFECTIVENESS_MAP.put("ACERO_vs_ACERO", 0.5);
-        EFFECTIVENESS_MAP.put("ACERO_vs_PSÍQUICO", 2.0);
+        EFFECTIVENESS_MAP.put("ACERO_vs_PSÍQUICO", 1.0);
+        EFFECTIVENESS_MAP.put("ACERO_vs_VENENO", 0.0);
 
         // HADA
         EFFECTIVENESS_MAP.put("HADA_vs_LUCHA", 2.0);

@@ -57,34 +57,34 @@ public class Persona {
     private void agregarPokemon(int numero) {
         switch (numero) {
             case 1:
-                listaPokemon.add(Main.RotomWash);
+                listaPokemon.add(Main.RotomWash.crearCopia());
                 break;
             case 2:
-                listaPokemon.add(Main.Garchomp);
+                listaPokemon.add(Main.Garchomp.crearCopia());
                 break;
             case 3:
-                listaPokemon.add(Main.Togekiss);
+                listaPokemon.add(Main.Togekiss.crearCopia());
                 break;
             case 4:
-                listaPokemon.add(Main.Metagross);
+                listaPokemon.add(Main.Metagross.crearCopia());
                 break;
             case 5:
-                listaPokemon.add(Main.Milotic);
+                listaPokemon.add(Main.Milotic.crearCopia());
                 break;
             case 6:
-                listaPokemon.add(Main.Arcanine);
+                listaPokemon.add(Main.Arcanine.crearCopia());
                 break;
             case 7:
-                listaPokemon.add(Main.Amoonguss);
+                listaPokemon.add(Main.Amoonguss.crearCopia());
                 break;
             case 8:
-                listaPokemon.add(Main.Dragapult);
+                listaPokemon.add(Main.Dragapult.crearCopia());
                 break;
             case 9:
-                listaPokemon.add(Main.Excadrill);
+                listaPokemon.add(Main.Excadrill.crearCopia());
                 break;
             case 10:
-                listaPokemon.add(Main.Sylveon);
+                listaPokemon.add(Main.Sylveon.crearCopia());
                 break;
             default:
                 System.out.println("No elegiste ningún pokemon");
