@@ -96,8 +96,11 @@ public class Battle {
         // El efecto del movimiento se encarga del daño
         movimiento.efecto(atacante, defensor);
         
-        int psActuales = Math.max(0, defensor.getModPs());
-        System.out.println(defensor.getNombre() + " ahora tiene " + psActuales + " PS");
+        // Solo mostrar PS si es un movimiento que hace daño (no de estado)
+        if (movimiento.getCategoria() != Categoria.ESTADO) {
+            int psActuales = Math.max(0, defensor.getModPs());
+            System.out.println(defensor.getNombre() + " ahora tiene " + psActuales + " PS");
+        }
     }
 
     private Movimiento seleccionarMovimiento(Scanner scanner, Pokemon pokemon, String nombreJugador) {

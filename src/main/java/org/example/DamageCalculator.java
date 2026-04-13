@@ -47,6 +47,7 @@ public class DamageCalculator {
         double efectividad = TypeEffectiveness.getTotalEffectiveness(tipoAtaque, defensor.getTipos());
         
         if (efectividad == 0.0) {
+            System.out.println(defensor.getNombre() + " es inmune a " + movimiento.getNombre() + "! ¡No afecta!");
             return 0;
         }
         
