@@ -25,10 +25,15 @@ public class Battle {
 
         pokemonActual1 = jugador1.getListaPokemon().get(0);
         pokemonActual2 = jugador2.getListaPokemon().get(0);
+        
+        // Preparar pokémons para la batalla
+        pokemonActual1.prepararParaBatalla();
+        pokemonActual2.prepararParaBatalla();
 
         System.out.println(jugador1.getNombre() + " envía a " + pokemonActual1.getNombre() + "!");
         System.out.println(jugador2.getNombre() + " envía a " + pokemonActual2.getNombre() + "!\n");
 
+        Scanner scanner = new Scanner(System.in);
         int turno = 1;
         while (!battleFinished) {
             // Verificar si hay pokémons vivos
@@ -48,11 +53,12 @@ public class Battle {
             if (pokemonActual1.estaDebilitado()) {
                 System.out.println("\n¡" + pokemonActual1.getNombre() + " ha sido derrotado!");
                 if (hayPokemonVivo(jugador1)) {
-                    pokemonActual1 = cambiarPokemon(jugador1, new Scanner(System.in));
+                    pokemonActual1 = cambiarPokemon(jugador1, scanner);
                     if (pokemonActual1 == null) {
                         terminarBattle();
                         break;
                     }
+                    pokemonActual1.prepararParaBatalla();
                     System.out.println(jugador1.getNombre() + " envía a " + pokemonActual1.getNombre() + "!");
                 } else {
                     terminarBattle();
@@ -64,11 +70,12 @@ public class Battle {
             if (pokemonActual2.estaDebilitado()) {
                 System.out.println("\n¡" + pokemonActual2.getNombre() + " ha sido derrotado!");
                 if (hayPokemonVivo(jugador2)) {
-                    pokemonActual2 = cambiarPokemon(jugador2, new Scanner(System.in));
+                    pokemonActual2 = cambiarPokemon(jugador2, scanner);
                     if (pokemonActual2 == null) {
                         terminarBattle();
                         break;
                     }
+                    pokemonActual2.prepararParaBatalla();
                     System.out.println(jugador2.getNombre() + " envía a " + pokemonActual2.getNombre() + "!");
                 } else {
                     terminarBattle();
@@ -76,6 +83,8 @@ public class Battle {
                 }
             }
         }
+        
+        scanner.close();
     }
 
     private void ejecutarTurno() {

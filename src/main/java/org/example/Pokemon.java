@@ -66,6 +66,13 @@ public class Pokemon {
         resetMods();
         System.out.println(nombre + " sale del campo.");
     }
+
+    public void prepararParaBatalla() {
+        ModPs = ps;  // Reiniciar PS al máximo
+        resetMods();  // Resetear modificadores de stats
+        flinch = false;  // Limpiar flinch
+        protegido = false;  // Limpiar protección
+    }
     public String getNombre() {
         return nombre;
     }
@@ -79,7 +86,7 @@ public class Pokemon {
     }
 
     public boolean estaDebilitado() {
-        return ps <= 0;
+        return ModPs <= 0;
     }
 
     public int getPS() {
