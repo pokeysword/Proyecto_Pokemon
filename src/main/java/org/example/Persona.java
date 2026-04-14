@@ -51,10 +51,10 @@ public class Persona {
                     verEquipo();
                     break;
                 case 3:
-                    if (cont == 4) {
+                    if (cont >= 1) {
                         salir = true;
                     } else {
-                        System.out.println("✗ Necesitas 4 Pokémon para combatir. Tienes " + cont + "/4");
+                        System.out.println("✗ Necesitas al menos 1 Pokémon para combatir. Tienes " + cont);
                     }
                     break;
                 default:
