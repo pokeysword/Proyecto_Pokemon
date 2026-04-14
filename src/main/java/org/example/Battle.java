@@ -130,7 +130,6 @@ public class Battle {
 
         if (pokemonActual1.flinchActive()) {
             System.out.println(pokemonActual1.getNombre() + " no puede atacar debido a que retrocedió!");
-            pokemonActual1.clearFlinch();
             movimiento1 = null;
         } else {
             movimiento1 = seleccionarMovimiento(scanner, pokemonActual1, jugador1.getNombre());
@@ -152,7 +151,6 @@ public class Battle {
         
         if (pokemonActual2.flinchActive()) {
             System.out.println(pokemonActual2.getNombre() + " no puede atacar debido a que retrocedió!");
-            pokemonActual2.clearFlinch();
             movimiento2 = null;
         } else {
             movimiento2 = seleccionarMovimiento(scanner, pokemonActual2, jugador2.getNombre());
@@ -204,6 +202,10 @@ public class Battle {
             atacar(pokemonActual2, pokemonActual1, movimiento2);
             manejarCambioInmediato(2);
         }
+        
+        // Limpiar flinch al final de la ronda
+        pokemonActual1.clearFlinch();
+        pokemonActual2.clearFlinch();
         
         mostrarEstadoBattle();
         
