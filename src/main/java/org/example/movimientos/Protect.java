@@ -1,6 +1,7 @@
 package org.example.movimientos;
 
 import org.example.Categoria;
+import org.example.GameView;
 import org.example.Pokemon;
 import org.example.Tipo;
 
@@ -16,12 +17,12 @@ public class Protect extends Movimiento {
             boolean acierta = ThreadLocalRandom.current().nextDouble() < 0.33;
             if (!acierta) {
                 atacante.setProtected(false);
-                System.out.println(atacante.getNombre() + " intentó protegerse, pero falló!");
+                GameView.mostrarProtectFallo(atacante.getNombre());
                 return;
             }
         }
 
         atacante.setProtected(true);
-        System.out.println(atacante.getNombre() + " se protegió del siguiente ataque!");
+        GameView.mostrarProtectExito(atacante.getNombre());
     }
 }

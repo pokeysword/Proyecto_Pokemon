@@ -17,7 +17,7 @@ public class IceBeam extends Movimiento {
             if(defensor.getEstado()== Estado.NORMAL){
                 if (new Random().nextInt(100) < 10) {
                     defensor.setEstado(Estado.CONGELADO);
-                    System.out.println(defensor.getNombre() + " está quemado!");
+                    GameView.mostrarPokemonCongelado(defensor.getNombre());
                 }
             }
         }

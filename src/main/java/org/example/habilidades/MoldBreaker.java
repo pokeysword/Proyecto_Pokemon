@@ -1,4 +1,5 @@
 package org.example.habilidades;
+import org.example.GameView;
 import org.example.Pokemon;
 
 public class MoldBreaker extends Habilidad {
@@ -8,5 +9,6 @@ public class MoldBreaker extends Habilidad {
 
     @Override
     public void efecto(Pokemon def) {
-        System.out.println(def.getNombre()+" uso Mold Breaker");;
+        GameView.mostrarMoldBreaker(def.getNombre());
+        ;
     }}

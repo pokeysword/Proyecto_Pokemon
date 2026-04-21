@@ -1,5 +1,6 @@
 package org.example.habilidades;
 
+import org.example.GameView;
 import org.example.Pokemon;
 
 public class Intimidacion extends Habilidad {
@@ -10,8 +11,7 @@ public class Intimidacion extends Habilidad {
     @Override
     public void efectoAlEntrar(Pokemon portador, Pokemon rival) {
         rival.modificarAtk(-1);
-        System.out.println(portador.getNombre() + " intimidó a " + rival.getNombre()
-                + "! ¡Su Ataque bajó!");
+        GameView.mostrarIntimidacion(portador.getNombre(), rival.getNombre());
     }
 
 }

@@ -51,7 +51,7 @@ public class Main {
         rival.getListaPokemon().add(Metagross);
         rival.getListaPokemon().add(Togekiss);
         
-        System.out.println("\n¡Rival ha formado su equipo!");
+        GameView.mostrarRivalFormado();
         return rival;
     }
 

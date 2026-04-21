@@ -16,7 +16,7 @@ public class FlareBlitz extends Movimiento {
             if(defensor.getEstado()== Estado.NORMAL){
                 if (new Random().nextInt(100) < 10) {
                     defensor.setEstado(Estado.QUEMADO);
-                    System.out.println(defensor.getNombre() + " está quemado!");
+                    GameView.mostrarPokemonQuemado(defensor.getNombre());
                 }
             }
         }

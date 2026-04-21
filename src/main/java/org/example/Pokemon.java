@@ -90,7 +90,7 @@ public class Pokemon {
         resetMods();
         needsSwitch = true;
         usoProtectTurnoAnterior = false;
-        System.out.println(nombre + " sale del campo.");
+        GameView.mostrarSaleDelCampo(nombre);
     }
     
     public boolean needsSwitch() {
@@ -171,16 +171,7 @@ public class Pokemon {
     }
 
     private void mostrarCambio(String stat, int num) {
-
-        if (num > 1) {
-            System.out.println(nombre + " aumentó mucho su " + stat + "!");
-        } else if (num == 1) {
-            System.out.println(nombre + " aumentó su " + stat + ".");
-        } else if (num == -1) {
-            System.out.println(nombre + " bajó su " + stat + ".");
-        } else if (num < -1) {
-            System.out.println(nombre + " bajó mucho su " + stat + "!");
-        }
+        GameView.mostrarCambioStats(nombre, stat, num);
     }
 
     private int LimitarMod(int modificador) {

@@ -1,4 +1,5 @@
 package org.example.habilidades;
+import org.example.GameView;
 import org.example.Pokemon;
 
 public class Competitive extends Habilidad {
@@ -8,5 +9,5 @@ public class Competitive extends Habilidad {
 
 public void alRecibirBajadaDeStat(Pokemon portador) {
     portador.modificarSpAtk(2);
-    System.out.println(portador.getNombre() + " activó Competitive! ¡Su Atk. Esp. subió mucho!");
+    GameView.mostrarCompetitive(portador.getNombre());
 }}

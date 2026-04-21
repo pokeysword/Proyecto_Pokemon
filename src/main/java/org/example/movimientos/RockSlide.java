@@ -1,6 +1,7 @@
 package org.example.movimientos;
 import org.example.DamageCalculator;
 import org.example.Categoria;
+import org.example.GameView;
 import org.example.Pokemon;
 import org.example.Tipo;
 
@@ -21,7 +22,7 @@ public class RockSlide extends Movimiento {
         if (!defensor.estaDebilitado()) {
             if (new Random().nextInt(100) < 30) {
                 defensor.setFlinch(true);
-                System.out.println(defensor.getNombre() + " retrocedió (flinch)!");
+                GameView.mostrarPokemonRetrocedio(defensor.getNombre());
             }
         }
     }

@@ -20,29 +20,24 @@ public class Battle {
     public void iniciarBattle() {
         // Validar que ambos jugadores tengan Pokémon
         if (jugador1.getListaPokemon().isEmpty() || jugador2.getListaPokemon().isEmpty()) {
-            System.out.println("\n╔════════════════════════════════════════╗");
-            System.out.println("║        ¡BATALLA NO VÁLIDA!             ║");
-            System.out.println("╚════════════════════════════════════════╝\n");
-            
+            GameView.mostrarBatallaNoValidaCaja();
+
             if (jugador1.getListaPokemon().isEmpty()) {
-                System.out.println("¡" + jugador1.getNombre() + ", qué genio! Decidiste entrar a una batalla sin Pokémon.");
-                System.out.println("Tu inteligencia es como una variable null: no contiene nada útil y aun así consume memoria.");
-                System.out.println("Pero ahí estás, ejecutando código mental que ni siquiera compila...\n");
+                GameView.mostrarSinPokemonMensaje1(jugador1.getNombre());
+                GameView.mostrarSinPokemonMensaje2();
+                GameView.mostrarSinPokemonMensaje3();
 
             }
             if (jugador2.getListaPokemon().isEmpty()) {
-                System.out.println("¡" + jugador2.getNombre() + ", qué genio! Decidiste entrar a una batalla sin Pokémon.");
-                System.out.println("Tu inteligencia es como una variable null: no contiene nada útil y aun así consume memoria.");   
-             System.out.println("Pero ahí estás, ejecutando código mental que ni siquiera compila...\n");
+                GameView.mostrarSinPokemonMensaje1(jugador2.getNombre());
+                GameView.mostrarSinPokemonMensaje2();
+                GameView.mostrarSinPokemonMensaje3();
             }
             this.battleFinished = true;
             return;
         }
         
-        System.out.println("\n╔════════════════════════════════════════╗");
-        System.out.println("║        ¡COMIENZA LA BATALLA!           ║");
-        System.out.println("║ " + jugador1.getNombre() + " vs " + jugador2.getNombre());
-        System.out.println("╚════════════════════════════════════════╝\n");
+        GameView.mostrarInicioBatallaCaja(jugador1.getNombre(), jugador2.getNombre());
 
         pokemonActual1 = jugador1.getListaPokemon().get(0);
         pokemonActual2 = jugador2.getListaPokemon().get(0);
@@ -51,8 +46,9 @@ public class Battle {
         pokemonActual1.prepararParaBatalla();
         pokemonActual2.prepararParaBatalla();
 
-        System.out.println(jugador1.getNombre() + " envía a " + pokemonActual1.getNombre() + "!");
-        System.out.println(jugador2.getNombre() + " envía a " + pokemonActual2.getNombre() + "!\n");
+        GameView.mostrarEnviaPokemon(jugador1.getNombre(), pokemonActual1.getNombre());
+        GameView.mostrarEnviaPokemon(jugador2.getNombre(), pokemonActual2.getNombre());
+        GameView.saltoLinea();
 
         // Activar efectos de entrada de habilidades
         pokemonActual1.getHabilidad().efectoAlEntrar(pokemonActual1, pokemonActual2);
@@ -67,16 +63,14 @@ public class Battle {
                 break;
             }
 
-            System.out.println("\n═══════════════════════════════════════");
-            System.out.println("TURNO " + turno);
-            System.out.println("═══════════════════════════════════════");
+            GameView.mostrarSeparadorTurno(turno);
 
             ejecutarTurno();
             turno++;
 
             // Cambios de pokémon
             if (pokemonActual1.estaDebilitado()) {
-                System.out.println("\n¡" + pokemonActual1.getNombre() + " ha sido derrotado!");
+                GameView.mostrarPokemonDerrotado(pokemonActual1.getNombre());
                 if (hayPokemonVivo(jugador1)) {
                     Pokemon anterior = pokemonActual1;
                     pokemonActual1 = cambiarPokemon(jugador1, anterior, scanner);
@@ -86,7 +80,7 @@ public class Battle {
                     }
                     pokemonActual1.volverAEntrar();
                     pokemonActual1.getHabilidad().efectoAlEntrar(pokemonActual1, pokemonActual2);
-                    System.out.println(jugador1.getNombre() + " envía a " + pokemonActual1.getNombre() + "!");
+                    GameView.mostrarEnviaPokemon(jugador1.getNombre(), pokemonActual1.getNombre());
                 } else {
                     terminarBattle();
                     break;
@@ -95,7 +89,7 @@ public class Battle {
 
 
             if (pokemonActual2.estaDebilitado()) {
-                System.out.println("\n¡" + pokemonActual2.getNombre() + " ha sido derrotado!");
+                GameView.mostrarPokemonDerrotado(pokemonActual2.getNombre());
                 if (hayPokemonVivo(jugador2)) {
                     Pokemon anterior = pokemonActual2;
                     pokemonActual2 = cambiarPokemon(jugador2, anterior, scanner);
@@ -105,7 +99,7 @@ public class Battle {
                     }
                     pokemonActual2.volverAEntrar();
                     pokemonActual2.getHabilidad().efectoAlEntrar(pokemonActual2, pokemonActual1);
-                    System.out.println(jugador2.getNombre() + " envía a " + pokemonActual2.getNombre() + "!");
+                    GameView.mostrarEnviaPokemon(jugador2.getNombre(), pokemonActual2.getNombre());
                 } else {
                     terminarBattle();
                     break;
@@ -129,12 +123,12 @@ public class Battle {
 
         mostrarEstadoBattle();
 
-        System.out.println("\n--- TURNO DE " + jugador1.getNombre() + " ---");
+        GameView.mostrarTurnoJugador(jugador1.getNombre());
         Movimiento movimiento1 = null;
         boolean jugador1CambiaPokemon = false;
 
         if (pokemonActual1.flinchActive()) {
-            System.out.println(pokemonActual1.getNombre() + " no puede atacar debido a que retrocedió!");
+            GameView.mostrarNoPuedeAtacarPorFlinch(pokemonActual1.getNombre());
             movimiento1 = null;
         } else {
             movimiento1 = seleccionarMovimiento(scanner, pokemonActual1, jugador1.getNombre());
@@ -144,18 +138,18 @@ public class Battle {
                     pokemonActual1 = nuevoPokemon;
                     pokemonActual1.volverAEntrar();
                     pokemonActual1.getHabilidad().efectoAlEntrar(pokemonActual1, pokemonActual2);
-                    System.out.println(jugador1.getNombre() + " envía a " + pokemonActual1.getNombre() + "!");
+                    GameView.mostrarEnviaPokemon(jugador1.getNombre(), pokemonActual1.getNombre());
                     jugador1CambiaPokemon = true;
                 }
             }
         }
 
-        System.out.println("\n--- TURNO DE " + jugador2.getNombre() + " ---");
+        GameView.mostrarTurnoJugador(jugador2.getNombre());
         Movimiento movimiento2 = null;
         boolean jugador2CambiaPokemon = false;
         
         if (pokemonActual2.flinchActive()) {
-            System.out.println(pokemonActual2.getNombre() + " no puede atacar debido a que retrocedió!");
+            GameView.mostrarNoPuedeAtacarPorFlinch(pokemonActual2.getNombre());
             movimiento2 = null;
         } else {
             movimiento2 = seleccionarMovimiento(scanner, pokemonActual2, jugador2.getNombre());
@@ -165,7 +159,7 @@ public class Battle {
                     pokemonActual2 = nuevoPokemon;
                     pokemonActual2.volverAEntrar();
                     pokemonActual2.getHabilidad().efectoAlEntrar(pokemonActual2, pokemonActual1);
-                    System.out.println(jugador2.getNombre() + " envía a " + pokemonActual2.getNombre() + "!");
+                    GameView.mostrarEnviaPokemon(jugador2.getNombre(), pokemonActual2.getNombre());
                     jugador2CambiaPokemon = true;
                 }
             }
@@ -235,7 +229,7 @@ public class Battle {
     private void atacar(Pokemon atacante, Pokemon defensor, Movimiento movimiento) {
         if (!movimiento.consumirPp()) {
             atacante.setUsoProtectTurnoAnterior(false);
-            System.out.println(movimiento.getNombre() + " no tiene PP y no se puede usar.");
+            GameView.mostrarMovimientoSinPp(movimiento.getNombre());
             return;
         }
 
@@ -243,12 +237,12 @@ public class Battle {
 
         // Mostrar el movimiento usado
         if (movimiento.getCategoria() == Categoria.ESTADO) {
-            System.out.println("\n" + atacante.getNombre() + " usa " + movimiento.getNombre() + "!");
+            GameView.mostrarUsoMovimientoEstado(atacante.getNombre(), movimiento.getNombre());
         }
         
         // Verificar si el defensor está protegido
         if (defensor.isProtegido() && movimiento.getCategoria() != Categoria.ESTADO) {
-            System.out.println(defensor.getNombre() + " está protegido y evitó el ataque!");
+            GameView.mostrarAtaqueBloqueadoPorProtect(defensor.getNombre());
             return;
         }
 
@@ -257,7 +251,7 @@ public class Battle {
         // Solo mostrar PS si es un movimiento que hace daño (no de estado)
         if (movimiento.getCategoria() != Categoria.ESTADO) {
             int psActuales = Math.max(0, defensor.getModPs());
-            System.out.println(defensor.getNombre() + " ahora tiene " + psActuales + " PS");
+            GameView.mostrarPsActual(defensor.getNombre(), psActuales);
         }
     }
     
@@ -269,13 +263,13 @@ public class Battle {
             if (pokemonActual1.needsSwitch() && hayPokemonVivo(jugador1)) {
                 Pokemon anterior = pokemonActual1;
                 pokemonActual1.resetSwitch();
-                System.out.println("\n¡" + jugador1.getNombre() + " debe enviar otro Pokémon!");
+                GameView.mostrarDebeEnviarOtroPokemon(jugador1.getNombre());
                 Pokemon nuevoPokemon = cambiarPokemon(jugador1, anterior, scanner);
                 if (nuevoPokemon != null) {
                     pokemonActual1 = nuevoPokemon;
                     pokemonActual1.volverAEntrar();
                     pokemonActual1.getHabilidad().efectoAlEntrar(pokemonActual1, pokemonActual2);
-                    System.out.println(jugador1.getNombre() + " envía a " + pokemonActual1.getNombre() + "!");
+                    GameView.mostrarEnviaPokemon(jugador1.getNombre(), pokemonActual1.getNombre());
                 }
             }
         } else if (jugador == 2) {
@@ -283,13 +277,13 @@ public class Battle {
             if (pokemonActual2.needsSwitch() && hayPokemonVivo(jugador2)) {
                 Pokemon anterior = pokemonActual2;
                 pokemonActual2.resetSwitch();
-                System.out.println("\n¡" + jugador2.getNombre() + " debe enviar otro Pokémon!");
+                GameView.mostrarDebeEnviarOtroPokemon(jugador2.getNombre());
                 Pokemon nuevoPokemon = cambiarPokemon(jugador2, anterior, scanner);
                 if (nuevoPokemon != null) {
                     pokemonActual2 = nuevoPokemon;
                     pokemonActual2.volverAEntrar();
                     pokemonActual2.getHabilidad().efectoAlEntrar(pokemonActual2, pokemonActual1);
-                    System.out.println(jugador2.getNombre() + " envía a " + pokemonActual2.getNombre() + "!");
+                    GameView.mostrarEnviaPokemon(jugador2.getNombre(), pokemonActual2.getNombre());
                 }
             }
         }
@@ -298,12 +292,12 @@ public class Battle {
     private Movimiento seleccionarMovimiento(Scanner scanner, Pokemon pokemon, String nombreJugador) {
         ArrayList<Movimiento> movimientos = pokemon.getMovimientos();
 
-        System.out.println(nombreJugador + ", elige una acción para " + pokemon.getNombre() + ":");
+        GameView.mostrarElegirAccion(nombreJugador, pokemon.getNombre());
         for (int i = 0; i < movimientos.size(); i++) {
             Movimiento m = movimientos.get(i);
-            System.out.println((i + 1) + ". " + m.getNombre() + " (Potencia: " + m.getPotencia() + ", Precisión: " + m.getPrecision() + "%, PP: " + m.getPp() + "/" + m.getPpMax() + ")");
+            GameView.mostrarMovimientoDisponible(i + 1, m.getNombre(), m.getPotencia(), m.getPrecision(), m.getPp(), m.getPpMax());
         }
-        System.out.println((movimientos.size() + 1) + ". Cambiar Pokémon");
+        GameView.mostrarOpcionCambiarPokemon(movimientos.size() + 1);
 
         while (true) {
             int opcion = scanner.nextInt();
@@ -311,18 +305,18 @@ public class Battle {
 
             // Si elige cambiar Pokémon
             if (opcion == movimientos.size() + 1) {
-                System.out.println("CAMBIANDO_POKEMON"); // Marcador especial
+                GameView.mostrarCambiandoPokemon(); // Marcador especial
                 return null;
             }
 
             if (opcion < 1 || opcion > movimientos.size()) {
-                System.out.println("Opción inválida. Intenta de nuevo.");
+                GameView.mostrarOpcionInvalidaIntentaDeNuevo();
                 continue;
             }
 
             Movimiento elegido = movimientos.get(opcion - 1);
             if (!elegido.tienePpDisponible()) {
-                System.out.println(elegido.getNombre() + " no tiene PP. Elige otro movimiento.");
+                GameView.mostrarMovimientoSinPpElegirOtro(elegido.getNombre());
                 continue;
             }
 
@@ -336,26 +330,17 @@ public class Battle {
         int ps1 = Math.max(0, pokemonActual1.getModPs());
         int ps2 = Math.max(0, pokemonActual2.getModPs());
         
-        System.out.println("\n┌─────────────────────────────────────────┐");
-        System.out.println("│ " + String.format("%-18s | %-18s", nombre1, nombre2));
-        System.out.println("│ " + String.format("PS: %-14d | PS: %-14d", ps1, ps2));
-        System.out.println("│ " + String.format("Nivel: %-10d | Nivel: %-10d", pokemonActual1.getNivel(), pokemonActual2.getNivel()));
-        System.out.println("│ Estado: " + String.format("%-9s | Estado: %-8s", pokemonActual1.getEstado(), pokemonActual2.getEstado()));
-        System.out.println("└─────────────────────────────────────────┘");
+        GameView.mostrarEstadoBattle(nombre1, nombre2, ps1, ps2, pokemonActual1.getNivel(), pokemonActual2.getNivel(), pokemonActual1.getEstado(), pokemonActual2.getEstado());
     }
 
     private void terminarBattle() {
         battleFinished = true;
-        
-        System.out.println("\n╔════════════════════════════════════════╗");
+
         if (pokemonActual1.estaDebilitado()) {
-            System.out.println("║        ¡" + pokemonActual1.getNombre() + " ha sido derrotado!        ");
-            System.out.println("║ ¡" + jugador2.getNombre() + " ha ganado la batalla!");
+            GameView.mostrarFinalBatallaCaja(pokemonActual1.getNombre(), jugador2.getNombre());
         } else {
-            System.out.println("║        ¡" + pokemonActual2.getNombre() + " ha sido derrotado!        ");
-            System.out.println("║ ¡" + jugador1.getNombre() + " ha ganado la batalla!");
+            GameView.mostrarFinalBatallaCaja(pokemonActual2.getNombre(), jugador1.getNombre());
         }
-        System.out.println("╚════════════════════════════════════════╝\n");
     }
 
     public boolean isBattleFinished() {
@@ -389,21 +374,21 @@ public class Battle {
         }
 
         if (pokemonesVivos.isEmpty()) {
-            System.out.println("\n¡No hay más Pokémon vivos para cambiar!");
+            GameView.mostrarNoHayMasPokemonVivos();
             return null;
         }
 
-        System.out.println("\n" + persona.getNombre() + ", elige un pokémon:");
+        GameView.mostrarElegirPokemonPersona(persona.getNombre());
         for (int i = 0; i < pokemonesVivos.size(); i++) {
             Pokemon p = pokemonesVivos.get(i);
-            System.out.println((i + 1) + ". " + p.getNombre() + " (PS: " + Math.max(0, p.getModPs()) + ")");
+            GameView.mostrarPokemonConPsOpcion(i + 1, p.getNombre(), Math.max(0, p.getModPs()));
         }
 
         int opcion = scanner.nextInt();
         scanner.nextLine();
 
         if (opcion < 1 || opcion > pokemonesVivos.size()) {
-            System.out.println("Opción inválida. Seleccionando primer pokémon...");
+            GameView.mostrarOpcionInvalidaSeleccionaPrimerPokemon();
             return pokemonesVivos.get(0);
         }
 

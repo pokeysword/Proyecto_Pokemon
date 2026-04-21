@@ -13,7 +13,7 @@ public class DamageCalculator {
     public static int calculateDamage(Pokemon atacante, Pokemon defensor, Movimiento movimiento) {
         // Verificar si el atacante está dormido - No puede atacar
         if (atacante.getEstado() == Estado.DORMIDO) {
-            System.out.println(atacante.getNombre() + " está dormido y no puede atacar!");
+            GameView.mostrarDormidoNoAtaca(atacante.getNombre());
             despertarPokemon(atacante);
             return 0;
         }
@@ -21,10 +21,10 @@ public class DamageCalculator {
         // Verificar si el atacante está congelado - 20% de chance de descongelarse y no atacar
         if (atacante.getEstado() == Estado.CONGELADO) {
             if (random.nextInt(100) < 20) {
-                System.out.println(atacante.getNombre() + " se descongeló!");
+                GameView.mostrarSeDescongelo(atacante.getNombre());
                 atacante.setEstado(Estado.NORMAL);
             } else {
-                System.out.println(atacante.getNombre() + " está congelado y no puede atacar!");
+                GameView.mostrarCongeladoNoAtaca(atacante.getNombre());
                 return 0;
             }
         }
@@ -32,7 +32,7 @@ public class DamageCalculator {
         // Verificar si el atacante está paralizado - 25% de chance de no poder atacar
         if (atacante.getEstado() == Estado.PARALIZADO) {
             if (random.nextInt(100) < 25) {
-                System.out.println(atacante.getNombre() + " está paralizado y no puede moverse!");
+                GameView.mostrarParalizadoNoSeMueve(atacante.getNombre());
                 return 0;
             }
         }
@@ -43,7 +43,7 @@ public class DamageCalculator {
 
         // Verificar si la habilidad del DEFENSOR lo hace inmune
         if (defensor.getHabilidad().esInmune(defensor, movimiento)) {
-            System.out.println(defensor.getNombre() + " es inmune a " + movimiento.getNombre() + " gracias a su habilidad " + defensor.getHabilidad().getNombre() + "!");
+            GameView.mostrarInmunePorHabilidad(defensor.getNombre(), movimiento.getNombre(), defensor.getHabilidad().getNombre());
             return 0;
         }
 
@@ -52,7 +52,7 @@ public class DamageCalculator {
         double efectividad = TypeEffectiveness.getTotalEffectiveness(tipoAtaque, defensor.getTipos());
         
         if (efectividad == 0.0) {
-            System.out.println(defensor.getNombre() + " es inmune a " + movimiento.getNombre() + "! ¡No afecta!");
+            GameView.mostrarInmuneMovimiento(defensor.getNombre(), movimiento.getNombre());
             return 0;
         }
         
@@ -78,7 +78,7 @@ public class DamageCalculator {
         // Aplicar reducción de daño si está quemado (solo para movimientos físicos)
         if (atacante.getEstado() == Estado.QUEMADO && movimiento.getCategoria() == Categoria.FISICO) {
             daño = daño * 0.5;
-            System.out.println(atacante.getNombre() + " está quemado y su daño se reduce a la mitad!");
+            GameView.mostrarQuemadoMitadDanio(atacante.getNombre());
         }
 
        
@@ -124,14 +124,14 @@ public class DamageCalculator {
             mensaje.append(" ").append(TypeEffectiveness.getEffectivenessDescription(efectividad));
         }
 
-        System.out.println(mensaje.toString());
+        GameView.mostrarInfoAtaque(mensaje.toString());
     }
 
     
     public static void applyDamage(Pokemon defensor, int daño, Pokemon atacante, Movimiento movimiento) {
         if (daño > 0) {
             defensor.sufrirDaño(daño);
-            System.out.println(defensor.getNombre() + " recibió " + daño + " de daño!");
+            GameView.mostrarDanioRecibido(defensor.getNombre(), daño);
 
         
             defensor.getHabilidad().efectoAlRecibirDaño(atacante, daño, movimiento);
@@ -148,11 +148,11 @@ public class DamageCalculator {
         if (pokemon.getEstado() == Estado.ENVENENADO) {
             int daño = Math.max(1, pokemon.getPS() / 8);
             pokemon.sufrirDaño(daño);
-            System.out.println(pokemon.getNombre() + " recibió " + daño + " de daño por envenenamiento!");
+            GameView.mostrarDanioEnvenenamiento(pokemon.getNombre(), daño);
         } else if (pokemon.getEstado() == Estado.QUEMADO) {
             int daño = Math.max(1, pokemon.getPS() / 8);
             pokemon.sufrirDaño(daño);
-            System.out.println(pokemon.getNombre() + " recibió " + daño + " de daño por quemadura!");
+            GameView.mostrarDanioQuemadura(pokemon.getNombre(), daño);
         }
     }
     
@@ -163,7 +163,7 @@ public class DamageCalculator {
         // 33% de chance de despertar cada turno (1-3 turnos)
         if (random.nextInt(100) < 33) {
             pokemon.setEstado(Estado.NORMAL);
-            System.out.println(pokemon.getNombre() + " se despertó!");
+            GameView.mostrarSeDesperto(pokemon.getNombre());
         }
     }
     

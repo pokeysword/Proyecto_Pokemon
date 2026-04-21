@@ -16,7 +16,7 @@ public class Scald extends Movimiento {
             if(defensor.getEstado()== Estado.NORMAL){
                 if (new Random().nextInt(100) < 30) {
                     defensor.setEstado(Estado.QUEMADO);
-                    System.out.println(defensor.getNombre() + " está quemado!");
+                    GameView.mostrarPokemonQuemado(defensor.getNombre());
                 }
             }
         }
