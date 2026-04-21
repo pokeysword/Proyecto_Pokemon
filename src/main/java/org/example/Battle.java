@@ -1,6 +1,6 @@
 package org.example;
 
-import org.example.movimientos.Movimiento;
+import org.example.movimientos.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -122,6 +122,11 @@ public class Battle {
         pokemonActual1.resetProtection();
         pokemonActual2.resetProtection();
 
+        Pokemon pokemonTurno1 = pokemonActual1;
+        Pokemon pokemonTurno2 = pokemonActual2;
+        boolean pokemon1Ataco = false;
+        boolean pokemon2Ataco = false;
+
         mostrarEstadoBattle();
 
         System.out.println("\n--- TURNO DE " + jugador1.getNombre() + " ---");
@@ -173,36 +178,49 @@ public class Battle {
             if (jugador1Ataca1) {
                 // Ataque de jugador1
                 atacar(pokemonActual1, pokemonActual2, movimiento1);
+                pokemon1Ataco = true;
                 // Manejar cambio inmediato si jugador1 usó VoltSwitch/UTurn
                 manejarCambioInmediato(1);
                 
                 // Ataque de jugador2 (si no está debilitado)
                 if (!pokemonActual2.estaDebilitado()) {
                     atacar(pokemonActual2, pokemonActual1, movimiento2);
+                    pokemon2Ataco = true;
                     // Manejar cambio inmediato si jugador2 usó VoltSwitch/UTurn
                     manejarCambioInmediato(2);
                 }
             } else {
                 // Ataque de jugador2
                 atacar(pokemonActual2, pokemonActual1, movimiento2);
+                pokemon2Ataco = true;
                 // Manejar cambio inmediato si jugador2 usó VoltSwitch/UTurn
                 manejarCambioInmediato(2);
                 
                 // Ataque de jugador1 (si no está debilitado)
                 if (!pokemonActual1.estaDebilitado()) {
                     atacar(pokemonActual1, pokemonActual2, movimiento1);
+                    pokemon1Ataco = true;
                     // Manejar cambio inmediato si jugador1 usó VoltSwitch/UTurn
                     manejarCambioInmediato(1);
                 }
             }
         } else if (movimiento1 != null && !jugador1CambiaPokemon) {
             atacar(pokemonActual1, pokemonActual2, movimiento1);
+            pokemon1Ataco = true;
             manejarCambioInmediato(1);
         } else if (movimiento2 != null && !jugador2CambiaPokemon) {
             atacar(pokemonActual2, pokemonActual1, movimiento2);
+            pokemon2Ataco = true;
             manejarCambioInmediato(2);
         }
-        
+
+        if (!pokemon1Ataco) {
+            pokemonTurno1.setUsoProtectTurnoAnterior(false);
+        }
+        if (!pokemon2Ataco) {
+            pokemonTurno2.setUsoProtectTurnoAnterior(false);
+        }
+
         // Limpiar flinch al final de la ronda
         pokemonActual1.clearFlinch();
         pokemonActual2.clearFlinch();
@@ -215,6 +233,14 @@ public class Battle {
     }
 
     private void atacar(Pokemon atacante, Pokemon defensor, Movimiento movimiento) {
+        if (!movimiento.consumirPp()) {
+            atacante.setUsoProtectTurnoAnterior(false);
+            System.out.println(movimiento.getNombre() + " no tiene PP y no se puede usar.");
+            return;
+        }
+
+        atacante.setUsoProtectTurnoAnterior(movimiento instanceof Protect);
+
         // Mostrar el movimiento usado
         if (movimiento.getCategoria() == Categoria.ESTADO) {
             System.out.println("\n" + atacante.getNombre() + " usa " + movimiento.getNombre() + "!");
@@ -275,25 +301,33 @@ public class Battle {
         System.out.println(nombreJugador + ", elige una acción para " + pokemon.getNombre() + ":");
         for (int i = 0; i < movimientos.size(); i++) {
             Movimiento m = movimientos.get(i);
-            System.out.println((i + 1) + ". " + m.getNombre() + " (Potencia: " + m.getPotencia() + ", Precisión: " + m.getPrecision() + "%)");
+            System.out.println((i + 1) + ". " + m.getNombre() + " (Potencia: " + m.getPotencia() + ", Precisión: " + m.getPrecision() + "%, PP: " + m.getPp() + "/" + m.getPpMax() + ")");
         }
         System.out.println((movimientos.size() + 1) + ". Cambiar Pokémon");
 
-        int opcion = scanner.nextInt();
-        scanner.nextLine();
+        while (true) {
+            int opcion = scanner.nextInt();
+            scanner.nextLine();
 
-        // Si elige cambiar Pokémon
-        if (opcion == movimientos.size() + 1) {
-            System.out.println("CAMBIANDO_POKEMON"); // Marcador especial
-            return null;
+            // Si elige cambiar Pokémon
+            if (opcion == movimientos.size() + 1) {
+                System.out.println("CAMBIANDO_POKEMON"); // Marcador especial
+                return null;
+            }
+
+            if (opcion < 1 || opcion > movimientos.size()) {
+                System.out.println("Opción inválida. Intenta de nuevo.");
+                continue;
+            }
+
+            Movimiento elegido = movimientos.get(opcion - 1);
+            if (!elegido.tienePpDisponible()) {
+                System.out.println(elegido.getNombre() + " no tiene PP. Elige otro movimiento.");
+                continue;
+            }
+
+            return elegido;
         }
-
-        if (opcion < 1 || opcion > movimientos.size()) {
-            System.out.println("Opción inválida. Seleccionando primer movimiento...");
-            return movimientos.get(0);
-        }
-
-        return movimientos.get(opcion - 1);
     }
 
     private void mostrarEstadoBattle() {

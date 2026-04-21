@@ -1,8 +1,8 @@
 package org.example;
 
 
-import org.example.habilidades.Habilidad;
-import org.example.movimientos.Movimiento;
+import org.example.habilidades.*;
+import org.example.movimientos.*;
 
 import java.util.ArrayList;
 
@@ -32,6 +32,7 @@ public class Pokemon {
     private boolean flinch;
     private boolean protegido;
     private boolean needsSwitch;
+    private boolean usoProtectTurnoAnterior;
 
     public Pokemon(String nombre, int nivel, ArrayList<Tipo> tipos, Habilidad habilidad, int ps, int atack, int defense, int sAtack, int sDefense, int speed, ArrayList<Movimiento> movimientos) {
         this.nombre = nombre;
@@ -48,6 +49,7 @@ public class Pokemon {
         this.movimientos = movimientos;
         this.flinch = false;
         this.protegido = false;
+        this.usoProtectTurnoAnterior = false;
         this.ModPs = ps;  // Inicializar ModPs con los PS actuales
         bajarStats=true;
         ModAtack = 0;
@@ -87,6 +89,7 @@ public class Pokemon {
     public void cambio() {
         resetMods();
         needsSwitch = true;
+        usoProtectTurnoAnterior = false;
         System.out.println(nombre + " sale del campo.");
     }
     
@@ -104,6 +107,7 @@ public class Pokemon {
         flinch = false;  // Limpiar flinch
         protegido = false;  // Limpiar protección
         needsSwitch = false;  // Limpiar bandera de cambio
+        usoProtectTurnoAnterior = false;
     }
     
     /**
@@ -114,6 +118,7 @@ public class Pokemon {
         flinch = false;  // Limpiar flinch
         protegido = false;  // Limpiar protección
         needsSwitch = false;  // Limpiar bandera de cambio
+        usoProtectTurnoAnterior = false;
         // NO restauramos ModPs - mantiene el daño recibido
     }
     public String getNombre() {
@@ -263,6 +268,14 @@ public class Pokemon {
 
     public void resetProtection() {
         this.protegido = false;
+    }
+
+    public boolean usoProtectTurnoAnterior() {
+        return usoProtectTurnoAnterior;
+    }
+
+    public void setUsoProtectTurnoAnterior(boolean usoProtectTurnoAnterior) {
+        this.usoProtectTurnoAnterior = usoProtectTurnoAnterior;
     }
 
     public ArrayList<Movimiento> getMovimientos() {

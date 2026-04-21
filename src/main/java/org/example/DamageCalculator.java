@@ -1,7 +1,6 @@
 package org.example;
 
-import org.example.movimientos.Movimiento;
-import java.util.ArrayList;
+import org.example.movimientos.*;
 import java.util.Random;
 
 

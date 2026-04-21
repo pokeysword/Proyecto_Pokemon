@@ -12,6 +12,7 @@ public abstract class Movimiento {
     protected int potencia;
     protected int precision;
     protected int pp;
+    protected int ppMax;
     protected int multcrit;
 
     public Movimiento(String nombre, int prioridad, Tipo tipo, Categoria categoria, int potencia, int precision, int pp, int multcrit) {
@@ -22,6 +23,7 @@ public abstract class Movimiento {
         this.potencia = potencia;
         this.precision = precision;
         this.pp = pp;
+        this.ppMax = pp;
         this.multcrit=multcrit;
     }
 
@@ -53,6 +55,22 @@ public abstract class Movimiento {
 
     public int getPp() {
         return pp;
+    }
+
+    public int getPpMax() {
+        return ppMax;
+    }
+
+    public boolean tienePpDisponible() {
+        return pp > 0;
+    }
+
+    public boolean consumirPp() {
+        if (pp <= 0) {
+            return false;
+        }
+        pp--;
+        return true;
     }
 
     public int getPrioridad() {
