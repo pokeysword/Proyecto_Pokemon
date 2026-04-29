@@ -8,11 +8,6 @@ public class GameView {
     public static void mostrarLinea(String mensaje) {
         System.out.println(mensaje);
     }
-
-    public static void mostrar(String mensaje) {
-        System.out.print(mensaje);
-    }
-
     public static void saltoLinea() {
         System.out.println();
     }
@@ -144,7 +139,7 @@ public class GameView {
         mostrarLinea("¡Equipo confirmado! Preparándose para la batalla...");
     }
     public void seleccionarnombre(Persona persona) {
-        mostrar("¿Cuál es tu nombre, entrenador?\n ");
+        mostrarLinea("¿Cuál es tu nombre, entrenador?\n ");
         String nombre = scanner.nextLine();
         persona.setNombre(nombre);
         mostrarLinea("¡Suerte, " + persona.getNombre() + "!");

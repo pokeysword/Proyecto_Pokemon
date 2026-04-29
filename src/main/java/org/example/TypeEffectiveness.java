@@ -1,11 +1,10 @@
 package org.example;
 
 import java.util.HashMap;
-import java.util.Map;
 
 
 public class TypeEffectiveness {
-    private static final Map<String, Double> EFFECTIVENESS_MAP = new HashMap<>();
+    private static final HashMap<String, Double> EFFECTIVENESS_MAP = new HashMap<>();
 
     static {
         
