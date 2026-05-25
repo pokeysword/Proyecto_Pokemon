@@ -1,0 +1,25 @@
+# Battle log
+# Se actualiza al jugar una partida.
+=== Battle start 2026-05-25 13:16:10 ===
+Players: Anxo vs Rival
+Lead: Garchomp vs Garchomp
+Turno 1 | Anxo(Garchomp): Earthquake | Rival(Garchomp): Earthquake | PS 109 - 110
+Turno 2 | Anxo(Garchomp): Earthquake | Rival(Garchomp): Earthquake | PS 39 - 39
+Turno 3 | Anxo(Garchomp): Earthquake | Rival(Garchomp): Earthquake | PS 32 - 0
+Turno 4 | Anxo(Garchomp): Earthquake | Rival(Milotic): Scald | PS 0 - 140
+Turno 5 | Anxo(Milotic): Scald | Rival(Milotic): Scald | PS 186 - 125
+Turno 6 | Anxo(Milotic): Scald | Rival(Milotic): Scald | PS 145 - 110
+Turno 7 | Anxo(Milotic): Scald | Rival(Milotic): Scald | PS 105 - 95
+Turno 8 | Anxo(Milotic): Scald | Rival(Milotic): Scald | PS 66 - 80
+Turno 9 | Anxo(Milotic): Scald | Rival(Milotic): Scald | PS 27 - 40
+Turno 10 | Anxo(Milotic): Scald | Rival(Milotic): Scald | PS 27 - 0
+Turno 11 | Anxo(Milotic): Scald | Rival(Metagross): Meteor Mash | PS 0 - 187
+Turno 12 | Anxo(Milotic): Scald | Rival(Metagross): Meteor Mash | PS 174 - 146
+Turno 13 | Anxo(Milotic): Scald | Rival(Metagross): Meteor Mash | PS 149 - 84
+Turno 14 | Anxo(Milotic): Scald | Rival(Metagross): Meteor Mash | PS 121 - 40
+Turno 15 | Anxo(Milotic): Ice Beam | Rival(Metagross): Zen Headbutt | PS 98 - 0
+Turno 16 | Anxo(Milotic): Ice Beam | Rival(Togekiss): Dazzling Gleam | PS 65 - 114
+Turno 17 | Anxo(Milotic): Ice Beam | Rival(Togekiss): Dazzling Gleam | PS 65 - 35
+Turno 18 | Anxo(Milotic): Ice Beam | Rival(Togekiss): Dazzling Gleam | PS 65 - 0
+Ganador: Anxo
+=== Battle end ===

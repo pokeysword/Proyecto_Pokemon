@@ -1,15 +1,23 @@
 package org.example;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.Scanner;
+
+import org.example.data.PokemonDataException;
+import org.example.data.PokemonRepository;
 
 public class Persona {
     private String nombre;
     private ArrayList<Pokemon> listaPokemon;
+    private Map<Integer, Pokemon> catalogoPokemon;
 
     public Persona() {
         this.nombre = "Entrenador";
         this.listaPokemon = new ArrayList<>();
+        this.catalogoPokemon = new LinkedHashMap<>();
+        cargarCatalogoPokemon();
     }
 
 
@@ -31,15 +39,20 @@ public class Persona {
             switch (option) {
                 case 1:
                     if (cont < 4) {
-                        GameView.mostrarMenuElegirPokemon();
+                        if (catalogoPokemon.isEmpty()) {
+                            GameView.mostrarErrorCargaPokemon("No hay datos disponibles.");
+                            break;
+                        }
+                        GameView.mostrarMenuElegirPokemon(catalogoPokemon);
                         numero = scanner.nextInt();
                         scanner.nextLine();
-                        
+
                         // Validar que el número esté en rango
-                        if (numero >= 1 && numero <= 10) {
-                            agregarPokemon(numero);
-                            cont++;
-                            GameView.mostrarPokemonAgregado(cont);
+                        if (catalogoPokemon.containsKey(numero)) {
+                            if (agregarPokemon(numero)) {
+                                cont++;
+                                GameView.mostrarPokemonAgregado(cont);
+                            }
                         } else {
                             GameView.mostrarPokemonInexistente();
                         }
@@ -65,41 +78,23 @@ public class Persona {
         return listaPokemon;
     }
 
-    private void agregarPokemon(int numero) {
-        switch (numero) {
-            case 1:
-                listaPokemon.add(Main.RotomWash.crearCopia());
-                break;
-            case 2:
-                listaPokemon.add(Main.Garchomp.crearCopia());
-                break;
-            case 3:
-                listaPokemon.add(Main.Togekiss.crearCopia());
-                break;
-            case 4:
-                listaPokemon.add(Main.Metagross.crearCopia());
-                break;
-            case 5:
-                listaPokemon.add(Main.Milotic.crearCopia());
-                break;
-            case 6:
-                listaPokemon.add(Main.Arcanine.crearCopia());
-                break;
-            case 7:
-                listaPokemon.add(Main.Amoonguss.crearCopia());
-                break;
-            case 8:
-                listaPokemon.add(Main.Dragapult.crearCopia());
-                break;
-            case 9:
-                listaPokemon.add(Main.Excadrill.crearCopia());
-                break;
-            case 10:
-                listaPokemon.add(Main.Sylveon.crearCopia());
-                break;
-            default:
-                GameView.mostrarNoElegistePokemon();
-                break;
+    private boolean agregarPokemon(int numero) {
+        Pokemon base = catalogoPokemon.get(numero);
+        if (base == null) {
+            GameView.mostrarPokemonInexistente();
+            return false;
+        }
+        listaPokemon.add(base.crearCopia());
+        return true;
+    }
+
+    private void cargarCatalogoPokemon() {
+        PokemonRepository repository = new PokemonRepository();
+        try {
+            catalogoPokemon = repository.cargarPokemon(Main.getCatalogoPokemon());
+        } catch (PokemonDataException ex) {
+            GameView.mostrarErrorCargaPokemon(ex.getMessage());
+            catalogoPokemon = Main.getCatalogoPorDefecto();
         }
     }
 

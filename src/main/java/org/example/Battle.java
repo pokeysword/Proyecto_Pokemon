@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.data.BattleLogger;
 import org.example.movimientos.*;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -10,11 +11,13 @@ public class Battle {
     private Pokemon pokemonActual1;
     private Pokemon pokemonActual2;
     private boolean battleFinished;
+    private final BattleLogger battleLogger;
 
     public Battle(Persona jugador1, Persona jugador2) {
         this.jugador1 = jugador1;
         this.jugador2 = jugador2;
         this.battleFinished = false;
+        this.battleLogger = new BattleLogger("battle-log.txt");
     }
 
     public void iniciarBattle() {
@@ -41,6 +44,8 @@ public class Battle {
 
         pokemonActual1 = jugador1.getListaPokemon().get(0);
         pokemonActual2 = jugador2.getListaPokemon().get(0);
+
+        battleLogger.logInicio(jugador1.getNombre(), jugador2.getNombre(), pokemonActual1, pokemonActual2);
         
         // Preparar pokémons para la batalla
         pokemonActual1.prepararParaBatalla();
@@ -65,7 +70,7 @@ public class Battle {
 
             GameView.mostrarSeparadorTurno(turno);
 
-            ejecutarTurno();
+            ejecutarTurno(turno);
             turno++;
 
             // Cambios de pokémon
@@ -110,7 +115,7 @@ public class Battle {
         scanner.close();
     }
 
-    private void ejecutarTurno() {
+    private void ejecutarTurno(int turno) {
         Scanner scanner = new Scanner(System.in);
 
         pokemonActual1.resetProtection();
@@ -220,10 +225,24 @@ public class Battle {
         pokemonActual2.clearFlinch();
         
         mostrarEstadoBattle();
-        
+
+        String accion1 = construirAccion(movimiento1, jugador1CambiaPokemon);
+        String accion2 = construirAccion(movimiento2, jugador2CambiaPokemon);
+        battleLogger.logTurno(turno, jugador1.getNombre(), jugador2.getNombre(), pokemonActual1, pokemonActual2, accion1, accion2);
+
         if (pokemonActual1.estaDebilitado() && pokemonActual2.estaDebilitado()) {
             terminarBattle();
         }
+    }
+
+    private String construirAccion(Movimiento movimiento, boolean cambioPokemon) {
+        if (cambioPokemon) {
+            return "Cambio";
+        }
+        if (movimiento == null) {
+            return "Sin accion";
+        }
+        return movimiento.getNombre();
     }
 
     private void atacar(Pokemon atacante, Pokemon defensor, Movimiento movimiento) {
@@ -257,7 +276,7 @@ public class Battle {
     
     private void manejarCambioInmediato(int jugador) {
         Scanner scanner = new Scanner(System.in);
-        
+
         if (jugador == 1) {
             // Verificar si pokemonActual1 pidió cambio
             if (pokemonActual1.needsSwitch() && hayPokemonVivo(jugador1)) {
@@ -335,6 +354,17 @@ public class Battle {
 
     private void terminarBattle() {
         battleFinished = true;
+
+        String ganador;
+        if (pokemonActual1.estaDebilitado() && pokemonActual2.estaDebilitado()) {
+            ganador = "Empate";
+        } else if (pokemonActual1.estaDebilitado()) {
+            ganador = jugador2.getNombre();
+        } else {
+            ganador = jugador1.getNombre();
+        }
+
+        battleLogger.logFin(ganador);
 
         if (pokemonActual1.estaDebilitado()) {
             GameView.mostrarFinalBatallaCaja(pokemonActual1.getNombre(), jugador2.getNombre());

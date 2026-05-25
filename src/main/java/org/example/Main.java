@@ -1,8 +1,9 @@
 package org.example;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import org.example.habilidades.*;
 import org.example.movimientos.*;
@@ -19,6 +20,8 @@ public class Main {
     static Pokemon Dragapult;
     static Pokemon Excadrill;
     static Pokemon Sylveon;
+    private static Map<String, Pokemon> catalogoPokemon;
+    private static Map<Integer, Pokemon> catalogoPorDefecto;
 
     static void main(String[] args) {
         // Inicializar todos los Pokémon
@@ -35,22 +38,22 @@ public class Main {
 
         // Crear rival automáticamente
         Persona rival = crearRival();
-        
+
         // Iniciar batalla
         Battle batalla = new Battle(jugador, rival);
         batalla.iniciarBattle();
     }
-    
+
     static Persona crearRival() {
         Persona rival = new Persona();
         rival.setNombre("Rival");
-        
+
         // Agregar pokémons aleatorios al rival
         rival.getListaPokemon().add(Garchomp);
         rival.getListaPokemon().add(Milotic);
         rival.getListaPokemon().add(Metagross);
         rival.getListaPokemon().add(Togekiss);
-        
+
         GameView.mostrarRivalFormado();
         return rival;
     }
@@ -161,5 +164,39 @@ public class Main {
         movimientosSylveon.add(new CalmMind());
         movimientosSylveon.add(new Protect());
         Sylveon = new Pokemon("Sylveon", 50, tiposSylveon, new Pixilate(), 185, 185, 115, 85, 105, 154, movimientosSylveon);
+
+        construirCatalogo();
+    }
+
+    private static void construirCatalogo() {
+        Map<String, Pokemon> porNombre = new LinkedHashMap<>();
+        Map<Integer, Pokemon> porId = new LinkedHashMap<>();
+
+        registrarPokemon(porNombre, porId, 1, RotomWash);
+        registrarPokemon(porNombre, porId, 2, Garchomp);
+        registrarPokemon(porNombre, porId, 3, Togekiss);
+        registrarPokemon(porNombre, porId, 4, Metagross);
+        registrarPokemon(porNombre, porId, 5, Milotic);
+        registrarPokemon(porNombre, porId, 6, Arcanine);
+        registrarPokemon(porNombre, porId, 7, Amoonguss);
+        registrarPokemon(porNombre, porId, 8, Dragapult);
+        registrarPokemon(porNombre, porId, 9, Excadrill);
+        registrarPokemon(porNombre, porId, 10, Sylveon);
+
+        catalogoPokemon = Collections.unmodifiableMap(porNombre);
+        catalogoPorDefecto = Collections.unmodifiableMap(porId);
+    }
+
+    private static void registrarPokemon(Map<String, Pokemon> porNombre, Map<Integer, Pokemon> porId, int id, Pokemon pokemon) {
+        porNombre.put(pokemon.getNombre(), pokemon);
+        porId.put(id, pokemon);
+    }
+
+    public static Map<String, Pokemon> getCatalogoPokemon() {
+        return catalogoPokemon;
+    }
+
+    public static Map<Integer, Pokemon> getCatalogoPorDefecto() {
+        return catalogoPorDefecto;
     }
 }

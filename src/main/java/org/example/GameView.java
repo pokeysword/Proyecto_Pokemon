@@ -1,5 +1,6 @@
 package org.example;
 
+import java.util.Map;
 import java.util.Scanner;
 
 public class GameView {
@@ -50,9 +51,16 @@ public class GameView {
     }
 
     public static void mostrarMenuCrearEquipo() { mostrarLinea("\n1. Elegir pokemon\n2. Ver equipo\n3. Combatir con el equipo seleccionado"); }
-    public static void mostrarMenuElegirPokemon() { mostrarLinea("\nElige un pokemon:\n1.RotomWash\n2.Garchomp\n3.Togekiss\n4.Metagross\n5.Milotic\n6.Arcanine\n7.Amoonguss\n8.Dragapult\n9.Excadrill\n10.Sylveon"); }
+    public static void mostrarMenuElegirPokemon(Map<Integer, Pokemon> disponibles) {
+        StringBuilder builder = new StringBuilder();
+        builder.append("\nElige un pokemon:");
+        for (Map.Entry<Integer, Pokemon> entry : disponibles.entrySet()) {
+            builder.append("\n").append(entry.getKey()).append(".").append(entry.getValue().getNombre());
+        }
+        mostrarLinea(builder.toString());
+    }
     public static void mostrarPokemonAgregado(int cont) { mostrarLinea("✓ Pokémon agregado. (" + cont + "/4)"); }
-    public static void mostrarPokemonInexistente() { mostrarLinea("✗ ¡Ese Pokémon no existe! Elige un número del 1 al 10."); }
+    public static void mostrarPokemonInexistente() { mostrarLinea("✗ ¡Ese Pokémon no existe! Elige un número válido."); }
     public static void mostrarEquipoCompleto() { mostrarLinea("✓ Equipo completo (4/4)"); }
     public static void mostrarNecesitaPokemon(int cont) { mostrarLinea("✗ Necesitas al menos 1 Pokémon para combatir. Tienes " + cont); }
     public static void mostrarOpcionNoValida() { mostrarLinea("✗ Opción no válida"); }
@@ -114,6 +122,9 @@ public class GameView {
     public static void mostrarElegirPokemonPersona(String nombrePersona) { mostrarLinea("\n" + nombrePersona + ", elige un pokémon:"); }
     public static void mostrarPokemonConPsOpcion(int idx, String nombre, int ps) { mostrarLinea(idx + ". " + nombre + " (PS: " + ps + ")"); }
     public static void mostrarOpcionInvalidaSeleccionaPrimerPokemon() { mostrarLinea("Opción inválida. Seleccionando primer pokémon..."); }
+    public static void mostrarErrorCargaPokemon(String mensaje) {
+        mostrarLinea("✗ Error al cargar datos de pokemon: " + mensaje);
+    }
 
     public GameView() {
         scanner = new Scanner(System.in);
