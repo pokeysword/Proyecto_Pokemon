@@ -18,6 +18,13 @@ public class PostgresConnectionFactory {
         this.schema = validateSchema(config.schema);
     }
 
+    public PostgresConnectionFactory(String url, String user, String password, String schema) throws PokemonDataException {
+        this.url = url;
+        this.user = user;
+        this.password = password;
+        this.schema = validateSchema(schema);
+    }
+
     public Connection open() throws SQLException {
         Connection connection = DriverManager.getConnection(url, user, password);
         if (schema != null && !schema.isEmpty()) {

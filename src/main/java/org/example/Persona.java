@@ -8,7 +8,6 @@ import java.util.Scanner;
 import org.example.data.DbConfig;
 import org.example.data.PokemonDaoPostgres;
 import org.example.data.PokemonDataException;
-import org.example.data.PokemonRepository;
 import org.example.data.PostgresConnectionFactory;
 
 public class Persona {
@@ -96,18 +95,9 @@ public class Persona {
             DbConfig config = DbConfig.load();
             PokemonDaoPostgres dao = new PokemonDaoPostgres(new PostgresConnectionFactory(config));
             catalogoPokemon = dao.cargarPokemon();
-            return;
         } catch (PokemonDataException ex) {
             GameView.mostrarErrorCargaPokemon(ex.getMessage());
             System.exit(1);
-        }
-
-        PokemonRepository repository = new PokemonRepository();
-        try {
-            catalogoPokemon = repository.cargarPokemon(Main.getCatalogoPokemon());
-        } catch (PokemonDataException ex) {
-            GameView.mostrarErrorCargaPokemon(ex.getMessage());
-            catalogoPokemon = Main.getCatalogoPorDefecto();
         }
     }
 
