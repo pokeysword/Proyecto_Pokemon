@@ -37,22 +37,29 @@ public class Main {
         gameView.iniciarSeleccionEquipo(jugador);
 
         // Crear rival automáticamente
-        Persona rival = crearRival();
+        Persona rival = crearRival(jugador);
 
         // Iniciar batalla
         Battle batalla = new Battle(jugador, rival);
         batalla.iniciarBattle();
     }
 
-    static Persona crearRival() {
+    static Persona crearRival(Persona jugador) {
         Persona rival = new Persona();
         rival.setNombre("Rival");
 
-        // Agregar pokémons aleatorios al rival
-        rival.getListaPokemon().add(Garchomp);
-        rival.getListaPokemon().add(Milotic);
-        rival.getListaPokemon().add(Metagross);
-        rival.getListaPokemon().add(Togekiss);
+        Map<Integer, Pokemon> catalogo = jugador.getCatalogoPokemon();
+        if (catalogo.isEmpty()) {
+            GameView.mostrarErrorCargaPokemon("No hay datos disponibles para crear el rival.");
+            return rival;
+        }
+
+        for (Pokemon base : catalogo.values()) {
+            if (rival.getListaPokemon().size() >= 4) {
+                break;
+            }
+            rival.getListaPokemon().add(base.crearCopia());
+        }
 
         GameView.mostrarRivalFormado();
         return rival;

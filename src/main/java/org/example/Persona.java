@@ -5,8 +5,11 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+import org.example.data.DbConfig;
+import org.example.data.PokemonDaoPostgres;
 import org.example.data.PokemonDataException;
 import org.example.data.PokemonRepository;
+import org.example.data.PostgresConnectionFactory;
 
 public class Persona {
     private String nombre;
@@ -89,6 +92,16 @@ public class Persona {
     }
 
     private void cargarCatalogoPokemon() {
+        try {
+            DbConfig config = DbConfig.load();
+            PokemonDaoPostgres dao = new PokemonDaoPostgres(new PostgresConnectionFactory(config));
+            catalogoPokemon = dao.cargarPokemon();
+            return;
+        } catch (PokemonDataException ex) {
+            GameView.mostrarErrorCargaPokemon(ex.getMessage());
+            System.exit(1);
+        }
+
         PokemonRepository repository = new PokemonRepository();
         try {
             catalogoPokemon = repository.cargarPokemon(Main.getCatalogoPokemon());
@@ -108,6 +121,10 @@ public class Persona {
 
     public ArrayList<Pokemon> getListaPokemon() {
         return listaPokemon;
+    }
+
+    public Map<Integer, Pokemon> getCatalogoPokemon() {
+        return catalogoPokemon;
     }
 
     public String getNombre() {

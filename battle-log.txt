@@ -23,3 +23,47 @@ Turno 17 | Anxo(Milotic): Ice Beam | Rival(Togekiss): Dazzling Gleam | PS 65 - 3
 Turno 18 | Anxo(Milotic): Ice Beam | Rival(Togekiss): Dazzling Gleam | PS 65 - 0
 Ganador: Anxo
 === Battle end ===
+=== Battle start 2026-05-26 13:15:33 ===
+Players: Anxo vs Rival
+Lead: RotomWash vs Garchomp
+Turno 1 | Anxo(RotomWash): Hydro Pump | Rival(Garchomp): Earthquake | PS 157 - 68
+Turno 2 | Anxo(RotomWash): Hydro Pump | Rival(Garchomp): Earthquake | PS 157 - 0
+Turno 3 | Anxo(RotomWash): Hydro Pump | Rival(Milotic): Scald | PS 140 - 181
+Turno 4 | Anxo(RotomWash): Hydro Pump | Rival(Milotic): Scald | PS 124 - 161
+Turno 5 | Anxo(RotomWash): Hydro Pump | Rival(Milotic): Scald | PS 78 - 142
+Turno 6 | Anxo(RotomWash): U-turn | Rival(Milotic): Ice Beam | PS 38 - 131
+Turno 7 | Anxo(RotomWash): U-turn | Rival(Milotic): Ice Beam | PS 0 - 115
+Ganador: Rival
+=== Battle end ===
+=== Battle start 2026-05-26 13:30:35 ===
+Players: Henry vs Rival
+Lead: Sylveon vs Garchomp
+Turno 1 | Henry(Sylveon): Hyper Voice | Rival(Garchomp): Rock Slide | PS 134 - 88
+Turno 2 | Henry(Sylveon): Hyper Voice | Rival(Garchomp): Earthquake | PS 134 - 0
+Turno 3 | Henry(Sylveon): Mystical Fire | Rival(Metagross): Meteor Mash | PS 21 - 139
+Turno 4 | Henry(Sylveon): Mystical Fire | Rival(Metagross): Meteor Mash | PS 0 - 85
+Turno 5 | Henry(Arcanine): Flare Blitz | Rival(Metagross): Meteor Mash | PS 181 - 0
+Turno 6 | Henry(Arcanine): Flare Blitz | Rival(Milotic): Scald | PS 78 - 174
+Turno 7 | Henry(Arcanine): Flare Blitz | Rival(Milotic): Scald | PS 0 - 160
+Turno 8 | Henry(Excadrill): Iron Head | Rival(Milotic): Scald | PS 92 - 137
+Turno 9 | Henry(Excadrill): Iron Head | Rival(Milotic): Scald | PS 0 - 125
+Turno 10 | Henry(Milotic): Scald | Rival(Milotic): Scald | PS 186 - 109
+Turno 11 | Henry(Milotic): Scald | Rival(Milotic): Scald | PS 170 - 94
+Turno 12 | Henry(Milotic): Scald | Rival(Milotic): Scald | PS 154 - 70
+Turno 13 | Henry(Milotic): Scald | Rival(Milotic): Scald | PS 139 - 55
+Turno 14 | Henry(Milotic): Scald | Rival(Milotic): Scald | PS 98 - 15
+Turno 15 | Henry(Milotic): Scald | Rival(Milotic): Scald | PS 98 - 0
+Turno 16 | Henry(Milotic): Scald | Rival(Togekiss): Air Slash | PS 40 - 157
+Turno 17 | Henry(Milotic): Scald | Rival(Togekiss): Air Slash | PS 0 - 157
+Ganador: Rival
+=== Battle end ===
+=== Battle start 2026-05-26 13:38:02 ===
+Players: anxo vs Rival
+=== Battle start 2026-05-26 13:41:55 ===
+Players: Anxo vs Rival
+Lead: Garchomp vs RotomWash
+Turno 1 | Anxo(Garchomp): Earthquake | Rival(RotomWash): Hydro Pump | PS 65 - 157
+Turno 2 | Anxo(Garchomp): Dragon Claw | Rival(Garchomp): U-turn | PS 44 - 183
+Turno 3 | Anxo(Garchomp): Earthquake | Rival(Garchomp): Earthquake | PS 0 - 81
+Ganador: Rival
+=== Battle end ===

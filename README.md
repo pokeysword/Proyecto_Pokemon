@@ -45,6 +45,25 @@ Para poder compilar y ejecutar este proyecto en tu entorno local, necesitarás t
    ```
    *(Nota: Sustituye `TuClasePrincipal` por el nombre real de tu clase con el método `main`)*
 
+## 🐘 Base de Datos (PostgreSQL)
+
+El proyecto puede cargar el catálogo de Pokémon desde PostgreSQL. El script SQL está en `sql/pokemon_schema.sql`.
+
+### Configuración rápida
+
+1. Crea la base de datos y el esquema ejecutando el SQL:
+   ```sql
+   -- En psql
+   \i sql/pokemon_schema.sql
+   ```
+2. Define las credenciales en `.env` (raíz del proyecto):
+   - `URL`
+   - `USER`
+   - `PASSWORD`
+   - `SCHEMA` (opcional, por defecto `pokemon`)
+
+Si la conexión falla, el juego usa el catálogo local de `pokemons.txt` como respaldo.
+
 ## 📝 Notas Adicionales
 
 * Si utilizas IntelliJ IDEA, el proyecto ya cuenta con el directorio `.idea`, por lo que puedes abrirlo directamente desde el IDE y detectará automáticamente la configuración de Maven.

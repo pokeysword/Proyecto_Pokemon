@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CopilotDiffPersistence">
+    <option name="pendingDiffs">
+      <map>
+        <entry key="/db (snapshot).properties">
+          <value>
+            <PendingDiffInfo>
+              <option name="filePath" value="/db (snapshot).properties" />
+              <option name="originalContent" value="db.url=jdbc:postgresql://localhost:5432/proyecto_pokemon&#10;# Deprecated. Configuration now comes from .env or environment variables.&#10;" />
+              <option name="updatedContent" value="# Deprecated. Configuration now comes from .env or environment variables." />
+            </PendingDiffInfo>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

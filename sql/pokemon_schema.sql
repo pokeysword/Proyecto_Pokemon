@@ -1,6 +1,3 @@
-CREATE DATABASE proyecto_pokemon;
-
-\c proyecto_pokemon
 
 CREATE SCHEMA IF NOT EXISTS pokemon;
 SET search_path TO pokemon;
