@@ -1,6 +1,5 @@
 package org.example.habilidades;
 import org.example.Pokemon;
-import org.example.Tipo;
 import org.example.movimientos.Movimiento;
 
 public class SereneGrace extends Habilidad {
