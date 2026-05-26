@@ -1,15 +1,6 @@
 package org.example.data;
 
-import org.example.habilidades.ClearBody;
-import org.example.habilidades.Competitive;
-import org.example.habilidades.Habilidad;
-import org.example.habilidades.Intimidacion;
-import org.example.habilidades.Levitate;
-import org.example.habilidades.MoldBreaker;
-import org.example.habilidades.Pixilate;
-import org.example.habilidades.Regenerator;
-import org.example.habilidades.RoughSkin;
-import org.example.habilidades.SereneGrace;
+import org.example.habilidades.*;
 
 public final class HabilidadFactory {
     private HabilidadFactory() {

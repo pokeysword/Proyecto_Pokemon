@@ -1,33 +1,6 @@
 package org.example.data;
 
-import org.example.movimientos.AirSlash;
-import org.example.movimientos.CalmMind;
-import org.example.movimientos.DazzlingGleam;
-import org.example.movimientos.DragonClaw;
-import org.example.movimientos.DragonPulse;
-import org.example.movimientos.Earthquake;
-import org.example.movimientos.EnergyBall;
-import org.example.movimientos.FlareBlitz;
-import org.example.movimientos.HyperVoice;
-import org.example.movimientos.HydroPump;
-import org.example.movimientos.IceBeam;
-import org.example.movimientos.IronHead;
-import org.example.movimientos.MeteorMash;
-import org.example.movimientos.Movimiento;
-import org.example.movimientos.MysticalFire;
-import org.example.movimientos.Protect;
-import org.example.movimientos.RagePowder;
-import org.example.movimientos.Recover;
-import org.example.movimientos.RockSlide;
-import org.example.movimientos.Scald;
-import org.example.movimientos.ShadowBall;
-import org.example.movimientos.Snarl;
-import org.example.movimientos.Spore;
-import org.example.movimientos.SwordDance;
-import org.example.movimientos.UTurn;
-import org.example.movimientos.VoltSwitch;
-import org.example.movimientos.WillOWisp;
-import org.example.movimientos.ZenHeadbutt;
+import org.example.movimientos.*;
 
 public final class MovimientoFactory {
     private MovimientoFactory() {

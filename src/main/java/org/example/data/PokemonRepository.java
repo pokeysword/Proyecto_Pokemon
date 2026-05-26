@@ -13,10 +13,6 @@ import java.util.Map;
 public class PokemonRepository {
 	private static final String DEFAULT_RESOURCE = "pokemons.txt";
 
-	public Map<Integer, String> cargarNombresPokemon() throws PokemonDataException {
-		return cargarNombresPokemon(DEFAULT_RESOURCE);
-	}
-
 	public Map<Integer, Pokemon> cargarPokemon(Map<String, Pokemon> catalogo) throws PokemonDataException {
 		Map<Integer, String> nombres = cargarNombresPokemon(DEFAULT_RESOURCE);
 		Map<Integer, Pokemon> resultado = new LinkedHashMap<>();
