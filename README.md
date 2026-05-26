@@ -11,18 +11,17 @@
 
 El repositorio cuenta con la siguiente estructura principal:
 
-*   `src/`: Directorio que contiene el código fuente de la aplicación en Java.
-*   `pom.xml`: Archivo de configuración de Maven donde se definen las propiedades y versiones del proyecto (Java 25).
-*   **Archivos de Datos:**
-    *   `pokemons.txt`: Contiene información/datos de diferentes Pokémon.
-    *   `Movimientos.txt`: Lista o base de datos de los movimientos de los Pokémon.
-    *   `Rotom-Wash.txt`: Archivo de configuración o estadísticas específicas para la forma Lavadora de Rotom.
+*   `src/main/java/`: Código fuente de la aplicación.
+*   `src/main/resources/pokemons.txt`: Catálogo local de nombres de Pokémon.
+*   `sql/pokemon_schema.sql`: Script de creación de la base de datos.
+*   `battle-log.txt`: Registro de combates (se actualiza al jugar).
+*   `pom.xml`: Configuración de Maven.
 
 ## 🚀 Requisitos Previos
 
 Para poder compilar y ejecutar este proyecto en tu entorno local, necesitarás tener instalado:
 
-1.  **Java Development Kit (JDK)** versión 25 o superior.
+1.  **Java Development Kit (JDK)** (ver versión en `pom.xml`).
 2.  **Apache Maven** instalado en tu sistema.
 
 ## ⚙️ Instalación y Uso
@@ -47,7 +46,7 @@ Para poder compilar y ejecutar este proyecto en tu entorno local, necesitarás t
 
 ## 🐘 Base de Datos (PostgreSQL)
 
-El proyecto puede cargar el catálogo de Pokémon desde PostgreSQL. El script SQL está en `sql/pokemon_schema.sql`.
+El proyecto carga el catálogo de Pokémon desde PostgreSQL. El script SQL está en `sql/pokemon_schema.sql`.
 
 ### Configuración rápida
 
@@ -57,12 +56,12 @@ El proyecto puede cargar el catálogo de Pokémon desde PostgreSQL. El script SQ
    \i sql/pokemon_schema.sql
    ```
 2. Define las credenciales en `.env` (raíz del proyecto):
-   - `URL`
-   - `USER`
-   - `PASSWORD`
-   - `SCHEMA` (opcional, por defecto `pokemon`)
+   - `DB_URL` o `URL`
+   - `DB_USER` o `USER`
+   - `DB_PASSWORD` o `PASSWORD`
+   - `DB_SCHEMA` o `SCHEMA` (opcional, por defecto `pokemon`)
 
-Si la conexión falla, el juego usa el catálogo local de `pokemons.txt` como respaldo.
+Si la conexión falla, actualmente se muestra un error y el juego se cierra.
 
 ## 📝 Notas Adicionales
 
