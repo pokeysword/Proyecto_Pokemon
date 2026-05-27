@@ -5,6 +5,9 @@ import java.util.Map;
 public class Main {
 
     static void main(String[] args) {
+        AudioManager audioManager = new AudioManager();
+        audioManager.playLoop("/audio/center.wav");
+
         // Crear la vista
         GameView gameView = new GameView();
         gameView.showWelcome();
@@ -18,7 +21,7 @@ public class Main {
         Persona rival = crearRival(jugador);
 
         // Iniciar batalla
-        Battle batalla = new Battle(jugador, rival);
+        Battle batalla = new Battle(jugador, rival, audioManager);
         batalla.iniciarBattle();
     }
 

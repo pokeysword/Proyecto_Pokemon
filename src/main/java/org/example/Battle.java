@@ -12,15 +12,19 @@ public class Battle {
     private Pokemon pokemonActual2;
     private boolean battleFinished;
     private final BattleLogger battleLogger;
+    private final AudioManager audioManager;
 
-    public Battle(Persona jugador1, Persona jugador2) {
+    public Battle(Persona jugador1, Persona jugador2, AudioManager audioManager) {
         this.jugador1 = jugador1;
         this.jugador2 = jugador2;
         this.battleFinished = false;
         this.battleLogger = new BattleLogger("battle-log.txt");
+        this.audioManager = audioManager;
     }
 
     public void iniciarBattle() {
+        audioManager.playLoop("/audio/battle.wav");
+
         // Validar que ambos jugadores tengan Pokémon
         if (jugador1.getListaPokemon().isEmpty() || jugador2.getListaPokemon().isEmpty()) {
             GameView.mostrarBatallaNoValidaCaja();
@@ -37,6 +41,7 @@ public class Battle {
                 GameView.mostrarSinPokemonMensaje3();
             }
             this.battleFinished = true;
+            audioManager.stop();
             return;
         }
         
@@ -112,6 +117,7 @@ public class Battle {
             }
         }
         
+        audioManager.stop();
         scanner.close();
     }
 

@@ -63,6 +63,17 @@ El proyecto carga el catálogo de Pokémon desde PostgreSQL. El script SQL está
 
 Si la conexión falla, actualmente se muestra un error y el juego se cierra.
 
+## 🎵 Audio
+
+Para reproducir música necesitas agregar tus propios archivos (por derechos de autor no se incluyen en el repo).
+Coloca estos archivos en `src/main/resources/audio/`:
+
+- `center.wav`
+- `battle.wav`
+
+El juego intentará reproducirlos en bucle durante la selección y la batalla.
+Si no existen, se mostrará un aviso y el juego continuará sin audio.
+
 ## 📝 Notas Adicionales
 
 * Si utilizas IntelliJ IDEA, el proyecto ya cuenta con el directorio `.idea`, por lo que puedes abrirlo directamente desde el IDE y detectará automáticamente la configuración de Maven.
