@@ -93,3 +93,32 @@ Turno 8 | anxo(RotomWash): U-turn | Rival(Togekiss): Air Slash | PS 12 - 170
 Turno 9 | anxo(RotomWash): U-turn | Rival(Togekiss): Air Slash | PS 0 - 170
 Ganador: Rival
 === Battle end ===
+=== Battle start 2026-05-27 17:48:14 ===
+Players: anxo vs Rival
+Lead: Garchomp vs RotomWash
+Turno 1 | anxo(Garchomp): Earthquake | Rival(Garchomp): U-turn | PS 161 - 183
+Turno 2 | anxo(Garchomp): Dragon Claw | Rival(Garchomp): Earthquake | PS 84 - 75
+Turno 3 | anxo(Garchomp): Earthquake | Rival(Garchomp): Earthquake | PS 8 - 0
+Turno 4 | anxo(Garchomp): Earthquake | Rival(RotomWash): Hydro Pump | PS 0 - 155
+Turno 5 | anxo(Garchomp): Earthquake | Rival(RotomWash): Hydro Pump | PS 74 - 155
+Turno 6 | anxo(Garchomp): Earthquake | Rival(RotomWash): Hydro Pump | PS 0 - 155
+Ganador: Rival
+=== Battle end ===
+=== Battle start 2026-05-27 17:48:55 ===
+Players: anxo vs Rival
+Lead: Garchomp vs RotomWash
+Turno 1 | anxo(Garchomp): Earthquake | Rival(RotomWash): Hydro Pump | PS 81 - 157
+Turno 2 | anxo(Garchomp): Earthquake | Rival(RotomWash): Hydro Pump | PS 0 - 157
+Ganador: Rival
+=== Battle end ===
+=== Battle start 2026-05-27 17:52:59 ===
+Players: anxo vs Rival
+Lead: RotomWash vs RotomWash
+Turno 1 | anxo(RotomWash): U-turn | Rival(RotomWash): Hydro Pump | PS 133 - 136
+Turno 2 | anxo(RotomWash): Hydro Pump | Rival(RotomWash): Hydro Pump | PS 112 - 114
+Turno 3 | anxo(RotomWash): Hydro Pump | Rival(RotomWash): Hydro Pump | PS 88 - 93
+Turno 4 | anxo(RotomWash): U-turn | Rival(Togekiss): U-turn | PS 68 - 191
+Turno 5 | anxo(RotomWash): U-turn | Rival(Togekiss): Dazzling Gleam | PS 32 - 186
+Turno 6 | anxo(RotomWash): U-turn | Rival(Togekiss): Dazzling Gleam | PS 0 - 186
+Ganador: Rival
+=== Battle end ===

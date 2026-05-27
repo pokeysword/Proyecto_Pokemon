@@ -130,7 +130,8 @@ public class GameView {
         scanner = new Scanner(System.in);
     }
 
-    public void showWelcome() {
+    public void showWelcome(AudioManager audioManager) {
+        audioManager.playLoop("/audio/center.wav");
         mostrarLinea("Bienvenido al juego Pokémon");
     }
 

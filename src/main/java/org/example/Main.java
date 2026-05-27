@@ -6,11 +6,11 @@ public class Main {
 
     static void main(String[] args) {
         AudioManager audioManager = new AudioManager();
-        audioManager.playLoop("/audio/center.wav");
+        audioManager.setVolume(0.40f);
 
         // Crear la vista
         GameView gameView = new GameView();
-        gameView.showWelcome();
+        gameView.showWelcome(audioManager);
 
         // Crear el jugador
         Persona jugador = new Persona();
