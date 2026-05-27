@@ -77,3 +77,12 @@ Si no existen, se mostrará un aviso y el juego continuará sin audio.
 ## 📝 Notas Adicionales
 
 * Si utilizas IntelliJ IDEA, el proyecto ya cuenta con el directorio `.idea`, por lo que puedes abrirlo directamente desde el IDE y detectará automáticamente la configuración de Maven.
+
+## 🖥️ Interfaz grafica
+
+Se agrego una interfaz grafica simple que muestra la salida y permite ingresar comandos sin modificar el modelo.
+Para iniciarla ejecuta:
+
+```bash
+mvn exec:java -Dexec.mainClass="org.example.MainGui"
+```
