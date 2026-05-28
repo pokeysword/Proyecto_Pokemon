@@ -5,6 +5,12 @@ import java.util.Scanner;
 
 public class GameView {
     private Scanner scanner;
+    //para la interfáz gráfica
+    private static BattleStatusView battleStatusView;
+
+    public static void setBattleStatusView(BattleStatusView view) {
+        battleStatusView = view;
+    }
 
     public static void mostrarLinea(String mensaje) {
         System.out.println(mensaje);
@@ -104,13 +110,17 @@ public class GameView {
     public static void mostrarCambiandoPokemon() { mostrarLinea("CAMBIANDO_POKEMON"); }
     public static void mostrarOpcionInvalidaIntentaDeNuevo() { mostrarLinea("Opción inválida. Intenta de nuevo."); }
     public static void mostrarMovimientoSinPpElegirOtro(String nombre) { mostrarLinea(nombre + " no tiene PP. Elige otro movimiento."); }
-    public static void mostrarEstadoBattle(String nombre1, String nombre2, int ps1, int ps2, int nivel1, int nivel2, Estado e1, Estado e2) {
+    public static void mostrarEstadoBattle(String nombre1, String nombre2, int ps1, int max1, int ps2, int max2, int nivel1, int nivel2, Estado e1, Estado e2) {
         mostrarLinea("\n┌─────────────────────────────────────────┐");
         mostrarLinea("│ " + String.format("%-18s | %-18s", nombre1, nombre2));
         mostrarLinea("│ " + String.format("PS: %-14d | PS: %-14d", ps1, ps2));
         mostrarLinea("│ " + String.format("Nivel: %-10d | Nivel: %-10d", nivel1, nivel2));
         mostrarLinea("│ Estado: " + String.format("%-9s | Estado: %-8s", e1, e2));
         mostrarLinea("└─────────────────────────────────────────┘");
+//para la interfaz gráfica, se actualizarían las barras de vida y etiquetas en lugar de imprimir texto
+        if (battleStatusView != null) {
+            battleStatusView.updateBattleStatus(nombre1, ps1, max1, nombre2, ps2, max2);
+        }
     }
     public static void mostrarFinalBatallaCaja(String derrotado, String ganador) {
         mostrarLinea("\n╔════════════════════════════════════════╗");

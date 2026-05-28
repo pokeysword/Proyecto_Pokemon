@@ -354,8 +354,10 @@ public class Battle {
         String nombre2 = pokemonActual2.getNombre() + " (rival)";
         int ps1 = Math.max(0, pokemonActual1.getModPs());
         int ps2 = Math.max(0, pokemonActual2.getModPs());
-        
-        GameView.mostrarEstadoBattle(nombre1, nombre2, ps1, ps2, pokemonActual1.getNivel(), pokemonActual2.getNivel(), pokemonActual1.getEstado(), pokemonActual2.getEstado());
+        int max1 = Math.max(1, pokemonActual1.getPS());
+        int max2 = Math.max(1, pokemonActual2.getPS());
+
+        GameView.mostrarEstadoBattle(nombre1, nombre2, ps1, max1, ps2, max2, pokemonActual1.getNivel(), pokemonActual2.getNivel(), pokemonActual1.getEstado(), pokemonActual2.getEstado());
     }
 
     private void terminarBattle() {

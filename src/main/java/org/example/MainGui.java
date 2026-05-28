@@ -7,6 +7,7 @@ public class MainGui {
         SwingUtilities.invokeLater(() -> {
             try {
                 GuiConsole console = new GuiConsole("Pokemon - GUI");
+                GameView.setBattleStatusView(console);
                 console.attachToSystemIO();
                 console.show();
 
@@ -19,4 +20,3 @@ public class MainGui {
         });
     }
 }
-
