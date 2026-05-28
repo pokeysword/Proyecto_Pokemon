@@ -5,6 +5,9 @@ import org.example.movimientos.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Orquesta la batalla por turnos entre dos jugadores.
+ */
 public class Battle {
     private Persona jugador1;
     private Persona jugador2;
@@ -14,6 +17,13 @@ public class Battle {
     private final BattleLogger battleLogger;
     private final AudioManager audioManager;
 
+    /**
+     * Crea una batalla entre dos jugadores con soporte de audio.
+     *
+     * @param jugador1 primer jugador.
+     * @param jugador2 segundo jugador.
+     * @param audioManager gestor de audio para musica de batalla.
+     */
     public Battle(Persona jugador1, Persona jugador2, AudioManager audioManager) {
         this.jugador1 = jugador1;
         this.jugador2 = jugador2;
@@ -22,6 +32,9 @@ public class Battle {
         this.audioManager = audioManager;
     }
 
+    /**
+     * Inicia el flujo principal de la batalla y procesa turnos hasta el final.
+     */
     public void iniciarBattle() {
         audioManager.playLoop("/audio/battle.wav");
 
@@ -121,6 +134,11 @@ public class Battle {
         scanner.close();
     }
 
+    /**
+     * Ejecuta un turno completo de ambos jugadores.
+     *
+     * @param turno numero de turno.
+     */
     private void ejecutarTurno(int turno) {
         Scanner scanner = new Scanner(System.in);
 
@@ -241,6 +259,13 @@ public class Battle {
         }
     }
 
+    /**
+     * Construye el texto de accion para el registro.
+     *
+     * @param movimiento movimiento elegido o null.
+     * @param cambioPokemon indica si hubo cambio de Pokemon.
+     * @return descripcion de la accion.
+     */
     private String construirAccion(Movimiento movimiento, boolean cambioPokemon) {
         if (cambioPokemon) {
             return "Cambio";
@@ -251,6 +276,13 @@ public class Battle {
         return movimiento.getNombre();
     }
 
+    /**
+     * Ejecuta el ataque de un Pokemon contra otro.
+     *
+     * @param atacante Pokemon que ataca.
+     * @param defensor Pokemon que recibe el ataque.
+     * @param movimiento movimiento a ejecutar.
+     */
     private void atacar(Pokemon atacante, Pokemon defensor, Movimiento movimiento) {
         if (!movimiento.consumirPp()) {
             atacante.setUsoProtectTurnoAnterior(false);
@@ -279,7 +311,12 @@ public class Battle {
             GameView.mostrarPsActual(defensor.getNombre(), psActuales);
         }
     }
-    
+
+    /**
+     * Gestiona el cambio inmediato tras movimientos de salida.
+     *
+     * @param jugador numero de jugador (1 o 2).
+     */
     private void manejarCambioInmediato(int jugador) {
         Scanner scanner = new Scanner(System.in);
 
@@ -314,6 +351,14 @@ public class Battle {
         }
     }
 
+    /**
+     * Permite al jugador elegir un movimiento o cambiar Pokemon.
+     *
+     * @param scanner lector de entrada.
+     * @param pokemon Pokemon activo.
+     * @param nombreJugador nombre del jugador.
+     * @return movimiento elegido o null si cambia Pokemon.
+     */
     private Movimiento seleccionarMovimiento(Scanner scanner, Pokemon pokemon, String nombreJugador) {
         ArrayList<Movimiento> movimientos = pokemon.getMovimientos();
 
@@ -349,6 +394,9 @@ public class Battle {
         }
     }
 
+    /**
+     * Muestra el estado actual de la batalla.
+     */
     private void mostrarEstadoBattle() {
         String nombre1 = pokemonActual1.getNombre();
         String nombre2 = pokemonActual2.getNombre() + " (rival)";
@@ -360,6 +408,9 @@ public class Battle {
         GameView.mostrarEstadoBattle(nombre1, nombre2, ps1, max1, ps2, max2, pokemonActual1.getNivel(), pokemonActual2.getNivel(), pokemonActual1.getEstado(), pokemonActual2.getEstado());
     }
 
+    /**
+     * Finaliza la batalla y registra el ganador.
+     */
     private void terminarBattle() {
         battleFinished = true;
 
@@ -381,12 +432,20 @@ public class Battle {
         }
     }
 
+    /**
+     * Indica si la batalla ha terminado.
+     *
+     * @return true si la batalla finalizo.
+     */
     public boolean isBattleFinished() {
         return battleFinished;
     }
 
     /**
-     * Verifica si una persona tiene al menos un pokémon vivo
+     * Verifica si una persona tiene al menos un Pokemon vivo.
+     *
+     * @param persona jugador a evaluar.
+     * @return true si tiene Pokemon disponibles.
      */
     private boolean hayPokemonVivo(Persona persona) {
         for (Pokemon p : persona.getListaPokemon()) {
@@ -398,7 +457,12 @@ public class Battle {
     }
 
     /**
-     * Permite cambiar de pokémon en batalla
+     * Cambia el Pokemon activo por otro disponible.
+     *
+     * @param persona jugador que cambia.
+     * @param pokemonActual Pokemon actual.
+     * @param scanner lector de entrada.
+     * @return nuevo Pokemon o null si no hay disponibles.
      */
     private Pokemon cambiarPokemon(Persona persona, Pokemon pokemonActual, Scanner scanner) {
         ArrayList<Pokemon> pokemones = persona.getListaPokemon();

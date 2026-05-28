@@ -7,12 +7,24 @@ import org.example.Tipo;
 
 import java.util.Random;
 
+/**
+ * Movimiento fisico de tipo Acero con probabilidad de retroceso.
+ */
 public class IronHead extends Movimiento {
 
+    /**
+     * Crea el movimiento Iron Head.
+     */
     public IronHead() {
         super("Iron Head", 0, Tipo.ACERO, Categoria.FISICO, 80, 100, 15,1);
     }
 
+    /**
+     * Aplica dano y puede causar retroceso.
+     *
+     * @param atacante Pokemon atacante.
+     * @param defensor Pokemon defensor.
+     */
     @Override
     public void efecto(Pokemon atacante, Pokemon defensor) {
         int daño = DamageCalculator.calculateDamage(atacante, defensor, this);

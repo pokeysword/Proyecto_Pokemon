@@ -10,11 +10,17 @@ import org.example.data.PokemonDaoPostgres;
 import org.example.data.PokemonDataException;
 import org.example.data.PostgresConnectionFactory;
 
+/**
+ * Representa a un entrenador con equipo y catalogo de Pokemon.
+ */
 public class Persona {
     private String nombre;
     private ArrayList<Pokemon> listaPokemon;
     private Map<Integer, Pokemon> catalogoPokemon;
 
+    /**
+     * Crea un entrenador con nombre por defecto y carga el catalogo.
+     */
     public Persona() {
         this.nombre = "Entrenador";
         this.listaPokemon = new ArrayList<>();
@@ -22,11 +28,20 @@ public class Persona {
         cargarCatalogoPokemon();
     }
 
-
+    /**
+     * Establece el nombre del entrenador.
+     *
+     * @param nombre nombre del entrenador.
+     */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
+    /**
+     * Permite crear el equipo mediante un menu interactivo.
+     *
+     * @return lista de Pokemon elegidos.
+     */
     public ArrayList<Pokemon> crearEquipo() {
         Boolean salir = false;
         int cont = 0;
@@ -80,6 +95,12 @@ public class Persona {
         return listaPokemon;
     }
 
+    /**
+     * Agrega un Pokemon del catalogo al equipo.
+     *
+     * @param numero clave del catalogo.
+     * @return true si se agrego.
+     */
     private boolean agregarPokemon(int numero) {
         Pokemon base = catalogoPokemon.get(numero);
         if (base == null) {
@@ -90,6 +111,9 @@ public class Persona {
         return true;
     }
 
+    /**
+     * Carga el catalogo de Pokemon desde la base de datos.
+     */
     private void cargarCatalogoPokemon() {
         try {
             DbConfig config = DbConfig.load();
@@ -101,6 +125,9 @@ public class Persona {
         }
     }
 
+    /**
+     * Muestra el equipo actual por consola.
+     */
     public void verEquipo() {
         GameView.mostrarTuEquipoHeader();
         for (Pokemon p : listaPokemon) {
@@ -109,14 +136,29 @@ public class Persona {
         GameView.saltoLinea();
     }
 
+    /**
+     * Obtiene la lista del equipo.
+     *
+     * @return lista de Pokemon.
+     */
     public ArrayList<Pokemon> getListaPokemon() {
         return listaPokemon;
     }
 
+    /**
+     * Obtiene el catalogo de Pokemon disponible.
+     *
+     * @return mapa de Pokemon.
+     */
     public Map<Integer, Pokemon> getCatalogoPokemon() {
         return catalogoPokemon;
     }
 
+    /**
+     * Obtiene el nombre del entrenador.
+     *
+     * @return nombre del entrenador.
+     */
     public String getNombre() {
         return nombre;
     }

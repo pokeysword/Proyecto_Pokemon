@@ -10,9 +10,19 @@ import java.nio.charset.StandardCharsets;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+/**
+ * Repositorio que carga Pokemon desde un recurso de texto.
+ */
 public class PokemonRepository {
 	private static final String DEFAULT_RESOURCE = "pokemons.txt";
 
+	/**
+	 * Carga Pokemon desde el recurso y los mapea por id.
+	 *
+	 * @param catalogo catalogo base por nombre.
+	 * @return mapa de id a Pokemon.
+	 * @throws PokemonDataException si hay errores de formato o datos.
+	 */
 	public Map<Integer, Pokemon> cargarPokemon(Map<String, Pokemon> catalogo) throws PokemonDataException {
 		Map<Integer, String> nombres = cargarNombresPokemon(DEFAULT_RESOURCE);
 		Map<Integer, Pokemon> resultado = new LinkedHashMap<>();
@@ -29,6 +39,13 @@ public class PokemonRepository {
 		return resultado;
 	}
 
+	/**
+	 * Lee el archivo de nombres de Pokemon.
+	 *
+	 * @param resourceName nombre del recurso.
+	 * @return mapa de id a nombre normalizado.
+	 * @throws PokemonDataException si el archivo es invalido.
+	 */
 	private Map<Integer, String> cargarNombresPokemon(String resourceName) throws PokemonDataException {
 		InputStream input = getClass().getClassLoader().getResourceAsStream(resourceName);
 		if (input == null) {

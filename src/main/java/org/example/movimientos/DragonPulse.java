@@ -5,10 +5,22 @@ import org.example.DamageCalculator;
 import org.example.Pokemon;
 import org.example.Tipo;
 
+/**
+ * Movimiento de tipo Dragon.
+ */
 public class DragonPulse extends Movimiento {
+    /**
+     * Crea el movimiento Dragon Pulse.
+     */
     public DragonPulse() {
         super("Dragon Claw", 0, Tipo.DRAGÓN, Categoria.FISICO, 80, 100, 15,1); }
 
+    /**
+     * Aplica dano al defensor.
+     *
+     * @param atacante Pokemon atacante.
+     * @param defensor Pokemon defensor.
+     */
     @Override
     public void efecto(Pokemon atacante, Pokemon defensor) {
         int daño = DamageCalculator.calculateDamage(atacante, defensor, this);

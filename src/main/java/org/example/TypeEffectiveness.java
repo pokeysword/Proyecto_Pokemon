@@ -3,6 +3,9 @@ package org.example;
 import java.util.HashMap;
 
 
+/**
+ * Tabla de efectividades entre tipos.
+ */
 public class TypeEffectiveness {
     private static final HashMap<String, Double> EFFECTIVENESS_MAP = new HashMap<>();
 
@@ -167,12 +170,26 @@ public class TypeEffectiveness {
     }
 
     
+    /**
+     * Obtiene la efectividad entre un tipo atacante y defensor.
+     *
+     * @param tipoAtacante tipo del ataque.
+     * @param tipoDefensor tipo del defensor.
+     * @return multiplicador de efectividad.
+     */
     public static double getEffectiveness(Tipo tipoAtacante, Tipo tipoDefensor) {
         String key = tipoAtacante.name() + "_vs_" + tipoDefensor.name();
         return EFFECTIVENESS_MAP.getOrDefault(key, 1.0);
     }
 
     
+    /**
+     * Calcula la efectividad total contra un Pokemon con varios tipos.
+     *
+     * @param tipoAtacante tipo del ataque.
+     * @param tiposDefensor tipos del defensor.
+     * @return multiplicador total.
+     */
     public static double getTotalEffectiveness(Tipo tipoAtacante, java.util.ArrayList<Tipo> tiposDefensor) {
         double efectividadTotal = 1.0;
         for (Tipo tipoDefensa : tiposDefensor) {
@@ -182,6 +199,12 @@ public class TypeEffectiveness {
     }
 
     
+    /**
+     * Devuelve una descripcion legible de la efectividad.
+     *
+     * @param multiplicador multiplicador de efectividad.
+     * @return descripcion de texto.
+     */
     public static String getEffectivenessDescription(double multiplicador) {
         if (multiplicador == 0.0) {
             return "sin efecto";

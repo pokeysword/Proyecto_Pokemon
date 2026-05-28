@@ -20,6 +20,9 @@ import java.nio.charset.StandardCharsets;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
+/**
+ * Consola grafica que redirige System.in/out y muestra el estado de batalla.
+ */
 public class GuiConsole implements BattleStatusView {
     private final JFrame frame;
     private final JTextArea output;
@@ -31,6 +34,11 @@ public class GuiConsole implements BattleStatusView {
     private final JProgressBar jugadorBar;
     private final JProgressBar rivalBar;
 
+    /**
+     * Crea la ventana y los componentes de la consola.
+     *
+     * @param title titulo de la ventana.
+     */
     public GuiConsole(String title) {
         frame = new JFrame(title);
         output = new JTextArea();
@@ -66,6 +74,16 @@ public class GuiConsole implements BattleStatusView {
         frame.setLocationRelativeTo(null);
     }
 
+    /**
+     * Actualiza etiquetas y barras de vida en la interfaz.
+     *
+     * @param nombre1 nombre del Pokemon 1.
+     * @param ps1 PS actuales del Pokemon 1.
+     * @param max1 PS maximos del Pokemon 1.
+     * @param nombre2 nombre del Pokemon 2.
+     * @param ps2 PS actuales del Pokemon 2.
+     * @param max2 PS maximos del Pokemon 2.
+     */
     @Override
     public void updateBattleStatus(String nombre1, int ps1, int max1, String nombre2, int ps2, int max2) {
         SwingUtilities.invokeLater(() -> {
@@ -74,6 +92,13 @@ public class GuiConsole implements BattleStatusView {
         });
     }
 
+    /**
+     * Crea una fila con etiqueta y barra de vida.
+     *
+     * @param label etiqueta de nombre.
+     * @param bar barra de vida.
+     * @return panel con la fila.
+     */
     private JPanel crearFilaVida(JLabel label, JProgressBar bar) {
         JPanel row = new JPanel(new BorderLayout(6, 6));
         row.add(label, BorderLayout.WEST);
@@ -81,6 +106,11 @@ public class GuiConsole implements BattleStatusView {
         return row;
     }
 
+    /**
+     * Crea una barra de vida por defecto.
+     *
+     * @return barra inicializada.
+     */
     private JProgressBar crearBarraVida() {
         JProgressBar bar = new JProgressBar(0, 100);
         bar.setValue(100);
@@ -89,6 +119,15 @@ public class GuiConsole implements BattleStatusView {
         return bar;
     }
 
+    /**
+     * Actualiza el texto y color de la barra.
+     *
+     * @param label etiqueta de nombre.
+     * @param bar barra de vida.
+     * @param nombre nombre del Pokemon.
+     * @param actual PS actuales.
+     * @param maximo PS maximos.
+     */
     private void actualizarBarra(JLabel label, JProgressBar bar, String nombre, int actual, int maximo) {
         int maxSeguro = Math.max(1, maximo);
         int actualSeguro = Math.max(0, Math.min(actual, maxSeguro));
@@ -107,12 +146,18 @@ public class GuiConsole implements BattleStatusView {
         }
     }
 
+    /**
+     * Redirige System.in/out/err hacia la consola grafica.
+     */
     public void attachToSystemIO() {
         System.setIn(inputReader);
         System.setOut(new PrintStream(new TextAreaOutputStream(output), true, StandardCharsets.UTF_8));
         System.setErr(new PrintStream(new TextAreaOutputStream(output), true, StandardCharsets.UTF_8));
     }
 
+    /**
+     * Muestra la ventana y enfoca el campo de entrada.
+     */
     public void show() {
         SwingUtilities.invokeLater(() -> {
             frame.setVisible(true);
@@ -120,6 +165,9 @@ public class GuiConsole implements BattleStatusView {
         });
     }
 
+    /**
+     * Envia el texto del input como bytes a la cola de entrada.
+     */
     private void sendInput() {
         String text = input.getText();
         if (text == null || text.trim().isEmpty()) {
@@ -133,6 +181,11 @@ public class GuiConsole implements BattleStatusView {
         }
     }
 
+    /**
+     * Anade texto al area de salida.
+     *
+     * @param text contenido a agregar.
+     */
     private void appendOutput(String text) {
         SwingUtilities.invokeLater(() -> {
             output.append(text);
@@ -140,18 +193,38 @@ public class GuiConsole implements BattleStatusView {
         });
     }
 
+    /**
+     * OutputStream que escribe en un JTextArea.
+     */
     private static class TextAreaOutputStream extends OutputStream {
         private final JTextArea target;
 
+        /**
+         * Crea el stream asociado a un area de texto.
+         *
+         * @param target area objetivo.
+         */
         private TextAreaOutputStream(JTextArea target) {
             this.target = target;
         }
 
+        /**
+         * Escribe un byte en el area de texto.
+         *
+         * @param b byte a escribir.
+         */
         @Override
         public void write(int b) {
             write(new byte[] { (byte) b }, 0, 1);
         }
 
+        /**
+         * Escribe un bloque de bytes en el area de texto.
+         *
+         * @param b buffer de datos.
+         * @param off offset inicial.
+         * @param len longitud.
+         */
         @Override
         public void write(byte[] b, int off, int len) {
             String text = new String(b, off, len, StandardCharsets.UTF_8);
@@ -162,13 +235,26 @@ public class GuiConsole implements BattleStatusView {
         }
     }
 
+    /**
+     * InputStream que consume bytes desde una cola.
+     */
     private static class QueueInputStream extends InputStream {
         private final BlockingQueue<Integer> queue;
 
+        /**
+         * Crea el stream asociado a una cola.
+         *
+         * @param queue cola de entrada.
+         */
         private QueueInputStream(BlockingQueue<Integer> queue) {
             this.queue = queue;
         }
 
+        /**
+         * Lee un byte bloqueante.
+         *
+         * @return byte leido o -1 si se interrumpe.
+         */
         @Override
         public int read() {
             try {
@@ -179,6 +265,14 @@ public class GuiConsole implements BattleStatusView {
             }
         }
 
+        /**
+         * Lee hasta len bytes desde la cola.
+         *
+         * @param b buffer destino.
+         * @param off offset inicial.
+         * @param len longitud maxima.
+         * @return cantidad leida o -1 si no hay datos.
+         */
         @Override
         public int read(byte[] b, int off, int len) {
             if (b == null) {
@@ -207,6 +301,9 @@ public class GuiConsole implements BattleStatusView {
             return count;
         }
 
+        /**
+         * No cierra System.in para evitar afectar al Scanner.
+         */
         @Override
         public void close() {
             // No-op para evitar que Scanner cierre System.in.

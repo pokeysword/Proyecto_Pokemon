@@ -9,16 +9,29 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.IOException;
 import java.net.URL;
 
+/**
+ * Gestiona la reproduccion de audio y el volumen del juego.
+ */
 public class AudioManager {
     private Clip clip;
     private float volumeLevel = 0.4f;
 
+    /**
+     * Ajusta el volumen entre 0.0 y 1.0 y lo aplica al clip activo.
+     *
+     * @param level nivel de volumen deseado.
+     */
     public void setVolume(float level) {
         float clamped = Math.max(0.0f, Math.min(1.0f, level));
         volumeLevel = clamped;
         applyVolume();
     }
 
+    /**
+     * Reproduce en bucle un recurso de audio del classpath.
+     *
+     * @param resourcePath ruta del recurso, por ejemplo "/audio/battle.wav".
+     */
     public void playLoop(String resourcePath) {
         stop();
 
@@ -40,6 +53,9 @@ public class AudioManager {
         }
     }
 
+    /**
+     * Aplica el volumen actual al clip si existe y soporta control de ganancia.
+     */
     private void applyVolume() {
         if (clip == null) {
             return;
@@ -53,6 +69,9 @@ public class AudioManager {
         }
     }
 
+    /**
+     * Detiene la reproduccion y libera el clip actual.
+     */
     public void stop() {
         if (clip != null) {
             clip.stop();

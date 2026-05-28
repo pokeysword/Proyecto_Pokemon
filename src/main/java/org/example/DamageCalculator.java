@@ -4,12 +4,23 @@ import org.example.movimientos.*;
 import java.util.Random;
 
 
+/**
+ * Utilidad para calcular y aplicar dano en batalla.
+ */
 public class DamageCalculator {
     private static final Random random = new Random();
     private static final double VARIABILITY_MIN = 0.85;
     private static final double VARIABILITY_MAX = 1.0;
 
    
+    /**
+     * Calcula el dano base de un movimiento y aplica reglas de estado.
+     *
+     * @param atacante Pokemon atacante.
+     * @param defensor Pokemon defensor.
+     * @param movimiento movimiento ejecutado.
+     * @return dano calculado (minimo 0).
+     */
     public static int calculateDamage(Pokemon atacante, Pokemon defensor, Movimiento movimiento) {
         // Verificar si el atacante está dormido - No puede atacar
         if (atacante.getEstado() == Estado.DORMIDO) {
@@ -92,6 +103,13 @@ public class DamageCalculator {
     }
 
     
+    /**
+     * Aplica un modificador de estadisticas a un valor base.
+     *
+     * @param statBase valor base.
+     * @param modificador niveles de modificacion.
+     * @return valor ajustado.
+     */
     private static int aplicarModificador(int statBase, int modificador) {
         double multiplicador;
         if (modificador >= 0) {
@@ -103,6 +121,13 @@ public class DamageCalculator {
     }
 
     
+    /**
+     * Determina si el movimiento es un golpe critico.
+     *
+     * @param atacante Pokemon atacante.
+     * @param movimiento movimiento usado.
+     * @return true si es critico.
+     */
     private static boolean isCriticalHit(Pokemon atacante, Movimiento movimiento) {
         int probabilidadBase = 16;
 
@@ -112,6 +137,15 @@ public class DamageCalculator {
     }
 
     
+    /**
+     * Muestra informacion de ataque en la vista.
+     *
+     * @param nombreMovimiento nombre del movimiento.
+     * @param atacante nombre del atacante.
+     * @param defensor nombre del defensor.
+     * @param esCritico indica si fue critico.
+     * @param efectividad multiplicador de efectividad.
+     */
     private static void mostrarInfoAtaque(String nombreMovimiento, String atacante, String defensor, boolean esCritico, double efectividad) {
         StringBuilder mensaje = new StringBuilder();
         mensaje.append(atacante).append(" usa ").append(nombreMovimiento).append("!");
@@ -128,6 +162,14 @@ public class DamageCalculator {
     }
 
     
+    /**
+     * Aplica el dano a un Pokemon y procesa efectos posteriores.
+     *
+     * @param defensor Pokemon defensor.
+     * @param daño dano aplicado.
+     * @param atacante Pokemon atacante.
+     * @param movimiento movimiento usado.
+     */
     public static void applyDamage(Pokemon defensor, int daño, Pokemon atacante, Movimiento movimiento) {
         if (daño > 0) {
             defensor.sufrirDaño(daño);
@@ -142,7 +184,9 @@ public class DamageCalculator {
     }
     
     /**
-     * Aplica daño pasivo según el estado del pokémon
+     * Aplica dano pasivo segun el estado del Pokemon.
+     *
+     * @param pokemon objetivo.
      */
     public static void aplicarDañoPorEstado(Pokemon pokemon) {
         if (pokemon.getEstado() == Estado.ENVENENADO) {
@@ -157,7 +201,9 @@ public class DamageCalculator {
     }
     
     /**
-     * Despierta un pokémon dormido con 1-3 turnos de duración
+     * Despierta un Pokemon dormido con probabilidad por turno.
+     *
+     * @param pokemon objetivo.
      */
     public static void despertarPokemon(Pokemon pokemon) {
         // 33% de chance de despertar cada turno (1-3 turnos)
@@ -168,7 +214,10 @@ public class DamageCalculator {
     }
     
     /**
-     * Obtiene el multiplicador de velocidad según el estado
+     * Obtiene el multiplicador de velocidad segun el estado.
+     *
+     * @param pokemon objetivo.
+     * @return multiplicador de velocidad.
      */
     public static double getVelocityMultiplier(Pokemon pokemon) {
         Estado estado = pokemon.getEstado();

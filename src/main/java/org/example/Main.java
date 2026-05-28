@@ -2,8 +2,17 @@ package org.example;
 
 import java.util.Map;
 
+/**
+ * Punto de entrada principal del juego de Pokemon.
+ * Se encarga de preparar la vista, crear al jugador y al rival, y lanzar la batalla.
+ */
 public class Main {
 
+    /**
+     * Inicializa el juego, configura el audio y arranca el flujo principal.
+     *
+     * @param args argumentos de linea de comandos (no se usan).
+     */
     static void main(String[] args) {
         AudioManager audioManager = new AudioManager();
         audioManager.setVolume(0.40f);
@@ -25,6 +34,12 @@ public class Main {
         batalla.iniciarBattle();
     }
 
+    /**
+     * Crea un rival basandose en el catalogo disponible del jugador.
+     *
+     * @param jugador jugador del que se toma el catalogo base.
+     * @return rival con hasta 4 Pokemon copiados del catalogo del jugador.
+     */
     static Persona crearRival(Persona jugador) {
         Persona rival = new Persona();
         rival.setNombre("Rival");

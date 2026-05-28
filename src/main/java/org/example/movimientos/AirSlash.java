@@ -7,12 +7,24 @@ import org.example.Tipo;
 
 import java.util.Random;
 
+/**
+ * Movimiento especial de tipo Volador con probabilidad de retroceso.
+ */
 public class AirSlash extends Movimiento {
 
+    /**
+     * Crea el movimiento Air Slash.
+     */
     public AirSlash() {
         super("Air Slash", 0, Tipo.VOLADOR, Categoria.ESPECIAL, 75, 95, 15,1);
     }
 
+    /**
+     * Aplica dano y puede causar retroceso.
+     *
+     * @param atacante Pokemon atacante.
+     * @param defensor Pokemon defensor.
+     */
     @Override
     public void efecto(Pokemon atacante, Pokemon defensor) {
         int daño = DamageCalculator.calculateDamage(atacante, defensor, this);

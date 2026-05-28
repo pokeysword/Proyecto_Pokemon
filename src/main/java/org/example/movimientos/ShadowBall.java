@@ -7,10 +7,22 @@ import org.example.Tipo;
 
 import java.util.Random;
 
+/**
+ * Movimiento especial de tipo Fantasma con posible bajada de defensa especial.
+ */
 public class ShadowBall extends Movimiento {
+    /**
+     * Crea el movimiento Shadow Ball.
+     */
     public ShadowBall() {
         super("Shadow Ball", 0, Tipo.FANTASMA, Categoria.ESPECIAL, 80, 100, 15,1);
     }
+    /**
+     * Aplica dano y puede bajar la defensa especial.
+     *
+     * @param atacante Pokemon atacante.
+     * @param defensor Pokemon defensor.
+     */
     @Override
     public void efecto(Pokemon atacante, Pokemon defensor) {
         int daño = DamageCalculator.calculateDamage(atacante, defensor, this);

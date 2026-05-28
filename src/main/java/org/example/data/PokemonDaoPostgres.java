@@ -13,6 +13,9 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+/**
+ * DAO para cargar Pokemon desde PostgreSQL.
+ */
 public class PokemonDaoPostgres {
     private static final String QUERY_POKEMON = "SELECT id, nombre, nivel, ps, ataque, defensa, ataque_especial, defensa_especial, velocidad, habilidad_code FROM pokemon ORDER BY id";
     private static final String QUERY_TIPOS = "SELECT pokemon_id, tipo_code, slot FROM pokemon_tipo ORDER BY pokemon_id, slot";
@@ -20,10 +23,21 @@ public class PokemonDaoPostgres {
 
     private final PostgresConnectionFactory connectionFactory;
 
+    /**
+     * Crea el DAO con una fabrica de conexiones.
+     *
+     * @param connectionFactory fabrica de conexiones.
+     */
     public PokemonDaoPostgres(PostgresConnectionFactory connectionFactory) {
         this.connectionFactory = connectionFactory;
     }
 
+    /**
+     * Carga el catalogo completo de Pokemon desde la base de datos.
+     *
+     * @return mapa de id a Pokemon.
+     * @throws PokemonDataException si hay errores de datos o consulta.
+     */
     public Map<Integer, Pokemon> cargarPokemon() throws PokemonDataException {
         Map<Integer, PokemonRow> rows = new LinkedHashMap<>();
 
@@ -63,6 +77,13 @@ public class PokemonDaoPostgres {
         return resultado;
     }
 
+    /**
+     * Carga los datos base de Pokemon.
+     *
+     * @param connection conexion abierta.
+     * @param rows mapa de filas a completar.
+     * @throws SQLException si falla la consulta.
+     */
     private void cargarBasePokemon(Connection connection, Map<Integer, PokemonRow> rows) throws SQLException {
         try (PreparedStatement stmt = connection.prepareStatement(QUERY_POKEMON);
              ResultSet rs = stmt.executeQuery()) {
@@ -84,6 +105,14 @@ public class PokemonDaoPostgres {
         }
     }
 
+    /**
+     * Carga los tipos de cada Pokemon.
+     *
+     * @param connection conexion abierta.
+     * @param rows mapa de filas a completar.
+     * @throws SQLException si falla la consulta.
+     * @throws PokemonDataException si hay datos invalidos.
+     */
     private void cargarTipos(Connection connection, Map<Integer, PokemonRow> rows) throws SQLException, PokemonDataException {
         try (PreparedStatement stmt = connection.prepareStatement(QUERY_TIPOS);
              ResultSet rs = stmt.executeQuery()) {
@@ -103,6 +132,14 @@ public class PokemonDaoPostgres {
         }
     }
 
+    /**
+     * Carga los movimientos de cada Pokemon.
+     *
+     * @param connection conexion abierta.
+     * @param rows mapa de filas a completar.
+     * @throws SQLException si falla la consulta.
+     * @throws PokemonDataException si hay datos invalidos.
+     */
     private void cargarMovimientos(Connection connection, Map<Integer, PokemonRow> rows) throws SQLException, PokemonDataException {
         try (PreparedStatement stmt = connection.prepareStatement(QUERY_MOVIMIENTOS);
              ResultSet rs = stmt.executeQuery()) {
@@ -122,6 +159,13 @@ public class PokemonDaoPostgres {
         }
     }
 
+    /**
+     * Construye la lista de tipos para una fila.
+     *
+     * @param row fila de datos.
+     * @return lista de tipos.
+     * @throws PokemonDataException si no hay tipos.
+     */
     private ArrayList<Tipo> buildTipos(PokemonRow row) throws PokemonDataException {
         ArrayList<Tipo> tipos = new ArrayList<>();
         for (Tipo tipo : row.tipos) {
@@ -135,6 +179,13 @@ public class PokemonDaoPostgres {
         return tipos;
     }
 
+    /**
+     * Construye la lista de movimientos para una fila.
+     *
+     * @param row fila de datos.
+     * @return lista de movimientos.
+     * @throws PokemonDataException si no hay movimientos.
+     */
     private ArrayList<Movimiento> buildMovimientos(PokemonRow row) throws PokemonDataException {
         ArrayList<Movimiento> movimientos = new ArrayList<>();
         for (Movimiento movimiento : row.movimientos) {
@@ -148,6 +199,9 @@ public class PokemonDaoPostgres {
         return movimientos;
     }
 
+    /**
+     * Fila interna con datos de Pokemon.
+     */
     private static class PokemonRow {
         private final int id;
         private final String nombre;
@@ -162,6 +216,9 @@ public class PokemonDaoPostgres {
         private final Tipo[] tipos;
         private final Movimiento[] movimientos;
 
+        /**
+         * Crea una fila con datos base.
+         */
         private PokemonRow(int id, String nombre, int nivel, int ps, int ataque, int defensa,
                            int ataqueEspecial, int defensaEspecial, int velocidad, String habilidadCode) {
             this.id = id;
@@ -179,4 +236,3 @@ public class PokemonDaoPostgres {
         }
     }
 }
-

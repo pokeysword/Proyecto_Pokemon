@@ -8,10 +8,22 @@ import org.example.Tipo;
 import java.util.Random;
 
 
+/**
+ * Movimiento fisico de tipo Psiquico con probabilidad de retroceso.
+ */
 public class ZenHeadbutt extends Movimiento {
+    /**
+     * Crea el movimiento Zen Headbutt.
+     */
     public ZenHeadbutt() {
         super("Zen Headbutt", 0, Tipo.PSÍQUICO, Categoria.FISICO, 80, 90, 15,1);
     }
+    /**
+     * Aplica dano y puede causar retroceso.
+     *
+     * @param atacante Pokemon atacante.
+     * @param defensor Pokemon defensor.
+     */
     @Override
     public void efecto(Pokemon atacante, Pokemon defensor) {
         int daño = DamageCalculator.calculateDamage(atacante, defensor, this);

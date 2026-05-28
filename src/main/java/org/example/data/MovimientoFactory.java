@@ -2,10 +2,23 @@ package org.example.data;
 
 import org.example.movimientos.*;
 
+/**
+ * Fabrica de movimientos a partir de codigos de base de datos.
+ */
 public final class MovimientoFactory {
+    /**
+     * Constructor privado para evitar instancias.
+     */
     private MovimientoFactory() {
     }
 
+    /**
+     * Crea un movimiento segun su codigo.
+     *
+     * @param code codigo del movimiento.
+     * @return instancia del movimiento.
+     * @throws PokemonDataException si el codigo es invalido.
+     */
     public static Movimiento crear(String code) throws PokemonDataException {
         if (code == null || code.trim().isEmpty()) {
             throw new PokemonDataException("Movimiento vacio en base de datos");
@@ -70,4 +83,3 @@ public final class MovimientoFactory {
         }
     }
 }
-
