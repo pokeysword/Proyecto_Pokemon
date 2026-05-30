@@ -1,5 +1,7 @@
 package org.example;
 
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -12,10 +14,16 @@ import javax.swing.SwingUtilities;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.RenderingHints;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -49,6 +57,19 @@ public class GuiConsole implements BattleStatusView {
         output.setEditable(false);
         output.setLineWrap(true);
         output.setWrapStyleWord(true);
+        output.setOpaque(true);
+        Color panelSolid = new Color(15, 18, 24);
+        output.setBackground(panelSolid);
+        output.setForeground(new Color(245, 245, 245));
+        output.setFont(new Font("Consolas", Font.PLAIN, 13));
+
+        input.setFont(new Font("Consolas", Font.PLAIN, 14));
+        input.setBackground(new Color(255, 255, 255));
+        input.setForeground(new Color(30, 30, 30));
+        input.setCaretColor(new Color(30, 30, 30));
+        input.setBorder(BorderFactory.createCompoundBorder(
+                BorderFactory.createLineBorder(new Color(90, 120, 180), 1),
+                BorderFactory.createEmptyBorder(6, 10, 6, 10)));
 
         jugadorLabel = new JLabel("Jugador");
         rivalLabel = new JLabel("Rival");
@@ -56,6 +77,7 @@ public class GuiConsole implements BattleStatusView {
         rivalBar = crearBarraVida();
 
         JPanel statusPanel = new JPanel(new GridLayout(2, 1, 6, 6));
+        statusPanel.setOpaque(false);
         statusPanel.add(crearFilaVida(jugadorLabel, jugadorBar));
         statusPanel.add(crearFilaVida(rivalLabel, rivalBar));
 
@@ -63,12 +85,25 @@ public class GuiConsole implements BattleStatusView {
         sendButton.addActionListener(event -> sendInput());
         input.addActionListener(event -> sendInput());
 
+        JPanel inputPanel = new JPanel(new BorderLayout(6, 6));
+        inputPanel.setOpaque(true);
+        inputPanel.setBackground(panelSolid);
+        inputPanel.add(input, BorderLayout.CENTER);
+        inputPanel.add(sendButton, BorderLayout.EAST);
+
+        JScrollPane outputScroll = new JScrollPane(output);
+        outputScroll.setOpaque(true);
+        outputScroll.getViewport().setOpaque(true);
+        outputScroll.getViewport().setBackground(panelSolid);
+
+        JPanel content = new BackgroundPanel(loadBackgroundImage());
+        content.setLayout(new BorderLayout(8, 8));
+
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setLayout(new BorderLayout(8, 8));
+        frame.setContentPane(content);
         frame.add(statusPanel, BorderLayout.NORTH);
-        frame.add(new JScrollPane(output), BorderLayout.CENTER);
-        frame.add(input, BorderLayout.SOUTH);
-        frame.add(sendButton, BorderLayout.EAST);
+        frame.add(outputScroll, BorderLayout.CENTER);
+        frame.add(inputPanel, BorderLayout.SOUTH);
         frame.setPreferredSize(new Dimension(720, 480));
         frame.pack();
         frame.setLocationRelativeTo(null);
@@ -116,6 +151,7 @@ public class GuiConsole implements BattleStatusView {
         bar.setValue(100);
         bar.setStringPainted(true);
         bar.setForeground(new Color(40, 180, 90));
+        bar.setOpaque(false);
         return bar;
     }
 
@@ -191,6 +227,50 @@ public class GuiConsole implements BattleStatusView {
             output.append(text);
             output.setCaretPosition(output.getDocument().getLength());
         });
+    }
+
+    private Image loadBackgroundImage() {
+        URL resource = getClass().getResource("/fondo.png");
+        if (resource == null) {
+            return null;
+        }
+        return new ImageIcon(resource).getImage();
+    }
+
+    /**
+     * Panel que dibuja una imagen de fondo escalada.
+     */
+    private static class BackgroundPanel extends JPanel {
+        private final Image background;
+        private Image scaledBackground;
+        private int lastW;
+        private int lastH;
+
+        private BackgroundPanel(Image background) {
+            this.background = background;
+            setOpaque(false);
+        }
+
+        @Override
+        protected void paintComponent(Graphics g) {
+            super.paintComponent(g);
+            if (background == null) {
+                return;
+            }
+            Graphics2D g2 = (Graphics2D) g.create();
+            int panelW = getWidth();
+            int panelH = getHeight();
+            if (panelW > 0 && panelH > 0 && (scaledBackground == null || panelW != lastW || panelH != lastH)) {
+                lastW = panelW;
+                lastH = panelH;
+                g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+                scaledBackground = background.getScaledInstance(panelW, panelH, Image.SCALE_SMOOTH);
+            }
+            if (scaledBackground != null) {
+                g2.drawImage(scaledBackground, 0, 0, this);
+            }
+            g2.dispose();
+        }
     }
 
     /**

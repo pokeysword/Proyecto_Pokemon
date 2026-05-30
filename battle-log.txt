@@ -187,3 +187,56 @@ Turno 8 | iagi(Garchomp): Dragon Claw | Rival(Garchomp): Dragon Claw | PS 58 - 0
 Turno 9 | iagi(Garchomp): Dragon Claw | Rival(RotomWash): Hydro Pump | PS 0 - 94
 Ganador: Rival
 === Battle end ===
+=== Battle start 2026-05-30 22:28:25 ===
+Players: anxo vs Rival
+Lead: RotomWash vs RotomWash
+Turno 1 | anxo(RotomWash): Hydro Pump | Rival(Garchomp): U-turn | PS 135 - 183
+Turno 2 | anxo(Garchomp): U-turn | Rival(Garchomp): Earthquake | PS 183 - 162
+=== Battle start 2026-05-30 22:29:47 ===
+Players: asd vs Rival
+Lead: Garchomp vs RotomWash
+Turno 1 | asd(Garchomp): Earthquake | Rival(Garchomp): U-turn | PS 161 - 183
+Turno 2 | asd(Garchomp): Dragon Claw | Rival(Garchomp): Earthquake | PS 79 - 62
+Turno 3 | asd(Garchomp): Dragon Claw | Rival(Garchomp): Dragon Claw | PS 60 - 0
+Turno 4 | asd(Garchomp): Dragon Claw | Rival(Togekiss): Dazzling Gleam | PS 0 - 191
+Turno 5 | asd(Garchomp): Dragon Claw | Rival(Togekiss): Dazzling Gleam | PS 89 - 191
+Turno 6 | asd(Garchomp): Dragon Claw | Rival(Togekiss): Dazzling Gleam | PS 0 - 191
+Turno 7 | asd(Garchomp): Dragon Claw | Rival(Togekiss): Dazzling Gleam | PS 100 - 191
+Turno 8 | asd(Garchomp): Dragon Claw | Rival(Togekiss): Dazzling Gleam | PS 11 - 191
+Turno 9 | asd(Garchomp): Earthquake | Rival(Togekiss): Air Slash | PS 0 - 191
+Ganador: Rival
+=== Battle end ===
+=== Battle start 2026-05-30 22:31:28 ===
+Players: anxo vs Rival
+Lead: Garchomp vs RotomWash
+Turno 1 | anxo(Garchomp): Earthquake | Rival(Togekiss): U-turn | PS 161 - 191
+Turno 2 | anxo(Garchomp): Dragon Claw | Rival(Togekiss): Dazzling Gleam | PS 74 - 191
+Turno 3 | anxo(Garchomp): Dragon Claw | Rival(Togekiss): Dazzling Gleam | PS 0 - 191
+Turno 4 | anxo(RotomWash): Hydro Pump | Rival(Togekiss): Air Slash | PS 141 - 145
+Turno 5 | anxo(RotomWash): Hydro Pump | Rival(Togekiss): Air Slash | PS 124 - 106
+Turno 6 | anxo(RotomWash): Hydro Pump | Rival(Togekiss): Air Slash | PS 107 - 63
+Turno 7 | anxo(RotomWash): Hydro Pump | Rival(Togekiss): Air Slash | PS 90 - 22
+=== Battle start 2026-05-30 22:32:27 ===
+Players: as vs Rival
+Lead: Garchomp vs RotomWash
+Turno 1 | as(Garchomp): Earthquake | Rival(Garchomp): U-turn | PS 162 - 183
+Turno 2 | as(Garchomp): Dragon Claw | Rival(Garchomp): Earthquake | PS 85 - 73
+Turno 3 | as(Garchomp): Dragon Claw | Rival(Garchomp): Earthquake | PS 72 - 0
+Turno 4 | as(Garchomp): Earthquake | Rival(Togekiss): Dazzling Gleam | PS 0 - 191
+Turno 5 | as(Togekiss): Dazzling Gleam | Rival(Togekiss): Air Slash | PS 156 - 157
+=== Battle start 2026-05-30 22:34:18 ===
+Players: as vs Rival
+Lead: Garchomp vs RotomWash
+Turno 1 | as(Garchomp): Earthquake | Rival(Togekiss): U-turn | PS 161 - 191
+Turno 2 | as(Garchomp): Earthquake | Rival(Togekiss): Dazzling Gleam | PS 76 - 191
+Turno 3 | as(Garchomp): Earthquake | Rival(Togekiss): Dazzling Gleam | PS 0 - 191
+=== Battle start 2026-05-30 22:36:37 ===
+Players: 1 vs Rival
+Lead: Togekiss vs RotomWash
+Turno 1 | 1(Togekiss): Air Slash | Rival(RotomWash): Will-O-Wisp | PS 191 - 141
+Turno 2 | 1(Togekiss): Dazzling Gleam | Rival(Togekiss): U-turn | PS 163 - 191
+Turno 3 | 1(Togekiss): Dazzling Gleam | Rival(Togekiss): Dazzling Gleam | PS 105 - 157
+Turno 4 | 1(Togekiss): Dazzling Gleam | Rival(Togekiss): Dazzling Gleam | PS 50 - 123
+Turno 5 | 1(Togekiss): Dazzling Gleam | Rival(Togekiss): Dazzling Gleam | PS 0 - 89
+Ganador: Rival
+=== Battle end ===
