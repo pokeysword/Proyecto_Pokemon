@@ -173,3 +173,17 @@ Turno 1 | anxo(Garchomp): Dragon Claw | Rival(RotomWash): Hydro Pump | PS 71 - 1
 Turno 2 | anxo(Garchomp): Dragon Claw | Rival(RotomWash): Hydro Pump | PS 0 - 43
 Ganador: Rival
 === Battle end ===
+=== Battle start 2026-05-30 22:21:22 ===
+Players: iagi vs Rival
+Lead: RotomWash vs RotomWash
+Turno 1 | iagi(RotomWash): Will-O-Wisp | Rival(Togekiss): U-turn | PS 147 - 191
+Turno 2 | iagi(RotomWash): Hydro Pump | Rival(Togekiss): Calm Mind | PS 147 - 160
+Turno 3 | iagi(RotomWash): Will-O-Wisp | Rival(Togekiss): Dazzling Gleam | PS 95 - 160
+Turno 4 | iagi(RotomWash): Hydro Pump | Rival(Togekiss): Air Slash | PS 69 - 110
+Turno 5 | iagi(RotomWash): Hydro Pump | Rival(Togekiss): Dazzling Gleam | PS 0 - 110
+Turno 6 | iagi(Garchomp): Rock Slide | Rival(Togekiss): Dazzling Gleam | PS 183 - 0
+Turno 7 | iagi(Garchomp): Dragon Claw | Rival(Garchomp): Dragon Claw | PS 71 - 64
+Turno 8 | iagi(Garchomp): Dragon Claw | Rival(Garchomp): Dragon Claw | PS 58 - 0
+Turno 9 | iagi(Garchomp): Dragon Claw | Rival(RotomWash): Hydro Pump | PS 0 - 94
+Ganador: Rival
+=== Battle end ===

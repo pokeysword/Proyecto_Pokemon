@@ -1,13 +1,12 @@
 package org.example.movimientos;
 
 import org.example.Categoria;
-import org.example.Pokemon;
 import org.example.Tipo;
 
 /**
  * Clase base para movimientos de batalla.
  */
-public abstract class Movimiento {
+public abstract class Movimiento implements EfectoMovimiento {
     protected String nombre;
     protected int prioridad;
     protected Tipo tipo;
@@ -42,13 +41,6 @@ public abstract class Movimiento {
         this.multcrit=multcrit;
     }
 
-    /**
-     * Aplica el efecto del movimiento.
-     *
-     * @param atacante Pokemon atacante.
-     * @param defensor Pokemon defensor.
-     */
-    public abstract void efecto(Pokemon atacante, Pokemon defensor);
 
     /**
      * Obtiene la categoria.
