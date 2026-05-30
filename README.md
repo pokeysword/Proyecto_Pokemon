@@ -12,7 +12,7 @@
 El repositorio cuenta con la siguiente estructura principal:
 
 *   `src/main/java/`: Código fuente de la aplicación.
-*   `src/main/resources/pokemons.txt`: Catálogo local de nombres de Pokémon.
+*   `src/main/resources/`: Recursos (audio e imagen de fondo para la GUI).
 *   `sql/pokemon_schema.sql`: Script de creación de la base de datos.
 *   `battle-log.txt`: Registro de combates (se actualiza al jugar).
 *   `pom.xml`: Configuración de Maven.
@@ -37,7 +37,7 @@ Para poder compilar y ejecutar este proyecto en tu entorno local, necesitarás t
    mvn clean compile
    ```
 
-3. **Ejecuta la aplicación:**
+3. **Ejecuta la aplicación (consola):**
    *(Dependiendo de la clase principal, el comando puede variar)*
    ```bash
    mvn exec:java -Dexec.mainClass="org.example.Main"
@@ -46,7 +46,7 @@ Para poder compilar y ejecutar este proyecto en tu entorno local, necesitarás t
 
 ## 🐘 Base de Datos (PostgreSQL)
 
-El proyecto carga el catálogo de Pokémon desde PostgreSQL. El script SQL está en `sql/pokemon_schema.sql`.
+El proyecto carga el catálogo de Pokémon **solo desde PostgreSQL**. El script SQL está en `sql/pokemon_schema.sql`.
 
 ### Configuración rápida
 
@@ -61,7 +61,7 @@ El proyecto carga el catálogo de Pokémon desde PostgreSQL. El script SQL está
    - `DB_PASSWORD` o `PASSWORD`
    - `DB_SCHEMA` o `SCHEMA` (opcional, por defecto `pokemon`)
 
-Si la conexión falla, actualmente se muestra un error y el juego se cierra.
+Si la conexión falla, se muestra un error y el juego se cierra.
 
 ## 🎵 Audio
 
@@ -74,13 +74,23 @@ Coloca estos archivos en `src/main/resources/audio/`:
 El juego intentará reproducirlos en bucle durante la selección y la batalla.
 Si no existen, se mostrará un aviso y el juego continuará sin audio.
 
+## 🖼️ Fondo de la GUI
+
+Para usar imagen de fondo en la interfaz gráfica, agrega este archivo:
+
+- `src/main/resources/fondo.png`
+
+La imagen se dibuja como fondo de la ventana (no del texto).
+
 ## 📝 Notas Adicionales
 
 * Si utilizas IntelliJ IDEA, el proyecto ya cuenta con el directorio `.idea`, por lo que puedes abrirlo directamente desde el IDE y detectará automáticamente la configuración de Maven.
 
 ## 🖥️ Interfaz grafica
 
-Se agrego una interfaz grafica simple que muestra la salida y permite ingresar comandos sin modificar el modelo.
+Se agrego una interfaz grafica simple (Swing) que muestra la salida y permite ingresar comandos sin modificar el modelo.
+Incluye fondo de ventana y un campo de entrada estilizado.
+
 Para iniciarla ejecuta:
 
 ```bash
